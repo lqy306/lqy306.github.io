@@ -1,5 +1,46 @@
 import os
 import datetime
+import markdown
+
+# 基础配置
+BASE_URL = "https://lqy306.github.io"
+FONT_CSS = """
+@font-face {
+    font-family: 'F1.8';
+    src: url('https://cdn.jsdelivr.net/gh/lqy306/lqy306.github.io/fonts/F1.8-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+"""
+
+COMMON_STYLE = f"""
+{FONT_CSS}
+body {{ font-family: 'F1.8', 'Noto Sans SC', sans-serif; background-color: #0f0f0f; color: #e0e0e0; padding: 20px; line-height: 1.6; }}
+.container {{ max-width: 900px; margin: 0 auto; }}
+h1 {{ border-bottom: 1px solid #333; padding-bottom: 10px; color: #1793d1; }}
+a {{ color: #1793d1; text-decoration: none; }}
+a:hover {{ text-decoration: underline; }}
+.nav-links {{ margin-bottom: 20px; font-size: 0.9em; }}
+.footer {{ margin-top: 50px; font-size: 0.8em; color: #555; text-align: center; border-top: 1px solid #222; padding-top: 20px; }}
+"""
+
+FTP_STYLE = COMMON_STYLE + """
+table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+th, td { text-align: left; padding: 12px; border-bottom: 1px solid #222; }
+th { color: #888; text-transform: uppercase; font-size: 0.8em; }
+tr:hover { background-color: #1a1a1a; }
+.icon { margin-right: 10px; }
+"""
+
+POST_STYLE = COMMON_STYLE + """
+.post-content { background: rgba(255, 255, 255, 0.03); padding: 40px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1); }
+.post-content h1, .post-content h2, .post-content h3 { color: #1793d1; margin-top: 1.5em; }
+.post-content img { max-width: 100%; border-radius: 8px; }
+.post-content code { background: #222; padding: 2px 5px; border-radius: 3px; font-family: 'JetBrains Mono', monospace; }
+.post-content pre { background: #1a1a1a; padding: 15px; border-radius: 8px; overflow-x: auto; }
+blockquote { border-left: 4px solid #1793d1; padding-left: 20px; font-style: italic; color: #aaa; }
+"""
 
 def get_size_format(b, factor=1024, suffix="B"):
     for unit in ["", "K", "M", "G", "T", "P"]:
@@ -8,88 +49,168 @@ def get_size_format(b, factor=1024, suffix="B"):
         b /= factor
     return f"{b:.1f}Y{suffix}"
 
-def generate_index(root_dir):
-    template = """
+def generate_ftp_index(target_dir, root_repo_dir):
+    rel_path = os.path.relpath(target_dir, root_repo_dir)
+    display_path = "/" if rel_path == "." else "/" + rel_path
+    
+    rows = []
+    # 添加 "Parent Directory"
+    if rel_path != ".":
+        rows.append('<tr><td><a href="../">📁 .. (Parent Directory)</a></td><td>-</td><td>-</td></tr>')
+    
+    items = os.listdir(target_dir)
+    # 过滤掉系统文件和 index.html
+    items = [i for i in items if i not in ['index.html', 'generate_index.py', '.github', '.git', 'fonts']]
+    
+    # 先文件夹后文件
+    dirs = sorted([i for i in items if os.path.isdir(os.path.join(target_dir, i))])
+    files = sorted([i for i in items if os.path.isfile(os.path.join(target_dir, i))])
+    
+    for d in dirs:
+        d_path = os.path.join(target_dir, d)
+        mtime = datetime.datetime.fromtimestamp(os.path.getmtime(d_path)).strftime('%Y-%m-%d %H:%M:%S')
+        rows.append(f'<tr><td><a href="{d}/">📁 {d}/</a></td><td>{mtime}</td><td>-</td></tr>')
+        
+    for f in files:
+        f_path = os.path.join(target_dir, f)
+        mtime = datetime.datetime.fromtimestamp(os.path.getmtime(f_path)).strftime('%Y-%m-%d %H:%M:%S')
+        size = get_size_format(os.path.getsize(f_path))
+        rows.append(f'<tr><td><a href="{f}">📄 {f}</a></td><td>{mtime}</td><td>{size}</td></tr>')
+
+    template = f"""
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Index of {path}</title>
-    <style>
-        @font-face {{
-            font-family: 'F1.8';
-            src: url('https://cdn.jsdelivr.net/gh/lqy306/lqy306.github.io/fonts/F1.8-Regular.woff2') format('woff2');
-            font-weight: normal;
-            font-style: normal;
-            font-display: swap;
-        }}
-        body {{ font-family: 'F1.8', 'JetBrains Mono', monospace; background-color: #0f0f0f; color: #e0e0e0; padding: 20px; }}
-        h1 {{ border-bottom: 1px solid #333; padding-bottom: 10px; color: #1793d1; }}
-        table {{ width: 100%; border-collapse: collapse; margin-top: 20px; }}
-        th, td {{ text-align: left; padding: 8px; border-bottom: 1px solid #222; }}
-        th {{ color: #888; text-transform: uppercase; font-size: 0.8em; }}
-        tr:hover {{ background-color: #1a1a1a; }}
-        a {{ color: #1793d1; text-decoration: none; }}
-        a:hover {{ text-decoration: underline; }}
-        .icon {{ margin-right: 10px; }}
-        .footer {{ margin-top: 30px; font-size: 0.8em; color: #555; text-align: center; }}
-    </style>
+    <title>Index of {display_path}</title>
+    <style>{FTP_STYLE}</style>
 </head>
 <body>
-    <h1>Index of {path}</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Last Modified</th>
-                <th>Size</th>
-            </tr>
-        </thead>
-        <tbody>
-            {rows}
-        </tbody>
-    </table>
-    <div class="footer">
-        Generated by Auto-FTP Script | Arch Linux Spirit
+    <div class="container">
+        <div class="nav-links">
+            <a href="{BASE_URL}">🏠 Back to Home</a>
+        </div>
+        <h1>Index of {display_path}</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Last Modified</th>
+                    <th>Size</th>
+                </tr>
+            </thead>
+            <tbody>
+                {"".join(rows)}
+            </tbody>
+        </table>
+        <div class="footer">
+            Generated by Auto-FTP Script | Arch Linux Spirit
+        </div>
     </div>
 </body>
 </html>
 """
+    with open(os.path.join(target_dir, "index.html"), "w", encoding='utf-8') as f_out:
+        f_out.write(template)
+
+def convert_md_to_html(md_path, html_path, title):
+    with open(md_path, 'r', encoding='utf-8') as f:
+        text = f.read()
+        html_content = markdown.markdown(text, extensions=['fenced_code', 'tables', 'toc'])
+        
+    template = f"""
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{title} | Leo Lee's Blog</title>
+    <meta charset="UTF-8">
+    <style>{POST_STYLE}</style>
+</head>
+<body>
+    <div class="container">
+        <div class="nav-links">
+            <a href="{BASE_URL}">🏠 Home</a> | <a href="../">📂 Back to Posts</a>
+        </div>
+        <article class="post-content">
+            {html_content}
+        </article>
+        <div class="footer">
+            &copy; 2026 Leo Lee | Built with Arch Linux spirit
+        </div>
+    </div>
+</body>
+</html>
+"""
+    with open(html_path, 'w', encoding='utf-8') as f:
+        f.write(template)
+
+def process_posts(post_dir):
+    if not os.path.exists(post_dir):
+        os.makedirs(post_dir)
+        
+    post_list = []
+    # 遍历 post 下的每个文件夹
+    for d in os.listdir(post_dir):
+        d_path = os.path.join(post_dir, d)
+        if os.path.isdir(d_path):
+            # 查找 md 文件
+            md_files = [f for f in os.listdir(d_path) if f.endswith('.md')]
+            if md_files:
+                md_file = md_files[0]
+                md_full_path = os.path.join(d_path, md_file)
+                html_full_path = os.path.join(d_path, "index.html")
+                title = d.replace('_', ' ').replace('-', ' ').title()
+                convert_md_to_html(md_full_path, html_full_path, title)
+                
+                mtime = datetime.datetime.fromtimestamp(os.path.getmtime(md_full_path)).strftime('%Y-%m-%d')
+                post_list.append({'title': title, 'url': f"{d}/", 'date': mtime})
     
-    for root, dirs, files in os.walk(root_dir):
-        # 排除隐藏文件夹和特定的系统文件夹
-        dirs[:] = [d for d in dirs if not d.startswith('.') and d not in ['node_modules', '.github', 'fonts']]
-        
-        rel_path = os.path.relpath(root, root_dir)
-        display_path = "/" if rel_path == "." else "/" + rel_path
-        
-        rows = []
-        
-        # 添加 "Parent Directory"
-        if rel_path != ".":
-            rows.append('<tr><td><a href="../">📁 ..</a></td><td>-</td><td>-</td></tr>')
-        
-        # 处理文件夹
-        for d in sorted(dirs):
-            d_path = os.path.join(root, d)
-            mtime = datetime.datetime.fromtimestamp(os.path.getmtime(d_path)).strftime('%Y-%m-%d %H:%M:%S')
-            rows.append(f'<tr><td><a href="{d}/">📁 {d}/</a></td><td>{mtime}</td><td>-</td></tr>')
-            
-        # 处理文件
-        for f in sorted(files):
-            if f in ['index.html', 'generate_index.py']: continue
-            f_path = os.path.join(root, f)
-            mtime = datetime.datetime.fromtimestamp(os.path.getmtime(f_path)).strftime('%Y-%m-%d %H:%M:%S')
-            size = get_size_format(os.path.getsize(f_path))
-            rows.append(f'<tr><td><a href="{f}">📄 {f}</a></td><td>{mtime}</td><td>{size}</td></tr>')
-            
-        index_content = template.format(path=display_path, rows="\n".join(rows))
-        
-        with open(os.path.join(root, "index.html"), "w") as f_out:
-            f_out.write(index_content)
+    # 生成 post 目录的 index.html (列表页)
+    post_list.sort(key=lambda x: x['date'], reverse=True)
+    rows = "".join([f'<tr><td><a href="{p["url"]}">📝 {p["title"]}</a></td><td>{p["date"]}</td><td>-</td></tr>' for p in post_list])
+    
+    template = f"""
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Posts | Leo Lee</title>
+    <style>{FTP_STYLE}</style>
+</head>
+<body>
+    <div class="container">
+        <div class="nav-links">
+            <a href="{BASE_URL}">🏠 Back to Home</a>
+        </div>
+        <h1>Blog Posts</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Date</th>
+                    <th>Size</th>
+                </tr>
+            </thead>
+            <tbody>
+                {rows}
+            </tbody>
+        </table>
+        <div class="footer">
+            Generated by Auto-Blog Script | Arch Linux Spirit
+        </div>
+    </div>
+</body>
+</html>
+"""
+    with open(os.path.join(post_dir, "index.html"), "w", encoding='utf-8') as f_out:
+        f_out.write(template)
 
 if __name__ == "__main__":
-    # 假设资源存放在 resources 目录下
-    resource_dir = "resources"
-    if not os.path.exists(resource_dir):
-        os.makedirs(resource_dir)
-    generate_index(resource_dir)
+    root = os.getcwd()
+    
+    # 1. 处理资源目录 (FTP 风格)
+    res_dir = os.path.join(root, "resources")
+    if not os.path.exists(res_dir): os.makedirs(res_dir)
+    for r, dirs, files in os.walk(res_dir):
+        generate_ftp_index(r, root)
+        
+    # 2. 处理贴子目录 (Markdown 转换)
+    process_posts(os.path.join(root, "post"))
