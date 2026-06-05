@@ -45,6 +45,13 @@
             font-display: swap;
         }
 
+        /* Vonwaon Bitmap (凤凰体, CC0) — for code / monospace */
+        @font-face {
+            font-family: 'VonwaonBitmap';
+            src: url('/fonts/VonwaonBitmap-12pxLite.woff2') format('woff2');
+            font-display: swap;
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         /* ═══════════════════════════════════════════════
@@ -189,6 +196,10 @@
         .nav-links a:hover::after { width: 100%; }
 
         /* Theme Toggle */
+        code, pre, kbd, samp {
+            font-family: 'VonwaonBitmap', 'Courier New', monospace;
+        }
+
         .theme-toggle {
             background: none;
             border: 2px solid var(--clr-border);

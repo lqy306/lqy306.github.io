@@ -56,6 +56,13 @@ COMMON_CSS = FONT_IMPORT + """
     font-display: swap;
 }
 
+/* Vonwaon Bitmap (凤凰体, CC0) — for code / monospace */
+@font-face {
+    font-family: 'VonwaonBitmap';
+    src: url('/fonts/VonwaonBitmap-12pxLite.woff2') format('woff2');
+    font-display: swap;
+}
+
 /* ═══════════════════════════════════════════════
    Theme Variables
    ═══════════════════════════════════════════════ */
@@ -150,6 +157,10 @@ body {
     margin: 0 auto;
     padding: 2rem;
     width: 100%;
+}
+
+code, pre, kbd, samp {
+    font-family: 'VonwaonBitmap', 'Courier New', monospace;
 }
 
 /* ═══════════════════════════════════════════════
@@ -399,7 +410,7 @@ footer a:hover { color: var(--footer-text); }
     color: var(--code-text);
     padding: 2px 6px;
     border-radius: 4px;
-    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    font-family: 'VonwaonBitmap', 'Courier New', monospace;
     font-size: 0.9em;
     transition: background 0.3s ease, color 0.3s ease;
 }
