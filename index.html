@@ -29,6 +29,15 @@
     <link rel="sitemap" type="application/xml" href="/sitemap.xml">
 
     <style>
+        /* ── Self-hosted font: F1.8 (SIL OFL 1.1) ── */
+        @font-face {
+            font-family: 'F1.8';
+            src: url('/fonts/F1.8-Regular.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         /* ═══════════════════════════════════════════════
@@ -133,7 +142,7 @@
         }
 
         .logo {
-            font-family: 'Libre Baskerville', 'Noto Serif SC', serif;
+            font-family: 'F1.8', 'Libre Baskerville', 'Noto Serif SC', serif;
             font-size: 1.5rem;
             font-weight: 700;
             color: var(--text-primary);
@@ -761,6 +770,9 @@
     <footer>
         <p>&copy; 2026 Leo Lee. Built with <a href="https://archlinux.org">Arch Linux</a> spirit &amp; <a href="https://claude.ai/code">Claude Code</a>.
         <br>📡 <a href="/post/rss.xml">RSS 订阅</a> | 🗺️ <a href="/sitemap.xml">站点地图</a></p>
+        <p style="font-size:0.75rem;margin-top:0.5rem;opacity:0.7;">
+            字体 <a href="/fonts/F1.8-Regular.woff2">F1.8</a> 遵循 <a href="https://openfontlicense.org">SIL Open Font License, Version 1.1</a> 开源协议
+        </p>
     </footer>
 
     <script>
