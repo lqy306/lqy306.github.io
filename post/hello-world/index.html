@@ -1,46 +1,348 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
-    <title>Hello World | Leo Lee's Blog</title>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello World | Leo Lee 的博客</title>
     <style>
 
-@font-face {
-    font-family: 'F1.8';
-    src: url('https://cdn.jsdelivr.net/gh/lqy306/lqy306.github.io/fonts/F1.8-Regular.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Noto+Serif+SC:wght@400;700&family=Noto+Sans+SC:wght@400;500;700&display=swap');
+
+:root {
+    --color-black: #34322D;
+    --color-gray: #F8F8F8;
+    --color-white: #FFFFFF;
+    --color-accent: #1793d1;
+    --font-serif: 'Libre Baskerville', 'Noto Serif SC', serif;
+    --font-sans: 'DM Sans', 'Noto Sans SC', sans-serif;
 }
 
-body { font-family: 'F1.8', 'Noto Sans SC', sans-serif; background-color: #0f0f0f; color: #e0e0e0; padding: 20px; line-height: 1.6; }
-.container { max-width: 900px; margin: 0 auto; }
-h1 { border-bottom: 1px solid #333; padding-bottom: 10px; color: #1793d1; }
-a { color: #1793d1; text-decoration: none; }
-a:hover { text-decoration: underline; }
-.nav-links { margin-bottom: 20px; font-size: 0.9em; }
-.footer { margin-top: 50px; font-size: 0.8em; color: #555; text-align: center; border-top: 1px solid #222; padding-top: 20px; }
 
-.post-content { background: rgba(255, 255, 255, 0.03); padding: 40px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1); }
-.post-content h1, .post-content h2, .post-content h3 { color: #1793d1; margin-top: 1.5em; }
-.post-content img { max-width: 100%; border-radius: 8px; }
-.post-content code { background: #222; padding: 2px 5px; border-radius: 3px; font-family: 'JetBrains Mono', monospace; }
-.post-content pre { background: #1a1a1a; padding: 15px; border-radius: 8px; overflow-x: auto; }
-blockquote { border-left: 4px solid #1793d1; padding-left: 20px; font-style: italic; color: #aaa; }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--color-white);
+    color: var(--color-black);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Navigation */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(52, 50, 45, 0.1);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-black);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+}
+
+.nav-links a {
+    color: var(--color-black);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--color-accent);
+}
+
+/* Main Content */
+main {
+    margin-top: 80px;
+}
+
+h1 {
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 2rem 0 1rem 0;
+    color: var(--color-black);
+    letter-spacing: -0.02em;
+    padding-bottom: 1rem;
+    border-bottom: 3px solid var(--color-accent);
+}
+
+h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
+    color: var(--color-black);
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+a {
+    color: var(--color-accent);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--color-black);
+    text-decoration: underline;
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2rem 0;
+    background: rgba(248, 248, 248, 0.6);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+thead {
+    background: var(--color-black);
+    color: var(--color-white);
+}
+
+th {
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+td {
+    padding: 1rem;
+    border-bottom: 1px solid rgba(52, 50, 45, 0.1);
+}
+
+tbody tr:hover {
+    background: rgba(248, 248, 248, 1);
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Footer */
+footer {
+    margin-top: 4rem;
+    padding: 2rem;
+    background: var(--color-black);
+    color: var(--color-gray);
+    text-align: center;
+    border-top: 1px solid rgba(248, 248, 248, 0.1);
+}
+
+footer p {
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+footer a {
+    color: var(--color-accent);
+}
+
+footer a:hover {
+    color: var(--color-gray);
+}
+
+/* Breadcrumb Navigation */
+.breadcrumb {
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background: rgba(248, 248, 248, 0.6);
+    border-radius: 8px;
+    border-left: 4px solid var(--color-accent);
+}
+
+.breadcrumb a {
+    margin-right: 0.5rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    table {
+        font-size: 0.9rem;
+    }
+
+    th, td {
+        padding: 0.75rem;
+    }
+}
+
+.post-content {{
+    background: rgba(248, 248, 248, 0.6);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid rgba(52, 50, 45, 0.1);
+    margin: 2rem 0;
+}}
+
+.post-content h1, .post-content h2, .post-content h3 {{
+    color: var(--color-black);
+    margin-top: 1.5em;
+    border-bottom: 2px solid var(--color-accent);
+    padding-bottom: 0.5rem;
+}}
+
+.post-content h1 {{
+    font-size: 2rem;
+}}
+
+.post-content h2 {{
+    font-size: 1.5rem;
+}}
+
+.post-content h3 {{
+    font-size: 1.2rem;
+}}
+
+.post-content img {{
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+    box-shadow: 0 10px 30px rgba(52, 50, 45, 0.1);
+}}
+
+.post-content code {{
+    background: var(--color-black);
+    color: var(--color-accent);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    font-size: 0.9em;
+}}
+
+.post-content pre {{
+    background: var(--color-black);
+    color: var(--color-gray);
+    padding: 1.5rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 1.5rem 0;
+    border-left: 4px solid var(--color-accent);
+}}
+
+.post-content pre code {{
+    background: transparent;
+    color: inherit;
+    padding: 0;
+}}
+
+.post-content blockquote {{
+    border-left: 4px solid var(--color-accent);
+    padding-left: 1.5rem;
+    margin: 1.5rem 0;
+    font-style: italic;
+    color: #666;
+}}
+
+.post-content table {{
+    margin: 1.5rem 0;
+}}
+
+.post-content ul, .post-content ol {{
+    margin: 1.5rem 0 1.5rem 2rem;
+}}
+
+.post-content li {{
+    margin-bottom: 0.5rem;
+}}
+
+.post-meta {{
+    font-size: 0.9rem;
+    color: #999;
+    margin-bottom: 2rem;
+}}
 </style>
 </head>
 <body>
-    <div class="container">
-        <div class="nav-links">
-            <a href="https://lqy306.github.io">🏠 Home</a> | <a href="../">📂 Back to Posts</a>
+    <nav>
+        <div class="nav-container">
+            <a href="https://lqy306.github.io" class="logo">Leo Lee</a>
         </div>
-        <article class="post-content">
-            <h1 id="hello-worldnnnnbashnsudo-pacman-syun">Hello World\n\n这是我的第一篇贴子！欢迎来到我的博客。\n\n<code>bash\nsudo pacman -Syu\n</code></h1>
-        </article>
-        <div class="footer">
-            &copy; 2026 Leo Lee | Built with Arch Linux spirit
+    </nav>
+
+    <main>
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="https://lqy306.github.io">🏠 首页</a> / <a href="../">📂 博客</a> / <strong>Hello World</strong>
+            </div>
+
+            <article>
+                <h1>Hello World</h1>
+                <div class="post-meta">📅 发布于 2026-06-05</div>
+                <div class="post-content">
+                    <h1 id="hello">Hello</h1>
+<p>你好！这是我的第一篇贴子。我是Leo，来自福建厦门的一个学生。</p>
+<pre><code class="language-sh">$ echo &quot;我喜欢研究UNIX的历史，并且创作了相关的小说。&quot; &gt; hello.txt
+$ echo &quot;同时我还会一点C语言。&quot; &gt;&gt; hello.txt
+$ ls
+hello.txt hello.c
+$ cc hello.c -o hello
+$ ./hello
+执行命令：cat hello.txt
+我喜欢研究UNIX的历史，并且创作了相关的小说。
+同时我还会一点C语言。
+$ 
+</code></pre>
+                </div>
+            </article>
         </div>
-    </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Leo Lee | 使用 Arch Linux 精神构建</p>
+    </footer>
 </body>
 </html>

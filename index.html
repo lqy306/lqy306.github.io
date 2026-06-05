@@ -4,157 +4,670 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Leo Lee | 个人主页</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Noto+Serif+SC:wght@400;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @font-face {
-            font-family: 'F1.8';
-            src: url('https://cdn.jsdelivr.net/gh/lqy306/lqy306.github.io/fonts/F1.8-Regular.woff2') format('woff2');
-            font-weight: normal;
-            font-style: normal;
-            font-display: swap;
-        }
-        
-        body {
-            font-family: 'F1.8', 'Noto Sans SC', sans-serif;
-            background-color: #0f0f0f;
-            color: #e0e0e0;
-        }
-        
-        .mono {
-            font-family: 'JetBrains Mono', monospace;
-        }
-        
-        .arch-blue {
-            color: #1793d1;
-        }
-        
-        .bg-arch {
-            background-color: #1793d1;
-        }
-        
-        .card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-        }
-        
-        .card:hover {
-            border-color: #1793d1;
-            transform: translateY(-5px);
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        .gradient-text {
-            background: linear-gradient(45deg, #1793d1, #33aadd);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        :root {
+            --color-black: #34322D;
+            --color-gray: #F8F8F8;
+            --color-white: #FFFFFF;
+            --color-accent: #1793d1;
+            --font-serif: 'Libre Baskerville', 'Noto Serif SC', serif;
+            --font-sans: 'DM Sans', 'Noto Sans SC', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--color-white);
+            color: var(--color-black);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(52, 50, 45, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-black);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--color-black);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-accent);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--color-accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(255, 248, 248, 0.5) 0%, rgba(248, 248, 248, 0.3) 100%);
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+        }
+
+        .hero-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            border: 3px solid var(--color-black);
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(52, 50, 45, 0.1);
+        }
+
+        .hero-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero h1 {
+            font-family: var(--font-serif);
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+            color: var(--color-black);
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--color-accent);
+            font-weight: 500;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 3rem;
+            line-height: 1.8;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            border: 2px solid;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--color-black);
+            color: var(--color-white);
+            border-color: var(--color-black);
+        }
+
+        .btn-primary:hover {
+            background: var(--color-accent);
+            border-color: var(--color-accent);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(23, 147, 209, 0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--color-black);
+            border-color: var(--color-black);
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-black);
+            color: var(--color-white);
+            transform: translateY(-2px);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            font-size: 1.5rem;
+        }
+
+        .social-links a {
+            color: var(--color-black);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            border: 2px solid rgba(52, 50, 45, 0.2);
+        }
+
+        .social-links a:hover {
+            color: var(--color-white);
+            background: var(--color-accent);
+            border-color: var(--color-accent);
+            transform: translateY(-4px);
+        }
+
+        /* Main Content */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            margin: 6rem 0;
+        }
+
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            color: var(--color-black);
+            letter-spacing: -0.02em;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--color-accent);
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text p {
+            font-size: 1.05rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .about-text strong {
+            color: var(--color-black);
+            font-weight: 600;
+        }
+
+        .about-highlights {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .highlight-item {
+            padding: 1.5rem;
+            background: rgba(248, 248, 248, 0.8);
+            border-left: 4px solid var(--color-accent);
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .highlight-item:hover {
+            background: rgba(248, 248, 248, 1);
+            transform: translateX(8px);
+        }
+
+        .highlight-item h4 {
+            color: var(--color-black);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight-item p {
+            font-size: 0.95rem;
+            color: #666;
+            margin: 0;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            padding: 2rem;
+            background: rgba(248, 248, 248, 0.6);
+            border: 1px solid rgba(52, 50, 45, 0.1);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .skill-card:hover {
+            border-color: var(--color-accent);
+            background: rgba(248, 248, 248, 1);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(52, 50, 45, 0.08);
+        }
+
+        .skill-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--color-black);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .skill-card i {
+            color: var(--color-accent);
+            font-size: 1.5rem;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            padding: 0.5rem 0;
+            color: #666;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .skill-list li::before {
+            content: '▸';
+            color: var(--color-accent);
+            font-weight: bold;
+        }
+
+        /* Links Grid */
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .link-card {
+            padding: 2rem;
+            background: rgba(248, 248, 248, 0.6);
+            border: 1px solid rgba(52, 50, 45, 0.1);
+            border-radius: 12px;
+            text-decoration: none;
+            color: var(--color-black);
+            transition: all 0.3s ease;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .link-card:hover {
+            border-color: var(--color-accent);
+            background: rgba(248, 248, 248, 1);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(52, 50, 45, 0.08);
+        }
+
+        .link-card i {
+            font-size: 2.5rem;
+            color: var(--color-accent);
+        }
+
+        .link-card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .link-card p {
+            font-size: 0.85rem;
+            color: #999;
+            margin: 0;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 6rem;
+            padding: 3rem 2rem;
+            background: var(--color-black);
+            color: var(--color-gray);
+            text-align: center;
+            border-top: 1px solid rgba(248, 248, 248, 0.1);
+        }
+
+        footer p {
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        footer a {
+            color: var(--color-accent);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: var(--color-gray);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.85rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+                margin-bottom: 2rem;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-container {
+                padding: 1rem;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                margin-top: 60px;
+                min-height: auto;
+                padding: 2rem 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-avatar {
+                width: 100px;
+                height: 100px;
+            }
+
+            .social-links {
+                gap: 1rem;
+                font-size: 1.2rem;
+            }
+
+            .social-links a {
+                width: 40px;
+                height: 40px;
+            }
+
+            main {
+                padding: 0 1rem;
+            }
+
+            section {
+                margin: 3rem 0;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col">
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">Leo Lee</a>
+            <ul class="nav-links">
+                <li><a href="#about">关于</a></li>
+                <li><a href="#interests">兴趣</a></li>
+                <li><a href="#links">链接</a></li>
+            </ul>
+        </div>
+    </nav>
 
-    <!-- Header / Hero Section -->
-    <header class="container mx-auto px-6 pt-20 pb-12 text-center">
-        <div class="mb-6 inline-block">
-            <img src="https://avatars.githubusercontent.com/u/140314935?v=4" alt="Leo Lee" class="w-32 h-32 rounded-full border-4 border-arch mx-auto shadow-lg shadow-blue-500/20">
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-avatar">
+                <img src="https://avatars.githubusercontent.com/u/140314935?v=4" alt="Leo Lee">
+            </div>
+            <h1>Leo Lee</h1>
+            <p class="hero-subtitle">I use Arch Linux, btw.</p>
+            <p class="hero-description">
+                一名来自中国福建厦门的学生，Arch Linux 忠实拥趸，热爱摄影与开源技术。
+            </p>
+            <div class="hero-cta">
+                <a href="#about" class="btn btn-primary">了解更多</a>
+                <a href="https://github.com/lqy306" target="_blank" class="btn btn-secondary">访问 GitHub</a>
+            </div>
+            <div class="social-links">
+                <a href="https://github.com/lqy306" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://500px.com.cn/LIQIYUE" target="_blank" title="500px"><i class="fas fa-camera"></i></a>
+                <a href="mailto:lqy.work.learning@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+            </div>
         </div>
-        <h1 class="text-5xl font-bold mb-2 tracking-tight">Leo Lee</h1>
-        <p class="text-xl arch-blue mono mb-8 italic">I use Arch Linux, btw.</p>
-        <div class="flex justify-center space-x-6 text-2xl">
-            <a href="https://github.com/lqy306" target="_blank" class="hover:text-white transition-colors" title="GitHub"><i class="fab fa-github"></i></a>
-            <a href="https://500px.com.cn/LIQIYUE" target="_blank" class="hover:text-white transition-colors" title="500px"><i class="fas fa-camera"></i></a>
-            <a href="mailto:lqy.work.learning@gmail.com" class="hover:text-white transition-colors" title="Email"><i class="fas fa-envelope"></i></a>
-        </div>
-    </header>
+    </section>
 
     <!-- Main Content -->
-    <main class="container mx-auto px-6 flex-grow max-w-4xl">
-        
+    <main>
         <!-- About Section -->
-        <section class="mb-16">
-            <h2 class="text-2xl font-bold mb-6 flex items-center">
-                <span class="bg-arch w-2 h-8 mr-3 rounded-full"></span>
-                关于我
-            </h2>
-            <div class="card p-8 rounded-2xl">
-                <p class="text-lg leading-relaxed mb-4">
-                    你好！我是 <strong>Leo Lee</strong>，一名来自中国福建厦门的<strong>学生</strong>。
-                </p>
-                <p class="text-lg leading-relaxed mb-4">
-                    我是一名 <strong>Arch Linux</strong> 的忠实拥趸。我喜欢那种从零开始构建系统的掌控感，极简、灵活且始终保持最新。在终端与代码之间，我找到了属于自己的乐趣。
-                </p>
-                <p class="text-lg leading-relaxed">
-                    除了技术，<strong>摄影</strong>是我记录生活的方式。我特别钟爱<strong>松下（Panasonic）</strong>相机，尤其是它的 <strong>Real Time LUT</strong> 功能。这种“所见即所得”的拍摄体验，让我能够将后期的创意在按下快门的瞬间就烧录进照片中，省去了繁琐的后期流程，直接呈现出我想要的质感。
-                </p>
+        <section id="about">
+            <h2 class="section-title">关于我</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        你好！我是 <strong>Leo Lee</strong>，一名来自中国福建厦门的<strong>学生</strong>。
+                    </p>
+                    <p>
+                        我是一名 <strong>Arch Linux</strong> 的忠实拥趸。我喜欢那种从零开始构建系统的掌控感，极简、灵活且始终保持最新。在终端与代码之间，我找到了属于自己的乐趣。
+                    </p>
+                    <p>
+                        除了技术，<strong>摄影</strong>是我记录生活的方式。我特别钟爱<strong>松下（Panasonic）</strong>相机，尤其是它的 <strong>Real Time LUT</strong> 功能。这种"所见即所得"的拍摄体验，让我能够将后期的创意在按下快门的瞬间就烧录进照片中。
+                    </p>
+                </div>
+                <div class="about-highlights">
+                    <div class="highlight-item">
+                        <h4>💻 技术背景</h4>
+                        <p>深入研究操作系统、开源软件与系统架构</p>
+                    </div>
+                    <div class="highlight-item">
+                        <h4>📸 摄影热情</h4>
+                        <p>500px 签约摄影师，专注 LUT 工作流与视觉表达</p>
+                    </div>
+                    <div class="highlight-item">
+                        <h4>🔧 开源精神</h4>
+                        <p>贡献于多个开源项目，倡导极简与高效的设计理念</p>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <!-- Interests / Skills Grid -->
-        <section class="mb-16 grid md:grid-cols-2 gap-6">
-            <div class="card p-6 rounded-2xl">
-                <h3 class="text-xl font-bold mb-4 flex items-center">
-                    <i class="fas fa-terminal arch-blue mr-3"></i> 操作系统
-                </h3>
-                <ul class="space-y-2 mono text-sm">
-                    <li class="flex items-center"><span class="w-2 h-2 bg-arch rounded-full mr-2"></span> Arch Linux (Daily Driver)</li>
-                    <li class="flex items-center"><span class="w-2 h-2 bg-gray-500 rounded-full mr-2"></span> CDE (Common Desktop Environment)</li>
-                    <li class="flex items-center"><span class="w-2 h-2 bg-gray-500 rounded-full mr-2"></span> PDP-11 / Retro Computing</li>
-                </ul>
-            </div>
-            <div class="card p-6 rounded-2xl">
-                <h3 class="text-xl font-bold mb-4 flex items-center">
-                    <i class="fas fa-camera-retro arch-blue mr-3"></i> 摄影器材
-                </h3>
-                <ul class="space-y-2 text-sm">
-                    <li class="flex items-center"><span class="w-2 h-2 bg-arch rounded-full mr-2"></span> Panasonic Lumix Ecosystem</li>
-                    <li class="flex items-center"><span class="w-2 h-2 bg-gray-500 rounded-full mr-2"></span> Real Time LUT Workflow</li>
-                    <li class="flex items-center"><span class="w-2 h-2 bg-gray-500 rounded-full mr-2"></span> 500px 签约摄影师</li>
-                </ul>
+        <!-- Interests Section -->
+        <section id="interests">
+            <h2 class="section-title">兴趣与技能</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3><i class="fas fa-terminal"></i> 操作系统</h3>
+                    <ul class="skill-list">
+                        <li>Arch Linux (Daily Driver)</li>
+                        <li>Common Desktop Environment</li>
+                        <li>PDP-11 / Retro Computing</li>
+                        <li>系统架构与内核研究</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3><i class="fas fa-camera-retro"></i> 摄影器材</h3>
+                    <ul class="skill-list">
+                        <li>Panasonic Lumix Ecosystem</li>
+                        <li>Real Time LUT Workflow</li>
+                        <li>500px 签约摄影师</li>
+                        <li>视觉创意与后期处理</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3><i class="fas fa-code"></i> 开发技能</h3>
+                    <ul class="skill-list">
+                        <li>系统编程与脚本开发</li>
+                        <li>开源项目贡献</li>
+                        <li>Web 开发与设计</li>
+                        <li>数据分析与可视化</li>
+                    </ul>
+                </div>
             </div>
         </section>
 
-        <!-- Projects / Links -->
-        <section class="mb-20">
-            <h2 class="text-2xl font-bold mb-6 flex items-center">
-                <span class="bg-arch w-2 h-8 mr-3 rounded-full"></span>
-                联系与链接
-            </h2>
-            <div class="grid md:grid-cols-3 gap-4">
-                <a href="https://github.com/lqy306" target="_blank" class="card p-4 rounded-xl text-center block">
-                    <i class="fab fa-github text-2xl mb-2"></i>
-                    <div class="font-bold">GitHub</div>
-                    <div class="text-xs text-gray-500">开源项目与代码</div>
+        <!-- Links Section -->
+        <section id="links">
+            <h2 class="section-title">联系与链接</h2>
+            <div class="links-grid">
+                <a href="https://github.com/lqy306" target="_blank" class="link-card">
+                    <i class="fab fa-github"></i>
+                    <h3>GitHub</h3>
+                    <p>开源项目与代码</p>
                 </a>
-                <a href="https://500px.com.cn/LIQIYUE" target="_blank" class="card p-4 rounded-xl text-center block">
-                    <i class="fas fa-image text-2xl mb-2"></i>
-                    <div class="font-bold">500px</div>
-                    <div class="text-xs text-gray-500">摄影作品集</div>
+                <a href="https://500px.com.cn/LIQIYUE" target="_blank" class="link-card">
+                    <i class="fas fa-image"></i>
+                    <h3>500px</h3>
+                    <p>摄影作品集</p>
                 </a>
-                <a href="mailto:lqy.work.learning@gmail.com" class="card p-4 rounded-xl text-center block">
-                    <i class="fas fa-envelope text-2xl mb-2"></i>
-                    <div class="font-bold">Email</div>
-                    <div class="text-xs text-gray-500">与我取得联系</div>
+                <a href="mailto:lqy.work.learning@gmail.com" class="link-card">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email</h3>
+                    <p>与我取得联系</p>
                 </a>
-                <a href="/resources/" class="card p-4 rounded-xl text-center block">
-                    <i class="fas fa-folder-open text-2xl mb-2"></i>
-                    <div class="font-bold">文件目录</div>
-                    <div class="text-xs text-gray-500">仿 FTP 风格资源库</div>
+                <a href="/resources/" class="link-card">
+                    <i class="fas fa-folder-open"></i>
+                    <h3>文件目录</h3>
+                    <p>仿 FTP 风格资源库</p>
                 </a>
-                <a href="/post/" class="card p-4 rounded-xl text-center block">
-                    <i class="fas fa-pen-nib text-2xl mb-2"></i>
-                    <div class="font-bold">贴子列表</div>
-                    <div class="text-xs text-gray-500">个人博客与分享</div>
+                <a href="/post/" class="link-card">
+                    <i class="fas fa-pen-nib"></i>
+                    <h3>贴子列表</h3>
+                    <p>个人博客与分享</p>
                 </a>
             </div>
         </section>
     </main>
 
     <!-- Footer -->
-    <footer class="py-10 text-center border-t border-white/5">
-        <p class="text-gray-500 text-sm mono">
-            &copy; 2026 Leo Lee. Built with <span class="arch-blue">Arch Linux</span> spirit.
-        </p>
+    <footer>
+        <p>&copy; 2026 Leo Lee. Built with <a href="https://archlinux.org">Arch Linux</a> spirit and <a href="https://manus.im">Manus</a> inspiration.</p>
     </footer>
-
 </body>
 </html>
