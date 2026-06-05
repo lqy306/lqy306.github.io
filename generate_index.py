@@ -891,8 +891,7 @@ def process_posts(post_dir, root_repo_dir):
 def generate_post_listing(post_dir, all_posts):
     rows = ""
     for p in all_posts:
-        tag_links = " ".join(f'<a href="{BASE_URL}/tags/{t}/" class="tag">#{t}</a>' for t in p["tags"])
-        rows += f'<tr><td><a href="{p["url"]}">📝 {p["title"]}</a><br><span style="font-size:0.8rem;color:var(--text-muted);">{tag_links}</span></td><td>{p["date"]}</td></tr>\n'
+        rows += f'<tr><td><a href="{p["url"]}">📝 {p["title"]}</a></td><td>{p["date"]}</td></tr>\n'
 
     body = f"""
             <h1>📝 博客文章</h1>
