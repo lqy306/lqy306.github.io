@@ -4,42 +4,253 @@ import markdown
 
 # 基础配置
 BASE_URL = "https://lqy306.github.io"
-FONT_CSS = """
-@font-face {
-    font-family: 'F1.8';
-    src: url('https://cdn.jsdelivr.net/gh/lqy306/lqy306.github.io/fonts/F1.8-Regular.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
+
+# Manus 风格的 CSS
+MANUS_STYLE = """
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=Fragment+Mono&display=swap');
+
+:root {
+    --bg-primary: #0a0a0a;
+    --bg-secondary: #141414;
+    --bg-tertiary: #1c1c1c;
+    --text-primary: #ffffff;
+    --text-secondary: #a0a0a0;
+    --text-tertiary: #666666;
+    --accent: #d4a574;
+    --border: rgba(255, 255, 255, 0.08);
+}
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    padding: 40px 24px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+h1 {
+    font-size: 28px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+}
+
+.path-info {
+    font-family: 'Fragment Mono', monospace;
+    font-size: 13px;
+    color: var(--text-tertiary);
+    margin-bottom: 32px;
+}
+
+a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+a:hover {
+    color: var(--accent);
+}
+
+.nav-links {
+    margin-bottom: 40px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+}
+
+.nav-links a {
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.table-container {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    text-align: left;
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+}
+
+th {
+    font-weight: 500;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    background: var(--bg-tertiary);
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+tr:hover {
+    background-color: var(--bg-tertiary);
+}
+
+.file-name {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.file-icon {
+    font-size: 16px;
+}
+
+.footer {
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--text-tertiary);
+    text-align: center;
+    font-family: 'Fragment Mono', monospace;
 }
 """
 
-COMMON_STYLE = f"""
-{FONT_CSS}
-body {{ font-family: 'F1.8', 'Noto Sans SC', sans-serif; background-color: #0f0f0f; color: #e0e0e0; padding: 20px; line-height: 1.6; }}
-.container {{ max-width: 900px; margin: 0 auto; }}
-h1 {{ border-bottom: 1px solid #333; padding-bottom: 10px; color: #1793d1; }}
-a {{ color: #1793d1; text-decoration: none; }}
-a:hover {{ text-decoration: underline; }}
-.nav-links {{ margin-bottom: 20px; font-size: 0.9em; }}
-.footer {{ margin-top: 50px; font-size: 0.8em; color: #555; text-align: center; border-top: 1px solid #222; padding-top: 20px; }}
-"""
+POST_STYLE = """
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=Fragment+Mono&display=swap');
 
-FTP_STYLE = COMMON_STYLE + """
-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-th, td { text-align: left; padding: 12px; border-bottom: 1px solid #222; }
-th { color: #888; text-transform: uppercase; font-size: 0.8em; }
-tr:hover { background-color: #1a1a1a; }
-.icon { margin-right: 10px; }
-"""
+:root {
+    --bg-primary: #0a0a0a;
+    --bg-secondary: #141414;
+    --bg-tertiary: #1c1c1c;
+    --text-primary: #ffffff;
+    --text-secondary: #a0a0a0;
+    --text-tertiary: #666666;
+    --accent: #d4a574;
+    --border: rgba(255, 255, 255, 0.08);
+}
 
-POST_STYLE = COMMON_STYLE + """
-.post-content { background: rgba(255, 255, 255, 0.03); padding: 40px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1); }
-.post-content h1, .post-content h2, .post-content h3 { color: #1793d1; margin-top: 1.5em; }
-.post-content img { max-width: 100%; border-radius: 8px; }
-.post-content code { background: #222; padding: 2px 5px; border-radius: 3px; font-family: 'JetBrains Mono', monospace; }
-.post-content pre { background: #1a1a1a; padding: 15px; border-radius: 8px; overflow-x: auto; }
-blockquote { border-left: 4px solid #1793d1; padding-left: 20px; font-style: italic; color: #aaa; }
+body {
+    font-family: 'DM Sans', sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    padding: 40px 24px;
+    line-height: 1.7;
+    margin: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.nav-links {
+    margin-bottom: 40px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+}
+
+.nav-links a {
+    font-size: 14px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-links a:hover {
+    color: var(--accent);
+}
+
+.post-content {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 40px;
+}
+
+.post-content h1 {
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-top: 0;
+    margin-bottom: 24px;
+    color: var(--text-primary);
+}
+
+.post-content h2, .post-content h3 {
+    color: var(--text-primary);
+    margin-top: 32px;
+    margin-bottom: 16px;
+}
+
+.post-content p {
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+}
+
+.post-content img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin: 24px 0;
+}
+
+.post-content code {
+    background: var(--bg-tertiary);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: 'Fragment Mono', monospace;
+    font-size: 0.9em;
+    color: var(--accent);
+}
+
+.post-content pre {
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border);
+    padding: 20px;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 24px 0;
+}
+
+.post-content pre code {
+    background: transparent;
+    padding: 0;
+    color: var(--text-secondary);
+}
+
+.post-content blockquote {
+    border-left: 3px solid var(--accent);
+    padding-left: 20px;
+    font-style: italic;
+    color: var(--text-tertiary);
+    margin: 24px 0;
+}
+
+.footer {
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--text-tertiary);
+    text-align: center;
+    font-family: 'Fragment Mono', monospace;
+}
 """
 
 def get_size_format(b, factor=1024, suffix="B"):
@@ -56,7 +267,7 @@ def generate_ftp_index(target_dir, root_repo_dir):
     rows = []
     # 添加 "Parent Directory"
     if rel_path != ".":
-        rows.append('<tr><td><a href="../">📁 .. (Parent Directory)</a></td><td>-</td><td>-</td></tr>')
+        rows.append(f'''<tr><td><a href="../"><span class="file-icon">📁</span> .. <span style="color: var(--text-tertiary); margin-left: 4px;">(Parent Directory)</span></a></td><td>-</td><td>-</td></tr>''')
     
     items = os.listdir(target_dir)
     # 过滤掉系统文件和 index.html
@@ -69,20 +280,21 @@ def generate_ftp_index(target_dir, root_repo_dir):
     for d in dirs:
         d_path = os.path.join(target_dir, d)
         mtime = datetime.datetime.fromtimestamp(os.path.getmtime(d_path)).strftime('%Y-%m-%d %H:%M:%S')
-        rows.append(f'<tr><td><a href="{d}/">📁 {d}/</a></td><td>{mtime}</td><td>-</td></tr>')
+        rows.append(f'<tr><td><a href="{d}/"><span class="file-icon">📁</span> {d}/</a></td><td>{mtime}</td><td>-</td></tr>')
         
     for f in files:
         f_path = os.path.join(target_dir, f)
         mtime = datetime.datetime.fromtimestamp(os.path.getmtime(f_path)).strftime('%Y-%m-%d %H:%M:%S')
         size = get_size_format(os.path.getsize(f_path))
-        rows.append(f'<tr><td><a href="{f}">📄 {f}</a></td><td>{mtime}</td><td>{size}</td></tr>')
+        rows.append(f'<tr><td><a href="{f}"><span class="file-icon">📄</span> {f}</a></td><td>{mtime}</td><td>{size}</td></tr>')
 
-    template = f"""
-<!DOCTYPE html>
-<html>
+    template = f"""<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Index of {display_path}</title>
-    <style>{FTP_STYLE}</style>
+    <style>{MANUS_STYLE}</style>
 </head>
 <body>
     <div class="container">
@@ -90,18 +302,21 @@ def generate_ftp_index(target_dir, root_repo_dir):
             <a href="{BASE_URL}">🏠 Back to Home</a>
         </div>
         <h1>Index of {display_path}</h1>
-        <table>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Last Modified</th>
-                    <th>Size</th>
-                </tr>
-            </thead>
-            <tbody>
-                {"".join(rows)}
-            </tbody>
-        </table>
+        <p class="path-info">FTP-style Archive</p>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Last Modified</th>
+                        <th>Size</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {"".join(rows)}
+                </tbody>
+            </table>
+        </div>
         <div class="footer">
             Generated by Auto-FTP Script | Arch Linux Spirit
         </div>
@@ -117,24 +332,24 @@ def convert_md_to_html(md_path, html_path, title):
         text = f.read()
         html_content = markdown.markdown(text, extensions=['fenced_code', 'tables', 'toc'])
         
-    template = f"""
-<!DOCTYPE html>
-<html>
+    template = f"""<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
-    <title>{title} | Leo Lee's Blog</title>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{title} | Leo Lee's Blog</title>
     <style>{POST_STYLE}</style>
 </head>
 <body>
     <div class="container">
         <div class="nav-links">
-            <a href="{BASE_URL}">🏠 Home</a> | <a href="../">📂 Back to Posts</a>
+            <a href="{BASE_URL}">🏠 Home</a> &nbsp;|&nbsp; <a href="../">📂 Back to Posts</a>
         </div>
         <article class="post-content">
             {html_content}
         </article>
         <div class="footer">
-            &copy; 2026 Leo Lee | Built with Arch Linux spirit
+            © 2026 Leo Lee | Built with Arch Linux spirit
         </div>
     </div>
 </body>
@@ -166,14 +381,15 @@ def process_posts(post_dir):
     
     # 生成 post 目录的 index.html (列表页)
     post_list.sort(key=lambda x: x['date'], reverse=True)
-    rows = "".join([f'<tr><td><a href="{p["url"]}">📝 {p["title"]}</a></td><td>{p["date"]}</td><td>-</td></tr>' for p in post_list])
+    rows = "".join([f'<tr><td><a href="{p["url"]}"><span class="file-icon">📝</span> {p["title"]}</a></td><td>{p["date"]}</td><td>-</td></tr>' for p in post_list])
     
-    template = f"""
-<!DOCTYPE html>
-<html>
+    template = f"""<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Posts | Leo Lee</title>
-    <style>{FTP_STYLE}</style>
+    <style>{MANUS_STYLE}</style>
 </head>
 <body>
     <div class="container">
@@ -181,18 +397,21 @@ def process_posts(post_dir):
             <a href="{BASE_URL}">🏠 Back to Home</a>
         </div>
         <h1>Blog Posts</h1>
-        <table>
-            <thead>
-                <tr>
-                    <th>Title</th>
-                    <th>Date</th>
-                    <th>Size</th>
-                </tr>
-            </thead>
-            <tbody>
-                {rows}
-            </tbody>
-        </table>
+        <p class="path-info">Writing & Thoughts</p>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Date</th>
+                        <th>Size</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {rows}
+                </tbody>
+            </table>
+        </div>
         <div class="footer">
             Generated by Auto-Blog Script | Arch Linux Spirit
         </div>
@@ -214,3 +433,4 @@ if __name__ == "__main__":
         
     # 2. 处理贴子目录 (Markdown 转换)
     process_posts(os.path.join(root, "post"))
+

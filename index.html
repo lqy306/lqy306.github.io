@@ -3,157 +3,376 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leo Lee | 个人主页</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Leo Lee | Personal Website</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=Fragment+Mono&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @font-face {
-            font-family: 'F1.8';
-            src: url('https://cdn.jsdelivr.net/gh/lqy306/lqy306.github.io/fonts/F1.8-Regular.woff2') format('woff2');
-            font-weight: normal;
-            font-style: normal;
-            font-display: swap;
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #141414;
+            --bg-tertiary: #1c1c1c;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --text-tertiary: #666666;
+            --accent: #d4a574;
+            --accent-hover: #e5b88a;
+            --border: rgba(255, 255, 255, 0.08);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
         
         body {
-            font-family: 'F1.8', 'Noto Sans SC', sans-serif;
-            background-color: #0f0f0f;
-            color: #e0e0e0;
+            font-family: 'DM Sans', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
         
         .mono {
-            font-family: 'JetBrains Mono', monospace;
+            font-family: 'Fragment Mono', monospace;
         }
         
-        .arch-blue {
-            color: #1793d1;
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
         }
         
-        .bg-arch {
-            background-color: #1793d1;
+        /* Header */
+        header {
+            padding: 80px 0 60px;
+            text-align: center;
         }
         
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 2px solid var(--border);
+            margin-bottom: 24px;
+            transition: all 0.3s ease;
+        }
+        
+        .avatar:hover {
+            border-color: var(--accent);
+            transform: scale(1.02);
+        }
+        
+        h1 {
+            font-size: 48px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .tagline {
+            font-size: 16px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            font-family: 'Fragment Mono', monospace;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+        }
+        
+        .social-link {
+            color: var(--text-secondary);
+            font-size: 24px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .social-link:hover {
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+        
+        /* Main Content */
+        main {
+            flex: 1;
+            padding-bottom: 80px;
+        }
+        
+        section {
+            margin-bottom: 64px;
+        }
+        
+        .section-title {
+            font-size: 14px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-tertiary);
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .section-title::before {
+            content: '';
+            width: 32px;
+            height: 1px;
+            background: var(--border);
+        }
+        
+        /* Cards */
         .card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
             transition: all 0.3s ease;
         }
         
         .card:hover {
-            border-color: #1793d1;
-            transform: translateY(-5px);
+            border-color: var(--accent);
+            background: var(--bg-tertiary);
         }
-
-        .gradient-text {
-            background: linear-gradient(45deg, #1793d1, #33aadd);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        
+        .about-text {
+            font-size: 16px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+        
+        .about-text strong {
+            color: var(--text-primary);
+        }
+        
+        /* Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+        
+        .info-card h3 {
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .info-card i {
+            color: var(--accent);
+        }
+        
+        .info-list {
+            list-style: none;
+        }
+        
+        .info-list li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 8px 0;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .info-list li::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--border);
+        }
+        
+        /* Links Grid */
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+        
+        .link-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: block;
+        }
+        
+        .link-card:hover {
+            border-color: var(--accent);
+            background: var(--bg-tertiary);
+            transform: translateY(-4px);
+        }
+        
+        .link-card i {
+            font-size: 28px;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .link-card:hover i {
+            color: var(--accent);
+        }
+        
+        .link-card .title {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+        
+        .link-card .subtitle {
+            font-size: 12px;
+            color: var(--text-tertiary);
+        }
+        
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .footer-text {
+            font-size: 13px;
+            color: var(--text-tertiary);
+            font-family: 'Fragment Mono', monospace;
+        }
+        
+        .footer-text span {
+            color: var(--accent);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 36px;
+            }
+            
+            header {
+                padding: 60px 0 40px;
+            }
+            
+            .card {
+                padding: 24px;
+            }
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col">
+<body>
 
-    <!-- Header / Hero Section -->
-    <header class="container mx-auto px-6 pt-20 pb-12 text-center">
-        <div class="mb-6 inline-block">
-            <img src="https://avatars.githubusercontent.com/u/140314935?v=4" alt="Leo Lee" class="w-32 h-32 rounded-full border-4 border-arch mx-auto shadow-lg shadow-blue-500/20">
-        </div>
-        <h1 class="text-5xl font-bold mb-2 tracking-tight">Leo Lee</h1>
-        <p class="text-xl arch-blue mono mb-8 italic">I use Arch Linux, btw.</p>
-        <div class="flex justify-center space-x-6 text-2xl">
-            <a href="https://github.com/lqy306" target="_blank" class="hover:text-white transition-colors" title="GitHub"><i class="fab fa-github"></i></a>
-            <a href="https://500px.com.cn/LIQIYUE" target="_blank" class="hover:text-white transition-colors" title="500px"><i class="fas fa-camera"></i></a>
-            <a href="mailto:lqy.work.learning@gmail.com" class="hover:text-white transition-colors" title="Email"><i class="fas fa-envelope"></i></a>
+    <!-- Header -->
+    <header class="container">
+        <img src="https://avatars.githubusercontent.com/u/140314935?v=4" alt="Leo Lee" class="avatar">
+        <h1>Leo Lee</h1>
+        <p class="tagline mono">Student · Arch Linux Enthusiast · Photographer</p>
+        <div class="social-links">
+            <a href="https://github.com/lqy306" target="_blank" class="social-link" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://500px.com.cn/LIQIYUE" target="_blank" class="social-link" title="500px"><i class="fas fa-camera"></i></a>
+            <a href="mailto:lqy.work.learning@gmail.com" class="social-link" title="Email"><i class="fas fa-envelope"></i></a>
         </div>
     </header>
 
     <!-- Main Content -->
-    <main class="container mx-auto px-6 flex-grow max-w-4xl">
+    <main class="container">
         
         <!-- About Section -->
-        <section class="mb-16">
-            <h2 class="text-2xl font-bold mb-6 flex items-center">
-                <span class="bg-arch w-2 h-8 mr-3 rounded-full"></span>
-                关于我
-            </h2>
-            <div class="card p-8 rounded-2xl">
-                <p class="text-lg leading-relaxed mb-4">
-                    你好！我是 <strong>Leo Lee</strong>，一名来自中国福建厦门的<strong>学生</strong>。
+        <section>
+            <h2 class="section-title">About</h2>
+            <div class="card">
+                <p class="about-text mb-4">
+                    Hello! I'm <strong>Leo Lee</strong>, a <strong>student</strong> based in Xiamen, Fujian, China.
                 </p>
-                <p class="text-lg leading-relaxed mb-4">
-                    我是一名 <strong>Arch Linux</strong> 的忠实拥趸。我喜欢那种从零开始构建系统的掌控感，极简、灵活且始终保持最新。在终端与代码之间，我找到了属于自己的乐趣。
+                <p class="about-text mb-4">
+                    I'm a devoted <strong>Arch Linux</strong> user. I appreciate the control that comes from building a system from the ground up—minimal, flexible, and always cutting-edge. Between the terminal and code, I find my joy.
                 </p>
-                <p class="text-lg leading-relaxed">
-                    除了技术，<strong>摄影</strong>是我记录生活的方式。我特别钟爱<strong>松下（Panasonic）</strong>相机，尤其是它的 <strong>Real Time LUT</strong> 功能。这种“所见即所得”的拍摄体验，让我能够将后期的创意在按下快门的瞬间就烧录进照片中，省去了繁琐的后期流程，直接呈现出我想要的质感。
+                <p class="about-text">
+                    Beyond technology, <strong>photography</strong> is how I document life. I have a particular fondness for <strong>Panasonic</strong> cameras, especially their <strong>Real Time LUT</strong> feature. This "what you see is what you get" experience allows me to bake the creative vision directly into the photo at the moment of capture, eliminating tedious post-processing and delivering the texture I desire straight away.
                 </p>
             </div>
         </section>
 
-        <!-- Interests / Skills Grid -->
-        <section class="mb-16 grid md:grid-cols-2 gap-6">
-            <div class="card p-6 rounded-2xl">
-                <h3 class="text-xl font-bold mb-4 flex items-center">
-                    <i class="fas fa-terminal arch-blue mr-3"></i> 操作系统
-                </h3>
-                <ul class="space-y-2 mono text-sm">
-                    <li class="flex items-center"><span class="w-2 h-2 bg-arch rounded-full mr-2"></span> Arch Linux (Daily Driver)</li>
-                    <li class="flex items-center"><span class="w-2 h-2 bg-gray-500 rounded-full mr-2"></span> CDE (Common Desktop Environment)</li>
-                    <li class="flex items-center"><span class="w-2 h-2 bg-gray-500 rounded-full mr-2"></span> PDP-11 / Retro Computing</li>
-                </ul>
-            </div>
-            <div class="card p-6 rounded-2xl">
-                <h3 class="text-xl font-bold mb-4 flex items-center">
-                    <i class="fas fa-camera-retro arch-blue mr-3"></i> 摄影器材
-                </h3>
-                <ul class="space-y-2 text-sm">
-                    <li class="flex items-center"><span class="w-2 h-2 bg-arch rounded-full mr-2"></span> Panasonic Lumix Ecosystem</li>
-                    <li class="flex items-center"><span class="w-2 h-2 bg-gray-500 rounded-full mr-2"></span> Real Time LUT Workflow</li>
-                    <li class="flex items-center"><span class="w-2 h-2 bg-gray-500 rounded-full mr-2"></span> 500px 签约摄影师</li>
-                </ul>
+        <!-- Interests Section -->
+        <section>
+            <h2 class="section-title">Interests</h2>
+            <div class="grid">
+                <div class="card info-card">
+                    <h3><i class="fas fa-terminal"></i> Operating Systems</h3>
+                    <ul class="info-list mono">
+                        <li>Arch Linux (Daily Driver)</li>
+                        <li>CDE (Common Desktop Environment)</li>
+                        <li>PDP-11 / Retro Computing</li>
+                    </ul>
+                </div>
+                <div class="card info-card">
+                    <h3><i class="fas fa-camera-retro"></i> Photography Gear</h3>
+                    <ul class="info-list">
+                        <li>Panasonic Lumix Ecosystem</li>
+                        <li>Real Time LUT Workflow</li>
+                        <li>500px Contributing Photographer</li>
+                    </ul>
+                </div>
             </div>
         </section>
 
-        <!-- Projects / Links -->
-        <section class="mb-20">
-            <h2 class="text-2xl font-bold mb-6 flex items-center">
-                <span class="bg-arch w-2 h-8 mr-3 rounded-full"></span>
-                联系与链接
-            </h2>
-            <div class="grid md:grid-cols-3 gap-4">
-                <a href="https://github.com/lqy306" target="_blank" class="card p-4 rounded-xl text-center block">
-                    <i class="fab fa-github text-2xl mb-2"></i>
-                    <div class="font-bold">GitHub</div>
-                    <div class="text-xs text-gray-500">开源项目与代码</div>
+        <!-- Links Section -->
+        <section>
+            <h2 class="section-title">Links</h2>
+            <div class="links-grid">
+                <a href="https://github.com/lqy306" target="_blank" class="link-card">
+                    <i class="fab fa-github"></i>
+                    <div class="title">GitHub</div>
+                    <div class="subtitle">Open Source Projects</div>
                 </a>
-                <a href="https://500px.com.cn/LIQIYUE" target="_blank" class="card p-4 rounded-xl text-center block">
-                    <i class="fas fa-image text-2xl mb-2"></i>
-                    <div class="font-bold">500px</div>
-                    <div class="text-xs text-gray-500">摄影作品集</div>
+                <a href="https://500px.com.cn/LIQIYUE" target="_blank" class="link-card">
+                    <i class="fas fa-image"></i>
+                    <div class="title">500px</div>
+                    <div class="subtitle">Photography Portfolio</div>
                 </a>
-                <a href="mailto:lqy.work.learning@gmail.com" class="card p-4 rounded-xl text-center block">
-                    <i class="fas fa-envelope text-2xl mb-2"></i>
-                    <div class="font-bold">Email</div>
-                    <div class="text-xs text-gray-500">与我取得联系</div>
+                <a href="mailto:lqy.work.learning@gmail.com" class="link-card">
+                    <i class="fas fa-envelope"></i>
+                    <div class="title">Email</div>
+                    <div class="subtitle">Get in Touch</div>
                 </a>
-                <a href="/resources/" class="card p-4 rounded-xl text-center block">
-                    <i class="fas fa-folder-open text-2xl mb-2"></i>
-                    <div class="font-bold">文件目录</div>
-                    <div class="text-xs text-gray-500">仿 FTP 风格资源库</div>
+                <a href="/resources/" class="link-card">
+                    <i class="fas fa-folder-open"></i>
+                    <div class="title">Resources</div>
+                    <div class="subtitle">FTP-style Archive</div>
                 </a>
-                <a href="/post/" class="card p-4 rounded-xl text-center block">
-                    <i class="fas fa-pen-nib text-2xl mb-2"></i>
-                    <div class="font-bold">贴子列表</div>
-                    <div class="text-xs text-gray-500">个人博客与分享</div>
+                <a href="/post/" class="link-card">
+                    <i class="fas fa-pen-nib"></i>
+                    <div class="title">Blog</div>
+                    <div class="subtitle">Posts & Writing</div>
                 </a>
             </div>
         </section>
     </main>
 
     <!-- Footer -->
-    <footer class="py-10 text-center border-t border-white/5">
-        <p class="text-gray-500 text-sm mono">
-            &copy; 2026 Leo Lee. Built with <span class="arch-blue">Arch Linux</span> spirit.
-        </p>
+    <footer>
+        <div class="container">
+            <p class="footer-text">
+                © 2026 Leo Lee. Crafted with <span>Arch Linux</span> spirit.
+            </p>
+        </div>
     </footer>
 
 </body>
