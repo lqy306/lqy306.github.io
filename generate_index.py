@@ -43,7 +43,8 @@ COMMON_CSS = FONT_IMPORT + """
 /* ── Self-hosted font: F1.8 (SIL OFL 1.1) ── */
 @font-face {
     font-family: 'F1.8';
-    src: url('/fonts/F1.8-Regular.woff2') format('woff2');
+    src: url('/fonts/F1.8-Regular.woff2') format('woff2'),
+         url('/fonts/F1.8-Regular.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -666,7 +667,7 @@ def footer_html(custom_text=None):
     <footer>
         <p>&copy; {YEAR} Leo Lee | {text} | Built with <a href="https://claude.ai/code">Claude Code</a></p>
         <p style="font-size:0.75rem;margin-top:0.5rem;opacity:0.7;">
-            字体 <a href="/fonts/F1.8-Regular.woff2">F1.8</a> 遵循 <a href="https://openfontlicense.org">SIL Open Font License, Version 1.1</a>
+            字体 <a href="/fonts/F1.8-Regular.otf">F1.8</a> 遵循 <a href="https://openfontlicense.org">SIL Open Font License, Version 1.1</a>
         </p>
     </footer>"""
 
