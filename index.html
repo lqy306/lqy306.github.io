@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,82 +29,133 @@
     <link rel="sitemap" type="application/xml" href="/sitemap.xml">
 
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
+        /* ═══════════════════════════════════════════════
+                   Theme Variables
+                   ═══════════════════════════════════════════════ */
         :root {
-            --color-black: #34322D;
-            --color-gray: #F8F8F8;
-            --color-white: #FFFFFF;
-            --color-accent: #1793d1;
-            --color-accent-light: rgba(23, 147, 209, 0.08);
-            --color-border: rgba(52, 50, 45, 0.1);
-            --font-serif: 'Libre Baskerville', 'Noto Serif SC', serif;
-            --font-sans: 'DM Sans', 'Noto Sans SC', sans-serif;
+            --clr-black: #34322D;
+            --clr-gray: #F8F8F8;
+            --clr-white: #FFFFFF;
+            --clr-accent: #1793d1;
+            --clr-accent-light: rgba(23, 147, 209, 0.08);
+            --clr-accent-glow: rgba(23, 147, 209, 0.2);
+            --clr-border: rgba(52, 50, 45, 0.1);
+            --clr-border-hover: rgba(52, 50, 45, 0.2);
+
+            --body-bg: var(--clr-white);
+            --surface-bg: var(--clr-gray);
+            --nav-bg: rgba(255, 255, 255, 0.92);
+            --card-bg: rgba(248, 248, 248, 0.55);
+            --card-bg-hover: rgba(248, 248, 248, 1);
+            --highlight-bg: rgba(248, 248, 248, 0.8);
+            --highlight-bg-hover: rgba(248, 248, 248, 1);
+
+            --text-primary: var(--clr-black);
+            --text-secondary: #666;
+            --text-muted: #999;
+            --text-on-accent: var(--clr-white);
+
+            --footer-bg: var(--clr-black);
+            --footer-text: var(--clr-gray);
+
+            --hero-gradient: linear-gradient(135deg, rgba(255, 248, 248, 0.5) 0%, rgba(248, 248, 248, 0.3) 100%);
         }
 
+        [data-theme="dark"] {
+            --clr-black: #E8E6E3;
+            --clr-gray: #1b1b2f;
+            --clr-white: #121212;
+            --clr-accent: #4FC3F7;
+            --clr-accent-light: rgba(79, 195, 247, 0.10);
+            --clr-accent-glow: rgba(79, 195, 247, 0.20);
+            --clr-border: rgba(232, 230, 227, 0.08);
+            --clr-border-hover: rgba(232, 230, 227, 0.18);
+
+            --body-bg: #121212;
+            --surface-bg: #1b1b2f;
+            --nav-bg: rgba(18, 18, 18, 0.92);
+            --card-bg: rgba(27, 27, 47, 0.55);
+            --card-bg-hover: rgba(27, 27, 47, 1);
+            --highlight-bg: rgba(27, 27, 47, 0.8);
+            --highlight-bg-hover: rgba(27, 27, 47, 1);
+
+            --text-primary: #E8E6E3;
+            --text-secondary: #A0A0A0;
+            --text-muted: #686868;
+            --text-on-accent: #121212;
+
+            --footer-bg: #0b0b17;
+            --footer-text: #A0A0A0;
+
+            --hero-gradient: linear-gradient(135deg, rgba(27, 27, 47, 0.9) 0%, rgba(18, 18, 18, 0.95) 100%);
+        }
+
+        /* ═══════════════════════════════════════════════
+                   Base
+                   ═══════════════════════════════════════════════ */
         html {
             scroll-behavior: smooth;
+            transition: background-color 0.3s ease;
         }
 
         body {
-            font-family: var(--font-sans);
-            background-color: var(--color-white);
-            color: var(--color-black);
+            font-family: 'DM Sans', 'Noto Sans SC', sans-serif;
+            background-color: var(--body-bg);
+            color: var(--text-primary);
             line-height: 1.6;
             overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
-        /* Navigation */
+        /* ═══════════════════════════════════════════════
+                   Navigation
+                   ═══════════════════════════════════════════════ */
         nav {
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
+            top: 0; left: 0; right: 0;
             z-index: 1000;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--color-border);
+            background: var(--nav-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--clr-border);
+            transition: background 0.3s ease, border-color 0.3s ease;
         }
 
         .nav-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 1rem 2rem;
+            padding: 0.85rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .logo {
-            font-family: var(--font-serif);
+            font-family: 'Libre Baskerville', 'Noto Serif SC', serif;
             font-size: 1.5rem;
             font-weight: 700;
-            color: var(--color-black);
+            color: var(--text-primary);
             text-decoration: none;
             letter-spacing: -0.02em;
+            transition: color 0.3s ease;
         }
 
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 1.8rem;
             list-style: none;
+            align-items: center;
         }
 
         .nav-links a {
-            color: var(--color-black);
+            color: var(--text-primary);
             text-decoration: none;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: 500;
             transition: color 0.3s ease;
             position: relative;
-        }
-
-        .nav-links a:hover {
-            color: var(--color-accent);
         }
 
         .nav-links a::after {
@@ -114,15 +165,40 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--color-accent);
+            background: var(--clr-accent);
             transition: width 0.3s ease;
         }
 
-        .nav-links a:hover::after {
-            width: 100%;
+        .nav-links a:hover { color: var(--clr-accent); }
+        .nav-links a:hover::after { width: 100%; }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            background: none;
+            border: 2px solid var(--clr-border);
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+            padding: 0;
+            line-height: 1;
         }
 
-        /* Hero Section */
+        .theme-toggle:hover {
+            border-color: var(--clr-accent);
+            color: var(--clr-accent);
+            transform: rotate(15deg);
+        }
+
+        /* ═══════════════════════════════════════════════
+                   Hero
+                   ═══════════════════════════════════════════════ */
         .hero {
             margin-top: 80px;
             min-height: 100vh;
@@ -130,7 +206,8 @@
             align-items: center;
             justify-content: center;
             padding: 2rem;
-            background: linear-gradient(135deg, rgba(255, 248, 248, 0.5) 0%, rgba(248, 248, 248, 0.3) 100%);
+            background: var(--hero-gradient);
+            transition: background 0.3s ease;
         }
 
         .hero-content {
@@ -143,9 +220,10 @@
             height: 120px;
             border-radius: 50%;
             margin: 0 auto 2rem;
-            border: 3px solid var(--color-black);
+            border: 3px solid var(--text-primary);
             overflow: hidden;
             box-shadow: 0 10px 40px rgba(52, 50, 45, 0.1);
+            transition: border-color 0.3s ease;
         }
 
         .hero-avatar img {
@@ -155,31 +233,34 @@
         }
 
         .hero h1 {
-            font-family: var(--font-serif);
+            font-family: 'Libre Baskerville', 'Noto Serif SC', serif;
             font-size: 3.5rem;
             font-weight: 700;
             line-height: 1.1;
             margin-bottom: 1rem;
             letter-spacing: -0.02em;
-            color: var(--color-black);
+            color: var(--text-primary);
+            transition: color 0.3s ease;
         }
 
         .hero-subtitle {
             font-size: 1.25rem;
-            color: var(--color-accent);
+            color: var(--clr-accent);
             font-weight: 500;
             margin-bottom: 2rem;
             font-style: italic;
+            transition: color 0.3s ease;
         }
 
         .hero-description {
             font-size: 1.1rem;
-            color: #666;
+            color: var(--text-secondary);
             margin-bottom: 3rem;
             line-height: 1.8;
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
+            transition: color 0.3s ease;
         }
 
         .hero-cta {
@@ -203,27 +284,28 @@
         }
 
         .btn-primary {
-            background: var(--color-black);
-            color: var(--color-white);
-            border-color: var(--color-black);
+            background: var(--text-primary);
+            color: var(--body-bg);
+            border-color: var(--text-primary);
         }
 
         .btn-primary:hover {
-            background: var(--color-accent);
-            border-color: var(--color-accent);
+            background: var(--clr-accent);
+            border-color: var(--clr-accent);
+            color: var(--text-on-accent);
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(23, 147, 209, 0.2);
+            box-shadow: 0 10px 25px var(--clr-accent-glow);
         }
 
         .btn-secondary {
             background: transparent;
-            color: var(--color-black);
-            border-color: var(--color-black);
+            color: var(--text-primary);
+            border-color: var(--text-primary);
         }
 
         .btn-secondary:hover {
-            background: var(--color-black);
-            color: var(--color-white);
+            background: var(--text-primary);
+            color: var(--body-bg);
             transform: translateY(-2px);
         }
 
@@ -235,7 +317,7 @@
         }
 
         .social-links a {
-            color: var(--color-black);
+            color: var(--text-primary);
             text-decoration: none;
             transition: all 0.3s ease;
             width: 50px;
@@ -244,36 +326,37 @@
             align-items: center;
             justify-content: center;
             border-radius: 50%;
-            border: 2px solid rgba(52, 50, 45, 0.2);
+            border: 2px solid var(--clr-border);
         }
 
         .social-links a:hover {
-            color: var(--color-white);
-            background: var(--color-accent);
-            border-color: var(--color-accent);
+            color: var(--text-on-accent);
+            background: var(--clr-accent);
+            border-color: var(--clr-accent);
             transform: translateY(-4px);
         }
 
-        /* Main Content */
+        /* ═══════════════════════════════════════════════
+                   Main Content
+                   ═══════════════════════════════════════════════ */
         main {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 2rem;
         }
 
-        section {
-            margin: 6rem 0;
-        }
+        section { margin: 6rem 0; }
 
         .section-title {
-            font-family: var(--font-serif);
+            font-family: 'Libre Baskerville', 'Noto Serif SC', serif;
             font-size: 2.5rem;
             font-weight: 700;
             margin-bottom: 3rem;
-            color: var(--color-black);
+            color: var(--text-primary);
             letter-spacing: -0.02em;
             position: relative;
             padding-bottom: 1rem;
+            transition: color 0.3s ease;
         }
 
         .section-title::after {
@@ -283,17 +366,21 @@
             left: 0;
             width: 60px;
             height: 3px;
-            background: var(--color-accent);
+            background: var(--clr-accent);
+            transition: background 0.3s ease;
         }
 
         .section-subtitle {
-            color: #999;
+            color: var(--text-muted);
             font-size: 1rem;
             margin-top: -2rem;
             margin-bottom: 3rem;
+            transition: color 0.3s ease;
         }
 
-        /* About Section */
+        /* ═══════════════════════════════════════════════
+                   About
+                   ═══════════════════════════════════════════════ */
         .about-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -305,13 +392,11 @@
             font-size: 1.05rem;
             margin-bottom: 1.5rem;
             line-height: 1.8;
-            color: #555;
+            color: var(--text-secondary);
+            transition: color 0.3s ease;
         }
 
-        .about-text strong {
-            color: var(--color-black);
-            font-weight: 600;
-        }
+        .about-text strong { color: var(--text-primary); font-weight: 600; }
 
         .about-highlights {
             display: flex;
@@ -321,30 +406,32 @@
 
         .highlight-item {
             padding: 1.5rem;
-            background: rgba(248, 248, 248, 0.8);
-            border-left: 4px solid var(--color-accent);
+            background: var(--highlight-bg);
+            border-left: 4px solid var(--clr-accent);
             border-radius: 4px;
             transition: all 0.3s ease;
         }
 
         .highlight-item:hover {
-            background: rgba(248, 248, 248, 1);
+            background: var(--highlight-bg-hover);
             transform: translateX(8px);
         }
 
         .highlight-item h4 {
-            color: var(--color-black);
+            color: var(--text-primary);
             font-weight: 600;
             margin-bottom: 0.5rem;
         }
 
         .highlight-item p {
             font-size: 0.95rem;
-            color: #666;
+            color: var(--text-secondary);
             margin: 0;
         }
 
-        /* Skills Grid */
+        /* ═══════════════════════════════════════════════
+                   Skills
+                   ═══════════════════════════════════════════════ */
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -353,41 +440,36 @@
 
         .skill-card {
             padding: 2rem;
-            background: rgba(248, 248, 248, 0.6);
-            border: 1px solid var(--color-border);
+            background: var(--card-bg);
+            border: 1px solid var(--clr-border);
             border-radius: 12px;
             transition: all 0.3s ease;
         }
 
         .skill-card:hover {
-            border-color: var(--color-accent);
-            background: rgba(248, 248, 248, 1);
+            border-color: var(--clr-accent);
+            background: var(--card-bg-hover);
             transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(52, 50, 45, 0.08);
+            box-shadow: 0 20px 40px rgba(52, 50, 45, 0.06);
         }
 
         .skill-card h3 {
             font-size: 1.3rem;
             font-weight: 600;
             margin-bottom: 1.5rem;
-            color: var(--color-black);
+            color: var(--text-primary);
             display: flex;
             align-items: center;
             gap: 0.75rem;
         }
 
-        .skill-card i {
-            color: var(--color-accent);
-            font-size: 1.5rem;
-        }
+        .skill-card i { color: var(--clr-accent); font-size: 1.5rem; }
 
-        .skill-list {
-            list-style: none;
-        }
+        .skill-list { list-style: none; }
 
         .skill-list li {
             padding: 0.5rem 0;
-            color: #666;
+            color: var(--text-secondary);
             font-size: 0.95rem;
             display: flex;
             align-items: center;
@@ -396,11 +478,13 @@
 
         .skill-list li::before {
             content: '▸';
-            color: var(--color-accent);
+            color: var(--clr-accent);
             font-weight: bold;
         }
 
-        /* Links Grid */
+        /* ═══════════════════════════════════════════════
+                   Link Cards
+                   ═══════════════════════════════════════════════ */
         .links-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -409,11 +493,11 @@
 
         .link-card {
             padding: 2rem;
-            background: rgba(248, 248, 248, 0.6);
-            border: 1px solid var(--color-border);
+            background: var(--card-bg);
+            border: 1px solid var(--clr-border);
             border-radius: 12px;
             text-decoration: none;
-            color: var(--color-black);
+            color: var(--text-primary);
             transition: all 0.3s ease;
             text-align: center;
             display: flex;
@@ -423,194 +507,77 @@
         }
 
         .link-card:hover {
-            border-color: var(--color-accent);
-            background: rgba(248, 248, 248, 1);
+            border-color: var(--clr-accent);
+            background: var(--card-bg-hover);
             transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(52, 50, 45, 0.08);
+            box-shadow: 0 20px 40px rgba(52, 50, 45, 0.06);
         }
 
         .link-card i {
             font-size: 2.5rem;
-            color: var(--color-accent);
+            color: var(--clr-accent);
         }
 
         .link-card h3 {
             font-size: 1.1rem;
             font-weight: 600;
             margin: 0;
+            color: var(--text-primary);
         }
 
         .link-card p {
             font-size: 0.85rem;
-            color: #999;
+            color: var(--text-muted);
             margin: 0;
         }
 
-        /* Latest Posts Section */
-        .post-preview-list {
-            list-style: none;
-            margin: 2rem 0;
-        }
-
-        .post-preview-item {
-            display: flex;
-            gap: 1.5rem;
-            padding: 1rem 0;
-            border-bottom: 1px solid var(--color-border);
-            align-items: baseline;
-        }
-
-        .post-preview-item:last-child {
-            border-bottom: none;
-        }
-
-        .post-preview-date {
-            font-size: 0.85rem;
-            color: #999;
-            white-space: nowrap;
-            min-width: 6em;
-        }
-
-        .post-preview-title {
-            font-size: 1.05rem;
-            font-weight: 500;
-        }
-
-        .post-preview-title a {
-            color: var(--color-black);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .post-preview-title a:hover {
-            color: var(--color-accent);
-        }
-
-        .view-all-link {
-            display: inline-block;
-            margin-top: 1rem;
-            font-weight: 500;
-        }
-
-        /* Footer */
+        /* ═══════════════════════════════════════════════
+                   Footer
+                   ═══════════════════════════════════════════════ */
         footer {
             margin-top: 6rem;
             padding: 3rem 2rem;
-            background: var(--color-black);
-            color: var(--color-gray);
+            background: var(--footer-bg);
+            color: var(--footer-text);
             text-align: center;
-            border-top: 1px solid rgba(248, 248, 248, 0.1);
+            transition: background 0.3s ease, color 0.3s ease;
         }
 
-        footer p {
-            font-size: 0.9rem;
-            margin: 0;
-        }
+        footer p { font-size: 0.9rem; margin: 0; }
 
         footer a {
-            color: var(--color-accent);
+            color: var(--clr-accent);
             text-decoration: none;
             transition: color 0.3s ease;
         }
 
-        footer a:hover {
-            color: var(--color-gray);
-        }
+        footer a:hover { color: var(--footer-text); }
 
-        /* Responsive */
+        /* ═══════════════════════════════════════════════
+                   Responsive
+                   ═══════════════════════════════════════════════ */
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero-subtitle {
-                font-size: 1rem;
-            }
-
-            .about-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .nav-links {
-                gap: 1rem;
-                font-size: 0.85rem;
-            }
-
-            .section-title {
-                font-size: 1.8rem;
-                margin-bottom: 2rem;
-            }
-
-            .hero-cta {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .btn {
-                width: 100%;
-                max-width: 300px;
-            }
-
-            .post-preview-item {
-                flex-direction: column;
-                gap: 0.2rem;
-            }
-
-            .post-preview-date {
-                min-width: auto;
-            }
+            .hero h1 { font-size: 2.5rem; }
+            .hero-subtitle { font-size: 1rem; }
+            .about-content { grid-template-columns: 1fr; gap: 2rem; }
+            .nav-links { gap: 1rem; font-size: 0.85rem; }
+            .section-title { font-size: 1.8rem; margin-bottom: 2rem; }
+            .hero-cta { flex-direction: column; align-items: center; }
+            .btn { width: 100%; max-width: 300px; }
         }
 
         @media (max-width: 480px) {
-            .nav-container {
-                padding: 1rem;
-            }
-
-            .logo {
-                font-size: 1.2rem;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .hero {
-                margin-top: 60px;
-                min-height: auto;
-                padding: 2rem 1rem;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero-avatar {
-                width: 100px;
-                height: 100px;
-            }
-
-            .social-links {
-                gap: 1rem;
-                font-size: 1.2rem;
-            }
-
-            .social-links a {
-                width: 40px;
-                height: 40px;
-            }
-
-            main {
-                padding: 0 1rem;
-            }
-
-            section {
-                margin: 3rem 0;
-            }
-
-            .section-title {
-                font-size: 1.5rem;
-            }
+            .nav-container { padding: 0.85rem 1rem; }
+            .logo { font-size: 1.2rem; }
+            .nav-links { display: none; }
+            .hero { margin-top: 60px; min-height: auto; padding: 2rem 1rem; }
+            .hero h1 { font-size: 2rem; }
+            .hero-avatar { width: 100px; height: 100px; }
+            .social-links { gap: 1rem; font-size: 1.2rem; }
+            .social-links a { width: 40px; height: 40px; }
+            main { padding: 0 1rem; }
+            section { margin: 3rem 0; }
+            .section-title { font-size: 1.5rem; }
         }
     </style>
 </head>
@@ -625,6 +592,11 @@
                 <li><a href="#resources">资源</a></li>
                 <li><a href="#links">链接</a></li>
                 <li><a href="/post/">博客</a></li>
+                <li>
+                    <button class="theme-toggle" id="theme-toggle" aria-label="切换主题">
+                        <i class="fas fa-moon" id="theme-icon"></i>
+                    </button>
+                </li>
             </ul>
         </div>
     </nav>
@@ -723,38 +695,32 @@
             </div>
         </section>
 
-        <!-- Resources Section (New) -->
+        <!-- Resources Section -->
         <section id="resources">
             <h2 class="section-title">资源分享</h2>
-            <p class="section-subtitle">LUT 工具、配置文件、摄影资源等</p>
+            <p class="section-subtitle">配置文件、工具、摄影资源等</p>
             <div class="links-grid">
                 <a href="/resources/" class="link-card">
                     <i class="fas fa-folder-open"></i>
                     <h3>资源中心</h3>
-                    <p>浏览所有可用资源</p>
+                    <p>浏览所有可用的分享资源</p>
                 </a>
-                <a href="/resources/lut_tools/" class="link-card">
-                    <i class="fas fa-camera-retro"></i>
-                    <h3>LUT 工具</h3>
-                    <p>Panasonic Lumix 实时 LUT 相关</p>
-                </a>
-                <a href="/post/rss.xml" class="link-card">
-                    <i class="fas fa-rss"></i>
-                    <h3>RSS 订阅</h3>
-                    <p>通过 RSS 订阅博客更新</p>
+                <a href="/post/" class="link-card">
+                    <i class="fas fa-pen-nib"></i>
+                    <h3>博客文章</h3>
+                    <p>个人博客与技术分享</p>
                 </a>
             </div>
         </section>
 
-        <!-- Latest Posts Section (New) -->
+        <!-- Blog Preview Section -->
         <section id="blog">
             <h2 class="section-title">最新文章</h2>
             <p class="section-subtitle">技术、摄影与生活分享</p>
             <div id="latest-posts">
-                <ul class="post-preview-list" id="post-list">
-                    <!-- Will be populated by script -->
+                <ul class="post-preview-list" id="post-list" style="list-style:none;margin:2rem 0;">
                 </ul>
-                <a href="/post/" class="view-all-link">查看全部文章 →</a>
+                <a href="/post/" style="display:inline-block;margin-top:1rem;font-weight:500;">查看全部文章 →</a>
             </div>
         </section>
 
@@ -782,6 +748,11 @@
                     <h3>博客文章</h3>
                     <p>个人博客与分享</p>
                 </a>
+                <a href="/post/rss.xml" class="link-card">
+                    <i class="fas fa-rss"></i>
+                    <h3>RSS 订阅</h3>
+                    <p>通过 RSS 订阅博客更新</p>
+                </a>
             </div>
         </section>
     </main>
@@ -793,28 +764,51 @@
     </footer>
 
     <script>
-        // Fetch latest posts from GitHub API to show on homepage
+        // ── Theme Toggle ──
+        (function() {
+            const toggle = document.getElementById('theme-toggle');
+            const icon = document.getElementById('theme-icon');
+            const html = document.documentElement;
+
+            // Get saved theme, or respect system preference
+            const saved = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const theme = saved || (prefersDark ? 'dark' : 'light');
+
+            html.setAttribute('data-theme', theme);
+            icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+
+            toggle.addEventListener('click', function() {
+                const current = html.getAttribute('data-theme');
+                const next = current === 'dark' ? 'light' : 'dark';
+                html.setAttribute('data-theme', next);
+                localStorage.setItem('theme', next);
+                icon.className = next === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+            });
+        })();
+
+        // ── Latest Posts from GitHub API ──
         fetch('https://api.github.com/repos/lqy306/lqy306.github.io/contents/post')
             .then(r => r.json())
             .then(data => {
                 const dirs = data.filter(item => item.type === 'dir').reverse();
                 const list = document.getElementById('post-list');
                 if (dirs.length === 0) {
-                    list.innerHTML = '<li style="color:#999;padding:1rem 0;">暂无文章</li>';
+                    list.innerHTML = '<li style="color:var(--text-muted);padding:1rem 0;">暂无文章</li>';
                     return;
                 }
                 dirs.slice(0, 5).forEach(dir => {
                     const name = dir.name.replace(/[-_]/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
                     const li = document.createElement('li');
-                    li.className = 'post-preview-item';
-                    li.innerHTML = '<span class="post-preview-date">📅 最新</span>' +
-                        '<span class="post-preview-title"><a href="/post/' + dir.name + '/">' + name + '</a></span>';
+                    li.style.cssText = 'display:flex;gap:1.5rem;padding:0.8rem 0;border-bottom:1px solid var(--clr-border);align-items:baseline;';
+                    li.innerHTML = '<span style="font-size:0.85rem;color:var(--text-muted);white-space:nowrap;min-width:6em;">📅 最新</span>' +
+                        '<span style="font-size:1.05rem;font-weight:500;"><a href="/post/' + dir.name + '/" style="color:var(--text-primary);text-decoration:none;">' + name + '</a></span>';
                     list.appendChild(li);
                 });
             })
-            .catch(() => {
+            .catch(function() {
                 document.getElementById('post-list').innerHTML =
-                    '<li style="color:#999;padding:1rem 0;"><a href="/post/">前往博客查看最新文章 →</a></li>';
+                    '<li style="color:var(--text-muted);padding:1rem 0;"><a href="/post/">前往博客查看最新文章 →</a></li>';
             });
     </script>
 </body>
