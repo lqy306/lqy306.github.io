@@ -522,7 +522,7 @@ def footer_html(custom_text=None):
     text = custom_text or "使用 Arch Linux 精神构建"
     return f"""
     <footer>
-        <p>&copy; {YEAR} Leo Lee | {text}</p>
+        <p>&copy; {YEAR} Leo Lee | {text} | Built with <a href="https://claude.ai/code">Claude Code</a></p>
     </footer>"""
 
 
