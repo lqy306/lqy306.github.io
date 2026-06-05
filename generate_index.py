@@ -47,8 +47,6 @@ COMMON_CSS = FONT_IMPORT + """
     font-family: 'F1.8';
     src: url('/fonts/F1.8-Regular.woff2') format('woff2'),
          url('/fonts/F1.8-Regular.otf') format('opentype');
-    font-weight: normal;
-    font-style: normal;
     font-display: swap;
 }
 
@@ -56,8 +54,6 @@ COMMON_CSS = FONT_IMPORT + """
 @font-face {
     font-family: 'ChillRoundGothic';
     src: url('/fonts/ChillRoundGothic_Bold.woff2') format('woff2');
-    font-weight: bold;
-    font-style: normal;
     font-display: swap;
 }
 
