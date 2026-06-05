@@ -40,12 +40,23 @@ FONT_IMPORT = (
 
 COMMON_CSS = FONT_IMPORT + """
 
-/* ── Self-hosted font: F1.8 (SIL OFL 1.1) ── */
+/* ── Self-hosted fonts ── */
+
+/* F1.8 (SIL OFL 1.1) — for logo / headings */
 @font-face {
     font-family: 'F1.8';
     src: url('/fonts/F1.8-Regular.woff2') format('woff2'),
          url('/fonts/F1.8-Regular.otf') format('opentype');
     font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* 寒蝉圆黑体 ChillRoundGothic Bold (SIL OFL 1.1) — for Chinese text */
+@font-face {
+    font-family: 'ChillRoundGothic';
+    src: url('/fonts/ChillRoundGothic_Bold.woff2') format('woff2');
+    font-weight: bold;
     font-style: normal;
     font-display: swap;
 }
@@ -129,7 +140,7 @@ COMMON_CSS = FONT_IMPORT + """
 html { scroll-behavior: smooth; }
 
 body {
-    font-family: 'DM Sans', 'Noto Sans SC', sans-serif;
+    font-family: 'DM Sans', 'ChillRoundGothic', 'Noto Sans SC', sans-serif;
     background: var(--body-bg);
     color: var(--text-primary);
     line-height: 1.6;
