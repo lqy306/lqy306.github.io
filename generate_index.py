@@ -32,11 +32,10 @@ YEAR = NOW.year
 
 # ── CSS ────────────────────────────────────────────────────────────────────
 
-FONT_IMPORT = (
-    "@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&"
-    "family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&"
-    "family=Noto+Serif+SC:wght@400;700&family=Noto+Sans+SC:wght@400;500;700&display=swap');"
-)
+FONT_IMPORT = ""
+# No external font imports – all fonts are self-hosted:
+#   F1.8 (OFL 1.1) for Latin/logo
+#   ChillRoundGothic (OFL 1.1) for CJK text
 
 COMMON_CSS = FONT_IMPORT + """
 
@@ -136,7 +135,7 @@ COMMON_CSS = FONT_IMPORT + """
 html { scroll-behavior: smooth; }
 
 body {
-    font-family: 'DM Sans', 'ChillRoundGothic', 'Noto Sans SC', sans-serif;
+    font-family: 'F1.8', 'ChillRoundGothic', sans-serif;
     background: var(--body-bg);
     color: var(--text-primary);
     line-height: 1.6;
@@ -177,7 +176,7 @@ nav {
 }
 
 .logo {
-    font-family: 'F1.8', 'Libre Baskerville', 'Noto Serif SC', serif;
+    font-family: 'F1.8', 'ChillRoundGothic', sans-serif;
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--text-primary);
@@ -249,7 +248,7 @@ main {
 }
 
 h1 {
-    font-family: 'Libre Baskerville', 'Noto Serif SC', serif;
+    font-family: 'F1.8', 'ChillRoundGothic', sans-serif;
     font-size: 2.5rem;
     font-weight: 700;
     margin: 2rem 0 1rem;
@@ -261,7 +260,7 @@ h1 {
 }
 
 h2, h3, h4, h5, h6 {
-    font-family: 'Libre Baskerville', 'Noto Serif SC', serif;
+    font-family: 'F1.8', 'ChillRoundGothic', sans-serif;
     color: var(--text-primary);
     margin-top: 1.5rem;
     margin-bottom: 0.75rem;
