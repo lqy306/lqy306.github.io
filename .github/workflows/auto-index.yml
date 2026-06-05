@@ -1,10 +1,8 @@
-name: Auto Update FTP and Blog
+name: Auto Build Site
 
 on:
   push:
-    paths:
-      - 'resources/**'
-      - 'post/**'
+    # 任何推送都会触发构建
   workflow_dispatch:
 
 jobs:
@@ -22,13 +20,16 @@ jobs:
       - name: Install dependencies
         run: pip install markdown
 
-      - name: Generate Index and Posts
+      - name: Generate all pages
         run: python generate_index.py
 
       - name: Commit and Push changes
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add resources/**/index.html post/**/index.html post/index.html
-          git commit -m "Auto-update FTP index and Blog posts" || echo "No changes to commit"
+          git add resources/**/index.html resources/index.html
+          git add post/**/index.html post/index.html post/rss.xml
+          git add tags/index.html tags/**/index.html
+          git add sitemap.xml 404.html
+          git diff --staged --quiet || git commit -m "Auto-build: regenerate site pages"
           git push

@@ -4,8 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Leo Lee | 个人主页</title>
+    <meta name="description" content="一名来自中国福建厦门的学生，Arch Linux 忠实拥趸，热爱摄影与开源技术。">
+    <meta name="keywords" content="Leo Lee, Arch Linux, 摄影, 开源, LUT, Panasonic Lumix">
+    <meta name="author" content="Leo Lee">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Leo Lee | 个人主页">
+    <meta property="og:description" content="一名来自中国福建厦门的学生，Arch Linux 忠实拥趸，热爱摄影与开源技术。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://lqy306.github.io">
+    <meta property="og:image" content="https://avatars.githubusercontent.com/u/140314935?v=4">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Leo Lee | 个人主页">
+    <meta name="twitter:description" content="一名来自中国福建厦门的学生，Arch Linux 忠实拥趸，热爱摄影与开源技术。">
+
+    <!-- RSS -->
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="https://lqy306.github.io/post/rss.xml">
+
+    <!-- Fonts & Icons -->
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Noto+Serif+SC:wght@400;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+
     <style>
         * {
             margin: 0;
@@ -18,6 +40,8 @@
             --color-gray: #F8F8F8;
             --color-white: #FFFFFF;
             --color-accent: #1793d1;
+            --color-accent-light: rgba(23, 147, 209, 0.08);
+            --color-border: rgba(52, 50, 45, 0.1);
             --font-serif: 'Libre Baskerville', 'Noto Serif SC', serif;
             --font-sans: 'DM Sans', 'Noto Sans SC', sans-serif;
         }
@@ -43,7 +67,7 @@
             z-index: 1000;
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(52, 50, 45, 0.1);
+            border-bottom: 1px solid var(--color-border);
         }
 
         .nav-container {
@@ -262,6 +286,13 @@
             background: var(--color-accent);
         }
 
+        .section-subtitle {
+            color: #999;
+            font-size: 1rem;
+            margin-top: -2rem;
+            margin-bottom: 3rem;
+        }
+
         /* About Section */
         .about-content {
             display: grid;
@@ -323,7 +354,7 @@
         .skill-card {
             padding: 2rem;
             background: rgba(248, 248, 248, 0.6);
-            border: 1px solid rgba(52, 50, 45, 0.1);
+            border: 1px solid var(--color-border);
             border-radius: 12px;
             transition: all 0.3s ease;
         }
@@ -379,7 +410,7 @@
         .link-card {
             padding: 2rem;
             background: rgba(248, 248, 248, 0.6);
-            border: 1px solid rgba(52, 50, 45, 0.1);
+            border: 1px solid var(--color-border);
             border-radius: 12px;
             text-decoration: none;
             color: var(--color-black);
@@ -413,6 +444,52 @@
             font-size: 0.85rem;
             color: #999;
             margin: 0;
+        }
+
+        /* Latest Posts Section */
+        .post-preview-list {
+            list-style: none;
+            margin: 2rem 0;
+        }
+
+        .post-preview-item {
+            display: flex;
+            gap: 1.5rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--color-border);
+            align-items: baseline;
+        }
+
+        .post-preview-item:last-child {
+            border-bottom: none;
+        }
+
+        .post-preview-date {
+            font-size: 0.85rem;
+            color: #999;
+            white-space: nowrap;
+            min-width: 6em;
+        }
+
+        .post-preview-title {
+            font-size: 1.05rem;
+            font-weight: 500;
+        }
+
+        .post-preview-title a {
+            color: var(--color-black);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .post-preview-title a:hover {
+            color: var(--color-accent);
+        }
+
+        .view-all-link {
+            display: inline-block;
+            margin-top: 1rem;
+            font-weight: 500;
         }
 
         /* Footer */
@@ -473,6 +550,15 @@
             .btn {
                 width: 100%;
                 max-width: 300px;
+            }
+
+            .post-preview-item {
+                flex-direction: column;
+                gap: 0.2rem;
+            }
+
+            .post-preview-date {
+                min-width: auto;
             }
         }
 
@@ -536,7 +622,9 @@
             <ul class="nav-links">
                 <li><a href="#about">关于</a></li>
                 <li><a href="#interests">兴趣</a></li>
+                <li><a href="#resources">资源</a></li>
                 <li><a href="#links">链接</a></li>
+                <li><a href="/post/">博客</a></li>
             </ul>
         </div>
     </nav>
@@ -579,6 +667,9 @@
                     </p>
                     <p>
                         除了技术，<strong>摄影</strong>是我记录生活的方式。我特别钟爱<strong>松下（Panasonic）</strong>相机，尤其是它的 <strong>Real Time LUT</strong> 功能。这种"所见即所得"的拍摄体验，让我能够将后期的创意在按下快门的瞬间就烧录进照片中。
+                    </p>
+                    <p>
+                        我同时也创作 <strong>UNIX 历史</strong>相关的 fiction 作品，喜欢研究从 PDP-11 到现代操作系统的演变历程，并从中汲取灵感。
                     </p>
                 </div>
                 <div class="about-highlights">
@@ -632,6 +723,41 @@
             </div>
         </section>
 
+        <!-- Resources Section (New) -->
+        <section id="resources">
+            <h2 class="section-title">资源分享</h2>
+            <p class="section-subtitle">LUT 工具、配置文件、摄影资源等</p>
+            <div class="links-grid">
+                <a href="/resources/" class="link-card">
+                    <i class="fas fa-folder-open"></i>
+                    <h3>资源中心</h3>
+                    <p>浏览所有可用资源</p>
+                </a>
+                <a href="/resources/lut_tools/" class="link-card">
+                    <i class="fas fa-camera-retro"></i>
+                    <h3>LUT 工具</h3>
+                    <p>Panasonic Lumix 实时 LUT 相关</p>
+                </a>
+                <a href="/post/rss.xml" class="link-card">
+                    <i class="fas fa-rss"></i>
+                    <h3>RSS 订阅</h3>
+                    <p>通过 RSS 订阅博客更新</p>
+                </a>
+            </div>
+        </section>
+
+        <!-- Latest Posts Section (New) -->
+        <section id="blog">
+            <h2 class="section-title">最新文章</h2>
+            <p class="section-subtitle">技术、摄影与生活分享</p>
+            <div id="latest-posts">
+                <ul class="post-preview-list" id="post-list">
+                    <!-- Will be populated by script -->
+                </ul>
+                <a href="/post/" class="view-all-link">查看全部文章 →</a>
+            </div>
+        </section>
+
         <!-- Links Section -->
         <section id="links">
             <h2 class="section-title">联系与链接</h2>
@@ -653,12 +779,12 @@
                 </a>
                 <a href="/resources/" class="link-card">
                     <i class="fas fa-folder-open"></i>
-                    <h3>文件目录</h3>
-                    <p>仿 FTP 风格资源库</p>
+                    <h3>资源目录</h3>
+                    <p>完整的资源库</p>
                 </a>
                 <a href="/post/" class="link-card">
                     <i class="fas fa-pen-nib"></i>
-                    <h3>贴子列表</h3>
+                    <h3>博客文章</h3>
                     <p>个人博客与分享</p>
                 </a>
             </div>
@@ -667,7 +793,34 @@
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2026 Leo Lee. Built with <a href="https://archlinux.org">Arch Linux</a> spirit and <a href="https://manus.im">Manus</a> inspiration.</p>
+        <p>&copy; 2026 Leo Lee. Built with <a href="https://archlinux.org">Arch Linux</a> spirit.
+        <br>📡 <a href="/post/rss.xml">RSS 订阅</a> | 🗺️ <a href="/sitemap.xml">站点地图</a></p>
     </footer>
+
+    <script>
+        // Fetch latest posts from GitHub API to show on homepage
+        fetch('https://api.github.com/repos/lqy306/lqy306.github.io/contents/post')
+            .then(r => r.json())
+            .then(data => {
+                const dirs = data.filter(item => item.type === 'dir').reverse();
+                const list = document.getElementById('post-list');
+                if (dirs.length === 0) {
+                    list.innerHTML = '<li style="color:#999;padding:1rem 0;">暂无文章</li>';
+                    return;
+                }
+                dirs.slice(0, 5).forEach(dir => {
+                    const name = dir.name.replace(/[-_]/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+                    const li = document.createElement('li');
+                    li.className = 'post-preview-item';
+                    li.innerHTML = '<span class="post-preview-date">📅 最新</span>' +
+                        '<span class="post-preview-title"><a href="/post/' + dir.name + '/">' + name + '</a></span>';
+                    list.appendChild(li);
+                });
+            })
+            .catch(() => {
+                document.getElementById('post-list').innerHTML =
+                    '<li style="color:#999;padding:1rem 0;"><a href="/post/">前往博客查看最新文章 →</a></li>';
+            });
+    </script>
 </body>
 </html>
