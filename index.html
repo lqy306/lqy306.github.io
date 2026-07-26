@@ -1,397 +1,970 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-theme="light">
+<html lang="zh-CN" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leo Lee | 个人主页</title>
-    <meta name="description" content="一名来自中国福建厦门的学生，Arch Linux 忠实拥趸，热爱摄影与开源技术。">
-    <meta name="keywords" content="Leo Lee, Arch Linux, 摄影, 开源, LUT, Panasonic Lumix, S1RM2">
+    <title>LEO LEE / 森山大道风格</title>
+    <meta name="description" content="街头摄影 · 黑白影像 · 城市碎片">
+    <meta name="keywords" content="Leo Lee, 街头摄影, 黑白摄影, Lumix S1RM2, 森山大道风格">
     <meta name="author" content="Leo Lee">
 
-    <!-- Open Graph -->
-    <meta property="og:title" content="Leo Lee | 个人主页">
-    <meta property="og:description" content="一名来自中国福建厦门的学生，Arch Linux 忠实拥趸，热爱摄影与开源技术。">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://lqy306.github.io">
-    <meta property="og:image" content="https://avatars.githubusercontent.com/u/140314935?v=4">
-
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Leo Lee | 个人主页">
-    <meta name="twitter:description" content="一名来自中国福建厦门的学生，Arch Linux 忠实拥趸，热爱摄影与开源技术。">
-
-    <!-- Fonts & Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="sitemap" type="application/xml" href="/sitemap.xml">
 
     <style>
-        /* ── Self-hosted fonts ── */
+        /* ── Fonts ── */
         @font-face {
             font-family: 'F1.8';
             src: url('/fonts/F1.8-Regular.woff2') format('woff2'),
                  url('/fonts/F1.8-Regular.otf') format('opentype');
             font-display: swap;
         }
-
         @font-face {
             font-family: 'ChillRoundGothic';
             src: url('/fonts/ChillRoundGothic_Bold.woff2') format('woff2');
             font-display: swap;
         }
-
         @font-face {
             font-family: 'VonwaonBitmap';
-            src: url('/fonts/VonwaonBitmap-12pxLite.woff2') format('woff2');
+            src: url('/fonts/VonwaonBitmap-16pxLite.woff2') format('woff2');
             font-display: swap;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            --clr-black: #34322D;
-            --clr-gray: #F8F8F8;
-            --clr-white: #FFFFFF;
-            --clr-accent: #1793d1;
-            --clr-accent-light: rgba(23, 147, 209, 0.08);
-            --clr-accent-glow: rgba(23, 147, 209, 0.2);
-            --clr-border: rgba(52, 50, 45, 0.1);
-            --clr-border-hover: rgba(52, 50, 45, 0.2);
-            --body-bg: var(--clr-white);
-            --surface-bg: var(--clr-gray);
-            --nav-bg: rgba(255, 255, 255, 0.92);
-            --card-bg: rgba(248, 248, 248, 0.55);
-            --card-bg-hover: rgba(248, 248, 248, 1);
-            --highlight-bg: rgba(248, 248, 248, 0.8);
-            --highlight-bg-hover: rgba(248, 248, 248, 1);
-            --text-primary: var(--clr-black);
-            --text-secondary: #666;
-            --text-muted: #999;
-            --text-on-accent: var(--clr-white);
-            --footer-bg: var(--clr-black);
-            --footer-text: var(--clr-gray);
-            --hero-gradient: linear-gradient(135deg, rgba(255, 248, 248, 0.5) 0%, rgba(248, 248, 248, 0.3) 100%);
+            --ink: #000000;
+            --paper: #f2efe9;
+            --paper-dark: #e8e4dc;
+            --grain: rgba(0,0,0,0.06);
+            --accent-red: #c41e3a;
+            --text-dark: #111;
+            --text-mid: #444;
+            --text-light: #888;
+            --border-raw: 1px solid #000;
         }
 
-        [data-theme="dark"] {
-            --clr-black: #E8E6E3;
-            --clr-gray: #1b1b2f;
-            --clr-white: #121212;
-            --clr-accent: #4FC3F7;
-            --clr-accent-light: rgba(79, 195, 247, 0.10);
-            --clr-accent-glow: rgba(79, 195, 247, 0.20);
-            --clr-border: rgba(232, 230, 227, 0.08);
-            --clr-border-hover: rgba(232, 230, 227, 0.18);
-            --body-bg: #121212;
-            --surface-bg: #1b1b2f;
-            --nav-bg: rgba(18, 18, 18, 0.92);
-            --card-bg: rgba(27, 27, 47, 0.55);
-            --card-bg-hover: rgba(27, 27, 47, 1);
-            --highlight-bg: rgba(27, 27, 47, 0.8);
-            --highlight-bg-hover: rgba(27, 27, 47, 1);
-            --text-primary: #E8E6E3;
-            --text-secondary: #A0A0A0;
-            --text-muted: #686868;
-            --text-on-accent: #121212;
-            --footer-bg: #0b0b17;
-            --footer-text: #A0A0A0;
-            --hero-gradient: linear-gradient(135deg, rgba(27, 27, 47, 0.9) 0%, rgba(18, 18, 18, 0.95) 100%);
-        }
+        html { scroll-behavior: smooth; }
 
-        html { scroll-behavior: smooth; transition: background-color 0.3s ease; }
         body {
-            font-family: 'F1.8', 'ChillRoundGothic', sans-serif;
-            background-color: var(--body-bg);
-            color: var(--text-primary);
-            line-height: 1.6;
+            font-family: 'F1.8', 'ChillRoundGothic', 'Helvetica Neue', Arial, sans-serif;
+            background: var(--paper);
+            color: var(--text-dark);
+            line-height: 1.7;
             overflow-x: hidden;
-            transition: background-color 0.3s ease, color 0.3s ease;
+            position: relative;
         }
 
+        /* ── Film Grain Overlay ── */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.35;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+        }
+
+        /* ── Navigation ── */
         nav {
             position: fixed;
             top: 0; left: 0; right: 0;
-            z-index: 1000;
-            background: var(--nav-bg);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--clr-border);
-            transition: background 0.3s ease, border-color 0.3s ease;
+            z-index: 100;
+            background: var(--ink);
+            border-bottom: 3px solid var(--ink);
         }
-
         .nav-container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 0.85rem 2rem;
+            padding: 0.7rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-
         .logo {
-            font-family: 'F1.8', 'ChillRoundGothic', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--text-primary);
+            font-family: 'F1.8', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 900;
+            color: var(--paper);
             text-decoration: none;
-            letter-spacing: -0.02em;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
         }
-
-        .nav-links { display: flex; gap: 1.8rem; list-style: none; align-items: center; }
+        .logo span {
+            color: var(--accent-red);
+        }
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
         .nav-links a {
-            color: var(--text-primary);
+            color: var(--paper);
             text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: color 0.3s ease;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            transition: all 0.2s ease;
             position: relative;
         }
-        .nav-links a:hover { color: var(--clr-accent); }
-
-        .theme-toggle {
-            background: none;
-            border: 2px solid var(--clr-border);
-            border-radius: 50%;
-            width: 36px;
-            height: 36px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1rem;
-            color: var(--text-primary);
-            transition: all 0.3s ease;
+        .nav-links a:hover {
+            color: var(--accent-red);
         }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-red);
+            transition: width 0.3s ease;
+        }
+        .nav-links a:hover::after { width: 100%; }
 
+        /* ── Hero Section ── */
         .hero {
-            margin-top: 80px;
-            min-height: 80vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-            background: var(--hero-gradient);
-        }
-
-        .hero-content { text-align: center; max-width: 800px; }
-        .hero-avatar {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            margin: 0 auto 2rem;
-            border: 3px solid var(--text-primary);
+            position: relative;
+            height: 100vh;
+            min-height: 600px;
             overflow: hidden;
-            box-shadow: 0 10px 40px rgba(52, 50, 45, 0.1);
+            background: var(--ink);
         }
-        .hero-avatar img { width: 100%; height: 100%; object-fit: cover; }
-        .hero h1 { font-size: 3.5rem; font-weight: 700; margin-bottom: 1rem; }
-        .hero-subtitle { font-size: 1.25rem; color: var(--clr-accent); font-weight: 500; margin-bottom: 2rem; font-style: italic; }
-        .hero-description { font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 3rem; line-height: 1.8; max-width: 600px; margin-left: auto; margin-right: auto; }
-
-        .social-links { display: flex; justify-content: center; gap: 2rem; font-size: 1.5rem; }
-        .social-links a {
-            color: var(--text-primary);
-            transition: all 0.3s ease;
-            width: 50px;
-            height: 50px;
+        .hero-image {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url('photos/黑白-街头/奔跑.jpg');
+            background-size: cover;
+            background-position: center;
+            filter: grayscale(100%) contrast(1.4) brightness(0.7);
+            transform: scale(1.05);
+        }
+        .hero-image::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(0,0,0,0.3) 0%,
+                rgba(0,0,0,0.1) 40%,
+                rgba(0,0,0,0.7) 100%
+            );
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 0 3rem 6rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .hero-label {
+            font-family: 'VonwaonBitmap', monospace;
+            font-size: 0.85rem;
+            color: var(--accent-red);
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
             display: flex;
             align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            border: 2px solid var(--clr-border);
+            gap: 1rem;
         }
-        .social-links a:hover { color: var(--text-on-accent); background: var(--clr-accent); border-color: var(--clr-accent); transform: translateY(-4px); }
-
-        main { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
-        section { margin: 6rem 0; }
-        .section-title { font-size: 2.5rem; font-weight: 700; margin-bottom: 3rem; color: var(--text-primary); position: relative; padding-bottom: 1rem; }
-        .section-title::after { content: ''; position: absolute; bottom: 0; left: 0; width: 60px; height: 3px; background: var(--clr-accent); }
-
-        .about-text p { font-size: 1.05rem; margin-bottom: 1.5rem; color: var(--text-secondary); }
-        .ai-notice {
-            background: var(--clr-accent-light);
-            border-left: 4px solid var(--clr-accent);
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin: 2rem 0;
+        .hero-label::before {
+            content: '';
+            width: 40px;
+            height: 2px;
+            background: var(--accent-red);
         }
-        .ai-notice h4 { margin-bottom: 0.5rem; color: var(--clr-accent); }
+        .hero h1 {
+            font-family: 'F1.8', sans-serif;
+            font-size: clamp(3rem, 10vw, 8rem);
+            font-weight: 900;
+            color: var(--paper);
+            line-height: 0.9;
+            letter-spacing: -0.02em;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+        }
+        .hero h1 .kanji {
+            display: block;
+            font-size: 0.35em;
+            font-weight: 400;
+            letter-spacing: 0.5em;
+            margin-top: 0.8rem;
+            color: rgba(242,239,233,0.6);
+        }
+        .hero-tagline {
+            font-size: 1.1rem;
+            color: rgba(242,239,233,0.8);
+            max-width: 500px;
+            margin-bottom: 2rem;
+            font-style: italic;
+            letter-spacing: 0.02em;
+        }
+        .hero-meta {
+            display: flex;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+        .hero-meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+        .hero-meta-label {
+            font-family: 'VonwaonBitmap', monospace;
+            font-size: 0.7rem;
+            color: rgba(242,239,233,0.5);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+        .hero-meta-value {
+            font-size: 0.95rem;
+            color: var(--paper);
+            font-weight: 600;
+        }
 
-        /* Photo Gallery */
+        /* ── Scroll Indicator ── */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            right: 3rem;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.8rem;
+            color: rgba(242,239,233,0.6);
+            font-family: 'VonwaonBitmap', monospace;
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+        .scroll-line {
+            width: 1px;
+            height: 60px;
+            background: linear-gradient(to bottom, transparent, rgba(242,239,233,0.6));
+            animation: scrollPulse 2s ease-in-out infinite;
+        }
+        @keyframes scrollPulse {
+            0%, 100% { opacity: 0.3; transform: scaleY(0.6); }
+            50% { opacity: 1; transform: scaleY(1); }
+        }
+
+        /* ── Main Sections ── */
+        main { position: relative; }
+
+        .section {
+            padding: 6rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            margin-bottom: 4rem;
+            border-bottom: 2px solid var(--ink);
+            padding-bottom: 1.5rem;
+        }
+        .section-title-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .section-number {
+            font-family: 'VonwaonBitmap', monospace;
+            font-size: 0.8rem;
+            color: var(--accent-red);
+            letter-spacing: 0.2em;
+        }
+        .section-title {
+            font-family: 'F1.8', sans-serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 900;
+            color: var(--ink);
+            letter-spacing: -0.01em;
+            text-transform: uppercase;
+            line-height: 1;
+        }
+        .section-title-jp {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            letter-spacing: 0.3em;
+            margin-top: 0.3rem;
+        }
+        .section-sub {
+            font-size: 0.85rem;
+            color: var(--text-mid);
+            text-align: right;
+            max-width: 280px;
+            line-height: 1.8;
+        }
+
+        /* ── About Section ── */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 5rem;
+            align-items: start;
+        }
+        .about-portrait {
+            position: relative;
+        }
+        .about-portrait-frame {
+            position: relative;
+            aspect-ratio: 3/4;
+            overflow: hidden;
+            border: 3px solid var(--ink);
+            background: var(--paper-dark);
+        }
+        .about-portrait-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%) contrast(1.2);
+        }
+        .about-portrait-frame::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(45deg, transparent 60%, rgba(196,30,58,0.15) 100%);
+            pointer-events: none;
+        }
+        .about-portrait-label {
+            position: absolute;
+            bottom: -1.5rem;
+            right: -1.5rem;
+            background: var(--ink);
+            color: var(--paper);
+            padding: 1rem 1.5rem;
+            font-family: 'VonwaonBitmap', monospace;
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            border: 2px solid var(--ink);
+        }
+        .about-portrait-label span {
+            color: var(--accent-red);
+        }
+        .about-text {
+            padding-top: 1rem;
+        }
+        .about-text h3 {
+            font-family: 'F1.8', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: -0.01em;
+        }
+        .about-text p {
+            font-size: 1rem;
+            color: var(--text-mid);
+            margin-bottom: 1.5rem;
+            line-height: 1.9;
+        }
+        .about-text strong {
+            color: var(--ink);
+            font-weight: 700;
+        }
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(0,0,0,0.1);
+        }
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+        .stat-number {
+            font-family: 'F1.8', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--ink);
+            line-height: 1;
+        }
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        /* ── Philosophy Quote ── */
+        .philosophy {
+            background: var(--ink);
+            padding: 5rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .philosophy::before {
+            content: 'あ・ぶれ・ぼけ';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'F1.8', sans-serif;
+            font-size: clamp(4rem, 15vw, 12rem);
+            font-weight: 900;
+            color: rgba(255,255,255,0.03);
+            white-space: nowrap;
+            pointer-events: none;
+            letter-spacing: 0.1em;
+        }
+        .philosophy-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        .philosophy-mark {
+            font-family: 'F1.8', sans-serif;
+            font-size: 5rem;
+            color: var(--accent-red);
+            line-height: 1;
+            margin-bottom: -1rem;
+        }
+        .philosophy-text {
+            font-family: 'F1.8', serif;
+            font-size: clamp(1.3rem, 3vw, 2rem);
+            color: var(--paper);
+            line-height: 1.6;
+            font-weight: 300;
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+        .philosophy-author {
+            font-family: 'VonwaonBitmap', monospace;
+            font-size: 0.8rem;
+            color: rgba(242,239,233,0.5);
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+        }
+
+        /* ── Gallery ── */
+        .gallery-filters {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+        .filter-btn {
+            background: transparent;
+            border: 2px solid var(--ink);
+            padding: 0.6rem 1.2rem;
+            font-family: 'F1.8', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: var(--ink);
+        }
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--ink);
+            color: var(--paper);
+        }
+        .filter-btn.active {
+            background: var(--accent-red);
+            border-color: var(--accent-red);
+        }
+
         .photo-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: 200px;
+            gap: 8px;
         }
         .photo-item {
             position: relative;
-            border-radius: 12px;
             overflow: hidden;
-            aspect-ratio: 3 / 2;
-            background: var(--clr-gray);
+            background: var(--ink);
+            cursor: pointer;
         }
+        .photo-item.tall { grid-row: span 2; }
+        .photo-item.wide { grid-column: span 2; }
+        .photo-item.big { grid-column: span 2; grid-row: span 2; }
+
         .photo-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
+            filter: grayscale(100%) contrast(1.15);
+            transition: all 0.5s ease;
         }
-        .photo-item:hover img { transform: scale(1.05); }
-        .photo-caption {
+        .photo-item:hover img {
+            transform: scale(1.08);
+            filter: grayscale(100%) contrast(1.3);
+        }
+        .photo-item::after {
+            content: '';
             position: absolute;
-            bottom: 0; left: 0; right: 0;
-            padding: 1rem;
-            background: linear-gradient(transparent, rgba(0,0,0,0.7));
-            color: white;
-            font-size: 0.9rem;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 50%);
             opacity: 0;
             transition: opacity 0.3s ease;
         }
-        .photo-item:hover .photo-caption { opacity: 1; }
-
-        footer {
-            margin-top: 6rem;
-            padding: 3rem 2rem;
-            background: var(--footer-bg);
-            color: var(--footer-text);
-            text-align: center;
+        .photo-item:hover::after { opacity: 1; }
+        .photo-info {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            padding: 1.5rem;
+            z-index: 2;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
         }
-        footer a { color: var(--clr-accent); text-decoration: none; }
+        .photo-item:hover .photo-info { transform: translateY(0); }
+        .photo-series {
+            font-family: 'VonwaonBitmap', monospace;
+            font-size: 0.65rem;
+            color: var(--accent-red);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 0.4rem;
+        }
+        .photo-title {
+            font-family: 'F1.8', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--paper);
+        }
 
+        /* ── Contact / Footer ── */
+        .contact-strip {
+            background: var(--ink);
+            padding: 4rem 2rem;
+            position: relative;
+        }
+        .contact-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+        .contact-brand h2 {
+            font-family: 'F1.8', sans-serif;
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--paper);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+        .contact-brand h2 span { color: var(--accent-red); }
+        .contact-brand p {
+            color: rgba(242,239,233,0.5);
+            font-size: 0.9rem;
+            line-height: 1.8;
+            max-width: 400px;
+        }
+        .contact-col h4 {
+            font-family: 'VonwaonBitmap', monospace;
+            font-size: 0.75rem;
+            color: var(--accent-red);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+        .contact-col a,
+        .contact-col p {
+            display: block;
+            color: var(--paper);
+            text-decoration: none;
+            font-size: 0.95rem;
+            margin-bottom: 0.8rem;
+            transition: color 0.2s ease;
+        }
+        .contact-col a:hover { color: var(--accent-red); }
+        .social-row {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .social-row a {
+            width: 42px;
+            height: 42px;
+            border: 2px solid rgba(242,239,233,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+            margin-bottom: 0;
+        }
+        .social-row a:hover {
+            background: var(--accent-red);
+            border-color: var(--accent-red);
+            color: var(--paper);
+        }
+
+        .footer-bottom {
+            background: #000;
+            padding: 1.5rem 2rem;
+            border-top: 1px solid rgba(242,239,233,0.1);
+        }
+        .footer-bottom-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'VonwaonBitmap', monospace;
+            font-size: 0.7rem;
+            color: rgba(242,239,233,0.4);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 1024px) {
+            .photo-grid { grid-template-columns: repeat(3, 1fr); }
+            .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .about-portrait { max-width: 400px; }
+            .contact-inner { grid-template-columns: 1fr 1fr; gap: 3rem; }
+            .contact-brand { grid-column: span 2; }
+        }
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .section-title { font-size: 1.8rem; }
-            .photo-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            .nav-container { padding: 0.7rem 1.2rem; }
+            .hero-content { padding: 0 1.5rem 4rem; }
+            .hero-meta { gap: 1.5rem; }
+            .section { padding: 4rem 1.5rem; }
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            .section-sub { text-align: left; max-width: none; }
+            .photo-grid {
+                grid-template-columns: repeat(2, 1fr);
+                grid-auto-rows: 160px;
+            }
+            .photo-item.wide,
+            .photo-item.big { grid-column: span 2; }
+            .about-stats { grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+            .stat-number { font-size: 1.8rem; }
+            .contact-inner { grid-template-columns: 1fr; gap: 2rem; }
+            .contact-brand { grid-column: span 1; }
+            .footer-bottom-inner { flex-direction: column; gap: 0.5rem; text-align: center; }
+        }
+        @media (max-width: 480px) {
+            .photo-grid {
+                grid-template-columns: 1fr;
+                grid-auto-rows: 220px;
+            }
+            .photo-item.tall { grid-row: span 1; }
+            .photo-item.wide,
+            .photo-item.big { grid-column: span 1; grid-row: span 1; }
         }
     </style>
 </head>
 <body>
+
+    <!-- Navigation -->
     <nav>
         <div class="nav-container">
-            <a href="#" class="logo">Leo Lee</a>
+            <a href="#" class="logo">Leo <span>Lee</span></a>
             <ul class="nav-links">
-                <li><a href="#about">关于</a></li>
-                <li><a href="#gallery">作品</a></li>
-                <li><a href="https://github.com/lqy306" target="_blank">GitHub</a></li>
-                <li>
-                    <button class="theme-toggle" id="theme-toggle" aria-label="切换主题">
-                        <i class="fas fa-moon" id="theme-icon"></i>
-                    </button>
-                </li>
+                <li><a href="#about">关于 / About</a></li>
+                <li><a href="#gallery">作品 / Works</a></li>
+                <li><a href="#contact">联系 / Contact</a></li>
+                <li><a href="https://github.com/lqy306" target="_blank"><i class="fab fa-github"></i></a></li>
             </ul>
         </div>
     </nav>
 
+    <!-- Hero -->
     <section class="hero">
+        <div class="hero-image"></div>
         <div class="hero-content">
-            <div class="hero-avatar">
-                <img src="https://avatars.githubusercontent.com/u/140314935?v=4" alt="Leo Lee">
-            </div>
-            <h1>Leo Lee</h1>
-            <p class="hero-subtitle">I use Arch Linux, btw.</p>
-            <p class="hero-description">
-                一名来自中国福建厦门的学生，Arch Linux 忠实拥趸，热爱摄影与开源技术。
+            <div class="hero-label">Street Photography / 街头影像</div>
+            <h1>
+                城市碎片
+                <span class="kanji">トシノカケラ</span>
+            </h1>
+            <p class="hero-tagline">
+                用镜头记录城市的褶皱。模糊、颗粒、失焦——那些不完美的瞬间，才是最真实的。
             </p>
-            <div class="social-links">
-                <a href="https://github.com/lqy306" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-                <a href="https://500px.com/lqy_learning" target="_blank" title="500px"><i class="fas fa-camera"></i></a>
-                <a href="mailto:lqy.work.learning@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+            <div class="hero-meta">
+                <div class="hero-meta-item">
+                    <span class="hero-meta-label">Camera</span>
+                    <span class="hero-meta-value">Lumix S1RM2</span>
+                </div>
+                <div class="hero-meta-item">
+                    <span class="hero-meta-label">Location</span>
+                    <span class="hero-meta-value">厦门 / Xiamen</span>
+                </div>
+                <div class="hero-meta-item">
+                    <span class="hero-meta-label">Style</span>
+                    <span class="hero-meta-value">Are-Bure-Boke</span>
+                </div>
             </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll</span>
+            <div class="scroll-line"></div>
         </div>
     </section>
 
     <main>
-        <section id="about">
-            <h2 class="section-title">关于我</h2>
-            <div class="about-text">
-                <p>你好！我是 <strong>Leo Lee</strong>。我是一名 <strong>Arch Linux</strong> 的忠实拥趸，追求极简、灵活与高效。</p>
-                <p>在摄影方面，我已全面更换至 <strong>Lumix S1RM2</strong>。这台相机以其卓越的画质和强大的性能，成为了我记录世界的新伙伴。我依然钟爱 <strong>Real Time LUT</strong> 工作流，它让视觉创意在按下快门的瞬间得以实现。</p>
-                
-                <div class="ai-notice">
-                    <h4>🤖 AI 维护说明</h4>
-                    <p>这个网站目前由 <strong>AI (Manus)</strong> 负责维护与更新。这意味着网站的风格、结构和功能随时可能迎来剧烈的变化。为了回归纯粹，我已删除了所有不必要的自动化功能和复杂的帖子管理系统。现在的网站将保持最简状态，内容将通过手动管理进行更新。</p>
+        <!-- Philosophy -->
+        <section class="philosophy">
+            <div class="philosophy-content">
+                <div class="philosophy-mark">"</div>
+                <p class="philosophy-text">
+                    对我来说，摄影不是关于美丽的构图或技术的精确。<br>
+                    而是捕捉生活展开时的混乱。
+                </p>
+                <div class="philosophy-author">— 森山大道 / Daido Moriyama</div>
+            </div>
+        </section>
+
+        <!-- About -->
+        <section class="section" id="about">
+            <div class="section-header">
+                <div class="section-title-group">
+                    <span class="section-number">01 / プロフィール</span>
+                    <h2 class="section-title">关于我</h2>
+                    <span class="section-title-jp">ABOUT</span>
+                </div>
+                <p class="section-sub">
+                    Arch Linux 使用者，街头摄影爱好者。<br>
+                    用相机记录城市中被忽略的瞬间。
+                </p>
+            </div>
+
+            <div class="about-grid">
+                <div class="about-portrait">
+                    <div class="about-portrait-frame">
+                        <img src="https://avatars.githubusercontent.com/u/140314935?v=4" alt="Leo Lee">
+                    </div>
+                    <div class="about-portrait-label">
+                        攝影師 / <span>Photographer</span>
+                    </div>
+                </div>
+
+                <div class="about-text">
+                    <h3>在明暗之间寻找真实</h3>
+                    <p>
+                        你好，我是 <strong>Leo Lee</strong>。一名来自福建厦门的学生，<strong>Arch Linux</strong> 忠实拥趸，热爱摄影与开源技术。
+                    </p>
+                    <p>
+                        在摄影方面，我使用 <strong>Lumix S1RM2</strong>。这台相机以卓越的画质和强大的性能，成为我记录世界的伙伴。我钟爱 <strong>Real Time LUT</strong> 工作流，让视觉创意在按下快门的瞬间得以实现。
+                    </p>
+                    <p>
+                        受森山大道、荒木经惟等日本摄影大师影响，我痴迷于黑白街头摄影的原始力量——<strong>粗糙、模糊、失焦</strong>，那些被认为是"缺陷"的东西，恰恰是最有生命力的。
+                    </p>
+
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">3+</span>
+                            <span class="stat-label">摄影系列</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">1000+</span>
+                            <span class="stat-label">快门次数</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">∞</span>
+                            <span class="stat-label">街头瞬间</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="gallery">
-            <h2 class="section-title">最新作品</h2>
-            <p style="color:var(--text-secondary); margin-bottom: 2rem;">使用 Lumix S1RM2 拍摄的黑白系列作品。</p>
+        <!-- Gallery -->
+        <section class="section" id="gallery">
+            <div class="section-header">
+                <div class="section-title-group">
+                    <span class="section-number">02 / 作品</span>
+                    <h2 class="section-title">最新作品</h2>
+                    <span class="section-title-jp">RECENT WORKS</span>
+                </div>
+                <p class="section-sub">
+                    黑白系列精选<br>
+                    Lumix S1RM2 拍摄
+                </p>
+            </div>
+
+            <div class="gallery-filters">
+                <button class="filter-btn active" data-filter="all">全部 / All</button>
+                <button class="filter-btn" data-filter="street">街头 / Street</button>
+                <button class="filter-btn" data-filter="trix">Tri-X 400</button>
+                <button class="filter-btn" data-filter="transit">公共交通 / Transit</button>
+            </div>
+
             <div class="photo-grid">
-                <!-- 黑白-街头 -->
-                <div class="photo-item">
+                <div class="photo-item big" data-category="street">
                     <img src="photos/黑白-街头/奔跑.jpg" alt="奔跑">
-                    <div class="photo-caption">奔跑 - 街头系列</div>
+                    <div class="photo-info">
+                        <div class="photo-series">街头系列 / Street Series</div>
+                        <div class="photo-title">奔跑</div>
+                    </div>
                 </div>
-                <div class="photo-item">
+                <div class="photo-item" data-category="street">
                     <img src="photos/黑白-街头/骑车的男孩.jpg" alt="骑车的男孩">
-                    <div class="photo-caption">骑车的男孩 - 街头系列</div>
+                    <div class="photo-info">
+                        <div class="photo-series">街头系列</div>
+                        <div class="photo-title">骑车的男孩</div>
+                    </div>
                 </div>
-                <div class="photo-item">
+                <div class="photo-item" data-category="street">
                     <img src="photos/黑白-街头/外卖员的通话.jpg" alt="外卖员的通话">
-                    <div class="photo-caption">外卖员的通话 - 街头系列</div>
+                    <div class="photo-info">
+                        <div class="photo-series">街头系列</div>
+                        <div class="photo-title">外卖员的通话</div>
+                    </div>
                 </div>
-                <div class="photo-item">
-                    <img src="photos/黑白-街头/骑自行车的女人.jpg" alt="骑自行车的女人">
-                    <div class="photo-caption">骑自行车的女人 - 街头系列</div>
-                </div>
-                <!-- 黑白-Tri-X 400系列 -->
-                <div class="photo-item">
+                <div class="photo-item tall" data-category="trix">
                     <img src="photos/黑白-Tri-X 400系列/垂钓者.jpg" alt="垂钓者">
-                    <div class="photo-caption">垂钓者 - Tri-X 400系列</div>
+                    <div class="photo-info">
+                        <div class="photo-series">Tri-X 400 系列</div>
+                        <div class="photo-title">垂钓者</div>
+                    </div>
                 </div>
-                <div class="photo-item">
-                    <img src="photos/黑白-Tri-X 400系列/烟.jpg" alt="烟">
-                    <div class="photo-caption">烟 - Tri-X 400系列</div>
+                <div class="photo-item" data-category="street">
+                    <img src="photos/黑白-街头/骑自行车的女人.jpg" alt="骑自行车的女人">
+                    <div class="photo-info">
+                        <div class="photo-series">街头系列</div>
+                        <div class="photo-title">骑自行车的女人</div>
+                    </div>
                 </div>
-                <div class="photo-item">
-                    <img src="photos/黑白-Tri-X 400系列/轮椅和魔方.jpg" alt="轮椅和魔方">
-                    <div class="photo-caption">轮椅和魔方 - Tri-X 400系列</div>
-                </div>
-                <div class="photo-item">
+                <div class="photo-item wide" data-category="trix">
                     <img src="photos/黑白-Tri-X 400系列/鹭江泳.jpg" alt="鹭江泳">
-                    <div class="photo-caption">鹭江泳 - Tri-X 400系列</div>
+                    <div class="photo-info">
+                        <div class="photo-series">Tri-X 400 系列</div>
+                        <div class="photo-title">鹭江泳</div>
+                    </div>
                 </div>
-                <!-- 黑白-公共交通 -->
-                <div class="photo-item">
+                <div class="photo-item" data-category="trix">
+                    <img src="photos/黑白-Tri-X 400系列/烟.jpg" alt="烟">
+                    <div class="photo-info">
+                        <div class="photo-series">Tri-X 400 系列</div>
+                        <div class="photo-title">烟</div>
+                    </div>
+                </div>
+                <div class="photo-item tall" data-category="transit">
                     <img src="photos/黑白-公共交通/回头.jpg" alt="回头">
-                    <div class="photo-caption">回头 - 公共交通系列</div>
+                    <div class="photo-info">
+                        <div class="photo-series">公共交通系列</div>
+                        <div class="photo-title">回头</div>
+                    </div>
                 </div>
-                <div class="photo-item">
+                <div class="photo-item" data-category="transit">
                     <img src="photos/黑白-公共交通/窥探.jpg" alt="窥探">
-                    <div class="photo-caption">窥探 - 公共交通系列</div>
+                    <div class="photo-info">
+                        <div class="photo-series">公共交通系列</div>
+                        <div class="photo-title">窥探</div>
+                    </div>
                 </div>
-                <div class="photo-item">
+                <div class="photo-item wide" data-category="transit">
                     <img src="photos/黑白-公共交通/钢琴码头.jpg" alt="钢琴码头">
-                    <div class="photo-caption">钢琴码头 - 公共交通系列</div>
+                    <div class="photo-info">
+                        <div class="photo-series">公共交通系列</div>
+                        <div class="photo-title">钢琴码头</div>
+                    </div>
+                </div>
+                <div class="photo-item" data-category="trix">
+                    <img src="photos/黑白-Tri-X 400系列/轮椅和魔方.jpg" alt="轮椅和魔方">
+                    <div class="photo-info">
+                        <div class="photo-series">Tri-X 400 系列</div>
+                        <div class="photo-title">轮椅和魔方</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Strip -->
+        <section class="contact-strip" id="contact">
+            <div class="contact-inner">
+                <div class="contact-brand">
+                    <h2>Leo <span>Lee</span></h2>
+                    <p>
+                        街头摄影 / 开源技术 / Arch Linux<br>
+                        这个网站由 AI 维护，保持极简实验精神。<br>
+                        随时可能变化，因为生活本身就是流动的。
+                    </p>
+                    <div class="social-row">
+                        <a href="https://github.com/lqy306" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="https://500px.com/lqy_learning" target="_blank" title="500px"><i class="fas fa-camera"></i></a>
+                        <a href="mailto:lqy.work.learning@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                <div class="contact-col">
+                    <h4>导航 / Navigate</h4>
+                    <a href="#about">关于我</a>
+                    <a href="#gallery">摄影作品</a>
+                    <a href="https://github.com/lqy306" target="_blank">GitHub</a>
+                </div>
+                <div class="contact-col">
+                    <h4>器材 / Gear</h4>
+                    <p>Lumix S1RM2</p>
+                    <p>Real Time LUT</p>
+                    <p>黑白 / Tri-X 风格</p>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer>
-        <p>&copy; 2026 Leo Lee. Built with <a href="https://archlinux.org">Arch Linux</a> spirit &amp; AI Maintenance.</p>
-        <p style="font-size:0.75rem;margin-top:0.5rem;opacity:0.7;">
-            随时可能变化的极简主义实验。
-        </p>
+    <!-- Footer -->
+    <footer class="footer-bottom">
+        <div class="footer-bottom-inner">
+            <span>&copy; 2026 Leo Lee. All rights reserved.</span>
+            <span>Built with Arch Linux spirit &amp; Are-Bure-Boke aesthetic</span>
+        </div>
     </footer>
 
     <script>
+        // Gallery filter
         (function() {
-            const toggle = document.getElementById('theme-toggle');
-            const icon = document.getElementById('theme-icon');
-            const html = document.documentElement;
-            const saved = localStorage.getItem('theme');
-            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            const theme = saved || (prefersDark ? 'dark' : 'light');
-            html.setAttribute('data-theme', theme);
-            icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
-            toggle.addEventListener('click', function() {
-                const current = html.getAttribute('data-theme');
-                const next = current === 'dark' ? 'light' : 'dark';
-                html.setAttribute('data-theme', next);
-                localStorage.setItem('theme', next);
-                icon.className = next === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const photoItems = document.querySelectorAll('.photo-item');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+
+                    const filter = this.dataset.filter;
+                    photoItems.forEach(item => {
+                        if (filter === 'all' || item.dataset.category === filter) {
+                            item.style.display = '';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        })();
+
+        // Subtle parallax on hero
+        (function() {
+            const hero = document.querySelector('.hero-image');
+            if (!hero) return;
+
+            window.addEventListener('scroll', function() {
+                const scrolled = window.pageYOffset;
+                if (scrolled < window.innerHeight) {
+                    hero.style.transform = 'scale(1.05) translateY(' + (scrolled * 0.3) + 'px)';
+                }
             });
         })();
     </script>
