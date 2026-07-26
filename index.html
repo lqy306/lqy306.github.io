@@ -1,399 +1,203 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-theme="light">
+<html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leo Lee | 个人主页</title>
-    <meta name="description" content="一名来自中国福建厦门的学生，Arch Linux 忠实拥趸，热爱摄影与开源技术。">
-    <meta name="keywords" content="Leo Lee, Arch Linux, 摄影, 开源, LUT, Panasonic Lumix, S1RM2">
-    <meta name="author" content="Leo Lee">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leo Lee — 摄影 · 街头的记忆</title>
+  <meta name="description" content="Leo Lee 的个人主页。黑白街头摄影，记录城市的光与影。">
+  <meta name="keywords" content="Leo Lee, 黑白摄影, 街头摄影, 森山大道, Lumix S1RM2, Arch Linux">
+  <meta name="author" content="Leo Lee">
 
-    <!-- Open Graph -->
-    <meta property="og:title" content="Leo Lee | 个人主页">
-    <meta property="og:description" content="一名来自中国福建厦门的学生，Arch Linux 忠实拥趸，热爱摄影与开源技术。">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://lqy306.github.io">
-    <meta property="og:image" content="https://avatars.githubusercontent.com/u/140314935?v=4">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Leo Lee — 摄影 · 街头的记忆">
+  <meta property="og:description" content="黑白街头摄影，记录城市的光与影。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://lqy306.github.io">
+  <meta property="og:image" content="https://avatars.githubusercontent.com/u/140314935?v=4">
 
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Leo Lee | 个人主页">
-    <meta name="twitter:description" content="一名来自中国福建厦门的学生，Arch Linux 忠实拥趸，热爱摄影与开源技术。">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Leo Lee — 摄影 · 街头的记忆">
+  <meta name="twitter:description" content="黑白街头摄影，记录城市的光与影。">
 
-    <!-- Fonts & Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+  <!-- Noto Serif from Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&family=Noto+Serif:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
 
-    <style>
-        /* ── Self-hosted fonts ── */
-        @font-face {
-            font-family: 'F1.8';
-            src: url('/fonts/F1.8-Regular.woff2') format('woff2'),
-                 url('/fonts/F1.8-Regular.otf') format('opentype');
-            font-display: swap;
-        }
-
-        @font-face {
-            font-family: 'ChillRoundGothic';
-            src: url('/fonts/ChillRoundGothic_Bold.woff2') format('woff2');
-            font-display: swap;
-        }
-
-        @font-face {
-            font-family: 'VonwaonBitmap';
-            src: url('/fonts/VonwaonBitmap-12pxLite.woff2') format('woff2');
-            font-display: swap;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        :root {
-            --clr-black: #34322D;
-            --clr-gray: #F8F8F8;
-            --clr-white: #FFFFFF;
-            --clr-accent: #1793d1;
-            --clr-accent-light: rgba(23, 147, 209, 0.08);
-            --clr-accent-glow: rgba(23, 147, 209, 0.2);
-            --clr-border: rgba(52, 50, 45, 0.1);
-            --clr-border-hover: rgba(52, 50, 45, 0.2);
-            --body-bg: var(--clr-white);
-            --surface-bg: var(--clr-gray);
-            --nav-bg: rgba(255, 255, 255, 0.92);
-            --card-bg: rgba(248, 248, 248, 0.55);
-            --card-bg-hover: rgba(248, 248, 248, 1);
-            --highlight-bg: rgba(248, 248, 248, 0.8);
-            --highlight-bg-hover: rgba(248, 248, 248, 1);
-            --text-primary: var(--clr-black);
-            --text-secondary: #666;
-            --text-muted: #999;
-            --text-on-accent: var(--clr-white);
-            --footer-bg: var(--clr-black);
-            --footer-text: var(--clr-gray);
-            --hero-gradient: linear-gradient(135deg, rgba(255, 248, 248, 0.5) 0%, rgba(248, 248, 248, 0.3) 100%);
-        }
-
-        [data-theme="dark"] {
-            --clr-black: #E8E6E3;
-            --clr-gray: #1b1b2f;
-            --clr-white: #121212;
-            --clr-accent: #4FC3F7;
-            --clr-accent-light: rgba(79, 195, 247, 0.10);
-            --clr-accent-glow: rgba(79, 195, 247, 0.20);
-            --clr-border: rgba(232, 230, 227, 0.08);
-            --clr-border-hover: rgba(232, 230, 227, 0.18);
-            --body-bg: #121212;
-            --surface-bg: #1b1b2f;
-            --nav-bg: rgba(18, 18, 18, 0.92);
-            --card-bg: rgba(27, 27, 47, 0.55);
-            --card-bg-hover: rgba(27, 27, 47, 1);
-            --highlight-bg: rgba(27, 27, 47, 0.8);
-            --highlight-bg-hover: rgba(27, 27, 47, 1);
-            --text-primary: #E8E6E3;
-            --text-secondary: #A0A0A0;
-            --text-muted: #686868;
-            --text-on-accent: #121212;
-            --footer-bg: #0b0b17;
-            --footer-text: #A0A0A0;
-            --hero-gradient: linear-gradient(135deg, rgba(27, 27, 47, 0.9) 0%, rgba(18, 18, 18, 0.95) 100%);
-        }
-
-        html { scroll-behavior: smooth; transition: background-color 0.3s ease; }
-        body {
-            font-family: 'F1.8', 'ChillRoundGothic', sans-serif;
-            background-color: var(--body-bg);
-            color: var(--text-primary);
-            line-height: 1.6;
-            overflow-x: hidden;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-
-        nav {
-            position: fixed;
-            top: 0; left: 0; right: 0;
-            z-index: 1000;
-            background: var(--nav-bg);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--clr-border);
-            transition: background 0.3s ease, border-color 0.3s ease;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0.85rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-family: 'F1.8', 'ChillRoundGothic', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            text-decoration: none;
-            letter-spacing: -0.02em;
-        }
-
-        .nav-links { display: flex; gap: 1.8rem; list-style: none; align-items: center; }
-        .nav-links a {
-            color: var(--text-primary);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: color 0.3s ease;
-            position: relative;
-        }
-        .nav-links a:hover { color: var(--clr-accent); }
-
-        .theme-toggle {
-            background: none;
-            border: 2px solid var(--clr-border);
-            border-radius: 50%;
-            width: 36px;
-            height: 36px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1rem;
-            color: var(--text-primary);
-            transition: all 0.3s ease;
-        }
-
-        .hero {
-            margin-top: 80px;
-            min-height: 80vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-            background: var(--hero-gradient);
-        }
-
-        .hero-content { text-align: center; max-width: 800px; }
-        .hero-avatar {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            margin: 0 auto 2rem;
-            border: 3px solid var(--text-primary);
-            overflow: hidden;
-            box-shadow: 0 10px 40px rgba(52, 50, 45, 0.1);
-        }
-        .hero-avatar img { width: 100%; height: 100%; object-fit: cover; }
-        .hero h1 { font-size: 3.5rem; font-weight: 700; margin-bottom: 1rem; }
-        .hero-subtitle { font-size: 1.25rem; color: var(--clr-accent); font-weight: 500; margin-bottom: 2rem; font-style: italic; }
-        .hero-description { font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 3rem; line-height: 1.8; max-width: 600px; margin-left: auto; margin-right: auto; }
-
-        .social-links { display: flex; justify-content: center; gap: 2rem; font-size: 1.5rem; }
-        .social-links a {
-            color: var(--text-primary);
-            transition: all 0.3s ease;
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            border: 2px solid var(--clr-border);
-        }
-        .social-links a:hover { color: var(--text-on-accent); background: var(--clr-accent); border-color: var(--clr-accent); transform: translateY(-4px); }
-
-        main { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
-        section { margin: 6rem 0; }
-        .section-title { font-size: 2.5rem; font-weight: 700; margin-bottom: 3rem; color: var(--text-primary); position: relative; padding-bottom: 1rem; }
-        .section-title::after { content: ''; position: absolute; bottom: 0; left: 0; width: 60px; height: 3px; background: var(--clr-accent); }
-
-        .about-text p { font-size: 1.05rem; margin-bottom: 1.5rem; color: var(--text-secondary); }
-        .ai-notice {
-            background: var(--clr-accent-light);
-            border-left: 4px solid var(--clr-accent);
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin: 2rem 0;
-        }
-        .ai-notice h4 { margin-bottom: 0.5rem; color: var(--clr-accent); }
-
-        /* Photo Gallery */
-        .photo-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-        .photo-item {
-            position: relative;
-            border-radius: 12px;
-            overflow: hidden;
-            aspect-ratio: 3 / 2;
-            background: var(--clr-gray);
-        }
-        .photo-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-        .photo-item:hover img { transform: scale(1.05); }
-        .photo-caption {
-            position: absolute;
-            bottom: 0; left: 0; right: 0;
-            padding: 1rem;
-            background: linear-gradient(transparent, rgba(0,0,0,0.7));
-            color: white;
-            font-size: 0.9rem;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        .photo-item:hover .photo-caption { opacity: 1; }
-
-        footer {
-            margin-top: 6rem;
-            padding: 3rem 2rem;
-            background: var(--footer-bg);
-            color: var(--footer-text);
-            text-align: center;
-        }
-        footer a { color: var(--clr-accent); text-decoration: none; }
-
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .section-title { font-size: 1.8rem; }
-            .photo-grid { grid-template-columns: 1fr; }
-        }
-    </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <nav>
-        <div class="nav-container">
-            <a href="#" class="logo">Leo Lee</a>
-            <ul class="nav-links">
-                <li><a href="#about">关于</a></li>
-                <li><a href="#gallery">作品</a></li>
-                <li><a href="https://github.com/lqy306" target="_blank">GitHub</a></li>
-                <li>
-                    <button class="theme-toggle" id="theme-toggle" aria-label="切换主题">
-                        <i class="fas fa-moon" id="theme-icon"></i>
-                    </button>
-                </li>
-            </ul>
-        </div>
-    </nav>
 
+  <!-- Navigation -->
+  <header class="header">
+    <div class="header-inner">
+      <a href="#" class="logo">LEO LEE</a>
+      <nav class="nav">
+        <ul class="nav-list">
+          <li><a href="#works" class="nav-link">作品</a></li>
+          <li><a href="#about" class="nav-link">关于</a></li>
+          <li><a href="https://github.com/lqy306" target="_blank" class="nav-link">GitHub</a></li>
+        </ul>
+      </nav>
+      <button class="menu-toggle" aria-label="菜单">
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
     <section class="hero">
-        <div class="hero-content">
-            <div class="hero-avatar">
-                <img src="https://avatars.githubusercontent.com/u/140314935?v=4" alt="Leo Lee">
-            </div>
-            <h1>Leo Lee</h1>
-            <p class="hero-subtitle">I use Arch Linux, btw.</p>
-            <p class="hero-description">
-                一名来自中国福建厦门的学生，Arch Linux 忠实拥趸，热爱摄影与开源技术。
-            </p>
-            <div class="social-links">
-                <a href="https://github.com/lqy306" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-                <a href="https://500px.com/lqy_learning" target="_blank" title="500px"><i class="fas fa-camera"></i></a>
-                <a href="mailto:lqy.work.learning@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
-            </div>
+      <div class="hero-text">
+        <h1 class="hero-title">
+          <span class="hero-line">街头的</span>
+          <span class="hero-line hero-line--push">记忆</span>
+        </h1>
+        <p class="hero-desc">
+          城市是巨大的感光板。<br>
+          光与影在上面刻下时间的痕迹。
+        </p>
+        <div class="hero-scroll">
+          <span class="scroll-indicator">↓</span>
+          <span class="scroll-label">浏览作品</span>
         </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-photo">
+          <img src="photos/黑白-街头/奔跑.jpg" alt="奔跑">
+        </div>
+      </div>
     </section>
 
-    <main>
-        <section id="about">
-            <h2 class="section-title">关于我</h2>
-            <div class="about-text">
-                <p>你好！我是 <strong>Leo Lee</strong>。我是一名 <strong>Arch Linux</strong> 的忠实拥趸，追求极简、灵活与高效。</p>
-                <p>在摄影方面，我已全面更换至 <strong>Lumix S1RM2</strong>。这台相机以其卓越的画质和强大的性能，成为了我记录世界的新伙伴。我依然钟爱 <strong>Real Time LUT</strong> 工作流，它让视觉创意在按下快门的瞬间得以实现。</p>
-                
-                <div class="ai-notice">
-                    <h4>🤖 AI 维护说明</h4>
-                    <p>这个网站目前由 <strong>AI (Manus)</strong> 负责维护与更新。这意味着网站的风格、结构和功能随时可能迎来剧烈的变化。为了回归纯粹，我已删除了所有不必要的自动化功能和复杂的帖子管理系统。现在的网站将保持最简状态，内容将通过手动管理进行更新。</p>
-                </div>
-            </div>
-        </section>
+    <!-- Works / Gallery -->
+    <section id="works" class="works">
+      <div class="section-head">
+        <h2 class="section-title">WORKS</h2>
+        <p class="section-desc">精选黑白摄影作品</p>
+      </div>
 
-        <section id="gallery">
-            <h2 class="section-title">最新作品</h2>
-            <p style="color:var(--text-secondary); margin-bottom: 2rem;">使用 Lumix S1RM2 拍摄的黑白系列作品。</p>
-            <div class="photo-grid">
-                <!-- 黑白-街头 -->
-                <div class="photo-item">
-                    <img src="photos/黑白-街头/奔跑.jpg" alt="奔跑">
-                    <div class="photo-caption">奔跑 - 街头系列</div>
-                </div>
-                <div class="photo-item">
-                    <img src="photos/黑白-街头/骑车的男孩.jpg" alt="骑车的男孩">
-                    <div class="photo-caption">骑车的男孩 - 街头系列</div>
-                </div>
-                <div class="photo-item">
-                    <img src="photos/黑白-街头/外卖员的通话.jpg" alt="外卖员的通话">
-                    <div class="photo-caption">外卖员的通话 - 街头系列</div>
-                </div>
-                <div class="photo-item">
-                    <img src="photos/黑白-街头/骑自行车的女人.jpg" alt="骑自行车的女人">
-                    <div class="photo-caption">骑自行车的女人 - 街头系列</div>
-                </div>
-                <!-- 黑白-Tri-X 400系列 -->
-                <div class="photo-item">
-                    <img src="photos/黑白-Tri-X 400系列/垂钓者.jpg" alt="垂钓者">
-                    <div class="photo-caption">垂钓者 - Tri-X 400系列</div>
-                </div>
-                <div class="photo-item">
-                    <img src="photos/黑白-Tri-X 400系列/烟.jpg" alt="烟">
-                    <div class="photo-caption">烟 - Tri-X 400系列</div>
-                </div>
-                <div class="photo-item">
-                    <img src="photos/黑白-Tri-X 400系列/轮椅和魔方.jpg" alt="轮椅和魔方">
-                    <div class="photo-caption">轮椅和魔方 - Tri-X 400系列</div>
-                </div>
-                <div class="photo-item">
-                    <img src="photos/黑白-Tri-X 400系列/鹭江泳.jpg" alt="鹭江泳">
-                    <div class="photo-caption">鹭江泳 - Tri-X 400系列</div>
-                </div>
-                <!-- 黑白-公共交通 -->
-                <div class="photo-item">
-                    <img src="photos/黑白-公共交通/回头.jpg" alt="回头">
-                    <div class="photo-caption">回头 - 公共交通系列</div>
-                </div>
-                <div class="photo-item">
-                    <img src="photos/黑白-公共交通/窥探.jpg" alt="窥探">
-                    <div class="photo-caption">窥探 - 公共交通系列</div>
-                </div>
-                <div class="photo-item">
-                    <img src="photos/黑白-公共交通/钢琴码头.jpg" alt="钢琴码头">
-                    <div class="photo-caption">钢琴码头 - 公共交通系列</div>
-                </div>
-            </div>
-        </section>
-    </main>
+      <!-- Series 1: 街头 -->
+      <div class="series">
+        <div class="series-header">
+          <span class="series-num">01</span>
+          <h3 class="series-title">街头</h3>
+          <span class="series-location">厦门 · 2024</span>
+        </div>
+        <div class="gallery">
+          <div class="gallery-item gallery-item--wide">
+            <img src="photos/黑白-街头/奔跑.jpg" alt="奔跑" loading="lazy">
+            <span class="gallery-cap">奔跑</span>
+          </div>
+          <div class="gallery-item">
+            <img src="photos/黑白-街头/骑车的男孩.jpg" alt="骑车的男孩" loading="lazy">
+            <span class="gallery-cap">骑车的男孩</span>
+          </div>
+          <div class="gallery-item">
+            <img src="photos/黑白-街头/外卖员的通话.jpg" alt="外卖员的通话" loading="lazy">
+            <span class="gallery-cap">外卖员的通话</span>
+          </div>
+          <div class="gallery-item gallery-item--tall">
+            <img src="photos/黑白-街头/骑自行车的女人.jpg" alt="骑自行车的女人" loading="lazy">
+            <span class="gallery-cap">骑自行车的女人</span>
+          </div>
+        </div>
+      </div>
 
-    <footer>
-        <p>&copy; 2026 Leo Lee. Built with <a href="https://archlinux.org">Arch Linux</a> spirit &amp; AI Maintenance.</p>
-        <p style="font-size:0.75rem;margin-top:0.5rem;opacity:0.7;">
-            随时可能变化的极简主义实验。
-        </p>
-    </footer>
+      <!-- Series 2: Tri-X 400 -->
+      <div class="series">
+        <div class="series-header">
+          <span class="series-num">02</span>
+          <h3 class="series-title">Tri-X 400</h3>
+          <span class="series-location">厦门 · 2024</span>
+        </div>
+        <div class="gallery">
+          <div class="gallery-item">
+            <img src="photos/黑白-Tri-X 400系列/垂钓者.jpg" alt="垂钓者" loading="lazy">
+            <span class="gallery-cap">垂钓者</span>
+          </div>
+          <div class="gallery-item gallery-item--wide">
+            <img src="photos/黑白-Tri-X 400系列/烟.jpg" alt="烟" loading="lazy">
+            <span class="gallery-cap">烟</span>
+          </div>
+          <div class="gallery-item">
+            <img src="photos/黑白-Tri-X 400系列/轮椅和魔方.jpg" alt="轮椅和魔方" loading="lazy">
+            <span class="gallery-cap">轮椅和魔方</span>
+          </div>
+          <div class="gallery-item">
+            <img src="photos/黑白-Tri-X 400系列/鹭江泳.jpg" alt="鹭江泳" loading="lazy">
+            <span class="gallery-cap">鹭江泳</span>
+          </div>
+        </div>
+      </div>
 
-    <script>
-        (function() {
-            const toggle = document.getElementById('theme-toggle');
-            const icon = document.getElementById('theme-icon');
-            const html = document.documentElement;
-            const saved = localStorage.getItem('theme');
-            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            const theme = saved || (prefersDark ? 'dark' : 'light');
-            html.setAttribute('data-theme', theme);
-            icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
-            toggle.addEventListener('click', function() {
-                const current = html.getAttribute('data-theme');
-                const next = current === 'dark' ? 'light' : 'dark';
-                html.setAttribute('data-theme', next);
-                localStorage.setItem('theme', next);
-                icon.className = next === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
-            });
-        })();
-    </script>
+      <!-- Series 3: 公共交通 -->
+      <div class="series">
+        <div class="series-header">
+          <span class="series-num">03</span>
+          <h3 class="series-title">公共交通</h3>
+          <span class="series-location">厦门 · 2024</span>
+        </div>
+        <div class="gallery">
+          <div class="gallery-item">
+            <img src="photos/黑白-公共交通/回头.jpg" alt="回头" loading="lazy">
+            <span class="gallery-cap">回头</span>
+          </div>
+          <div class="gallery-item gallery-item--tall">
+            <img src="photos/黑白-公共交通/窥探.jpg" alt="窥探" loading="lazy">
+            <span class="gallery-cap">窥探</span>
+          </div>
+          <div class="gallery-item gallery-item--wide">
+            <img src="photos/黑白-公共交通/钢琴码头.jpg" alt="钢琴码头" loading="lazy">
+            <span class="gallery-cap">钢琴码头</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="about">
+      <div class="about-grid">
+        <div class="about-avatar">
+          <img src="https://avatars.githubusercontent.com/u/140314935?v=4" alt="Leo Lee">
+          <div class="avatar-meta">
+            <span class="meta-name">LEO LEE</span>
+            <span class="meta-loc">厦门，福建</span>
+          </div>
+        </div>
+        <div class="about-text">
+          <h2 class="section-title">ABOUT</h2>
+          <p>
+            你好，我是 Leo Lee。一名 <strong>Arch Linux</strong> 的忠实拥趸——追求极简、灵活、高效。
+          </p>
+          <p>
+            使用 <strong>Lumix S1RM2</strong> 拍摄。钟爱 <strong>Real Time LUT</strong> 工作流，
+            让视觉创意在按下快门的瞬间得以实现。
+          </p>
+          <p>
+            摄影对我而言，不是记录真实，而是捕捉感知。<br>
+            在黑白之间，找到世界的灰度与温度。
+          </p>
+          <div class="about-links">
+            <a href="https://github.com/lqy306" target="_blank" class="about-link">GitHub →</a>
+            <a href="https://500px.com/lqy_learning" target="_blank" class="about-link">500px →</a>
+            <a href="mailto:lqy.work.learning@gmail.com" class="about-link">Email →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <p class="footer-copy">© 2026 Leo Lee</p>
+      <p class="footer-quote">写真は光と影の記憶である</p>
+      <p class="footer-sub">摄影是光与影的记忆</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
