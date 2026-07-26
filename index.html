@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Leo Lee | 个人主页</title>
     <meta name="description" content="一名来自中国福建厦门的学生，Arch Linux 忠实拥趸，热爱摄影与开源技术。">
-    <meta name="keywords" content="Leo Lee, Arch Linux, 摄影, 开源, LUT, Panasonic Lumix">
+    <meta name="keywords" content="Leo Lee, Arch Linux, 摄影, 开源, LUT, Panasonic Lumix, S1RM2">
     <meta name="author" content="Leo Lee">
 
     <!-- Open Graph -->
@@ -20,17 +20,12 @@
     <meta name="twitter:title" content="Leo Lee | 个人主页">
     <meta name="twitter:description" content="一名来自中国福建厦门的学生，Arch Linux 忠实拥趸，热爱摄影与开源技术。">
 
-    <!-- RSS -->
-    <link rel="alternate" type="application/rss+xml" title="RSS" href="https://lqy306.github.io/post/rss.xml">
-
     <!-- Fonts & Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="sitemap" type="application/xml" href="/sitemap.xml">
 
     <style>
         /* ── Self-hosted fonts ── */
-
-        /* F1.8 (SIL OFL 1.1) — for logo / headings */
         @font-face {
             font-family: 'F1.8';
             src: url('/fonts/F1.8-Regular.woff2') format('woff2'),
@@ -38,14 +33,12 @@
             font-display: swap;
         }
 
-        /* 寒蝉圆黑体 ChillRoundGothic Bold (SIL OFL 1.1) — for Chinese text */
         @font-face {
             font-family: 'ChillRoundGothic';
             src: url('/fonts/ChillRoundGothic_Bold.woff2') format('woff2');
             font-display: swap;
         }
 
-        /* Vonwaon Bitmap (凤凰体, CC0) — for code / monospace */
         @font-face {
             font-family: 'VonwaonBitmap';
             src: url('/fonts/VonwaonBitmap-12pxLite.woff2') format('woff2');
@@ -54,9 +47,6 @@
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        /* ═══════════════════════════════════════════════
-                   Theme Variables
-                   ═══════════════════════════════════════════════ */
         :root {
             --clr-black: #34322D;
             --clr-gray: #F8F8F8;
@@ -66,7 +56,6 @@
             --clr-accent-glow: rgba(23, 147, 209, 0.2);
             --clr-border: rgba(52, 50, 45, 0.1);
             --clr-border-hover: rgba(52, 50, 45, 0.2);
-
             --body-bg: var(--clr-white);
             --surface-bg: var(--clr-gray);
             --nav-bg: rgba(255, 255, 255, 0.92);
@@ -74,15 +63,12 @@
             --card-bg-hover: rgba(248, 248, 248, 1);
             --highlight-bg: rgba(248, 248, 248, 0.8);
             --highlight-bg-hover: rgba(248, 248, 248, 1);
-
             --text-primary: var(--clr-black);
             --text-secondary: #666;
             --text-muted: #999;
             --text-on-accent: var(--clr-white);
-
             --footer-bg: var(--clr-black);
             --footer-text: var(--clr-gray);
-
             --hero-gradient: linear-gradient(135deg, rgba(255, 248, 248, 0.5) 0%, rgba(248, 248, 248, 0.3) 100%);
         }
 
@@ -95,7 +81,6 @@
             --clr-accent-glow: rgba(79, 195, 247, 0.20);
             --clr-border: rgba(232, 230, 227, 0.08);
             --clr-border-hover: rgba(232, 230, 227, 0.18);
-
             --body-bg: #121212;
             --surface-bg: #1b1b2f;
             --nav-bg: rgba(18, 18, 18, 0.92);
@@ -103,26 +88,16 @@
             --card-bg-hover: rgba(27, 27, 47, 1);
             --highlight-bg: rgba(27, 27, 47, 0.8);
             --highlight-bg-hover: rgba(27, 27, 47, 1);
-
             --text-primary: #E8E6E3;
             --text-secondary: #A0A0A0;
             --text-muted: #686868;
             --text-on-accent: #121212;
-
             --footer-bg: #0b0b17;
             --footer-text: #A0A0A0;
-
             --hero-gradient: linear-gradient(135deg, rgba(27, 27, 47, 0.9) 0%, rgba(18, 18, 18, 0.95) 100%);
         }
 
-        /* ═══════════════════════════════════════════════
-                   Base
-                   ═══════════════════════════════════════════════ */
-        html {
-            scroll-behavior: smooth;
-            transition: background-color 0.3s ease;
-        }
-
+        html { scroll-behavior: smooth; transition: background-color 0.3s ease; }
         body {
             font-family: 'F1.8', 'ChillRoundGothic', sans-serif;
             background-color: var(--body-bg);
@@ -132,9 +107,6 @@
             transition: background-color 0.3s ease, color 0.3s ease;
         }
 
-        /* ═══════════════════════════════════════════════
-                   Navigation
-                   ═══════════════════════════════════════════════ */
         nav {
             position: fixed;
             top: 0; left: 0; right: 0;
@@ -162,16 +134,9 @@
             color: var(--text-primary);
             text-decoration: none;
             letter-spacing: -0.02em;
-            transition: color 0.3s ease;
         }
 
-        .nav-links {
-            display: flex;
-            gap: 1.8rem;
-            list-style: none;
-            align-items: center;
-        }
-
+        .nav-links { display: flex; gap: 1.8rem; list-style: none; align-items: center; }
         .nav-links a {
             color: var(--text-primary);
             text-decoration: none;
@@ -180,25 +145,7 @@
             transition: color 0.3s ease;
             position: relative;
         }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--clr-accent);
-            transition: width 0.3s ease;
-        }
-
         .nav-links a:hover { color: var(--clr-accent); }
-        .nav-links a:hover::after { width: 100%; }
-
-        /* Theme Toggle */
-        code, pre, kbd, samp {
-            font-family: 'VonwaonBitmap', 'Courier New', monospace;
-        }
 
         .theme-toggle {
             background: none;
@@ -213,35 +160,19 @@
             font-size: 1rem;
             color: var(--text-primary);
             transition: all 0.3s ease;
-            padding: 0;
-            line-height: 1;
         }
 
-        .theme-toggle:hover {
-            border-color: var(--clr-accent);
-            color: var(--clr-accent);
-            transform: rotate(15deg);
-        }
-
-        /* ═══════════════════════════════════════════════
-                   Hero
-                   ═══════════════════════════════════════════════ */
         .hero {
             margin-top: 80px;
-            min-height: 100vh;
+            min-height: 80vh;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 2rem;
             background: var(--hero-gradient);
-            transition: background 0.3s ease;
         }
 
-        .hero-content {
-            text-align: center;
-            max-width: 800px;
-        }
-
+        .hero-content { text-align: center; max-width: 800px; }
         .hero-avatar {
             width: 120px;
             height: 120px;
@@ -250,102 +181,15 @@
             border: 3px solid var(--text-primary);
             overflow: hidden;
             box-shadow: 0 10px 40px rgba(52, 50, 45, 0.1);
-            transition: border-color 0.3s ease;
         }
+        .hero-avatar img { width: 100%; height: 100%; object-fit: cover; }
+        .hero h1 { font-size: 3.5rem; font-weight: 700; margin-bottom: 1rem; }
+        .hero-subtitle { font-size: 1.25rem; color: var(--clr-accent); font-weight: 500; margin-bottom: 2rem; font-style: italic; }
+        .hero-description { font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 3rem; line-height: 1.8; max-width: 600px; margin-left: auto; margin-right: auto; }
 
-        .hero-avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .hero h1 {
-            font-family: 'F1.8', 'ChillRoundGothic', sans-serif;
-            font-size: 3.5rem;
-            font-weight: 700;
-            line-height: 1.1;
-            margin-bottom: 1rem;
-            letter-spacing: -0.02em;
-            color: var(--text-primary);
-            transition: color 0.3s ease;
-        }
-
-        .hero-subtitle {
-            font-size: 1.25rem;
-            color: var(--clr-accent);
-            font-weight: 500;
-            margin-bottom: 2rem;
-            font-style: italic;
-            transition: color 0.3s ease;
-        }
-
-        .hero-description {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            margin-bottom: 3rem;
-            line-height: 1.8;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            transition: color 0.3s ease;
-        }
-
-        .hero-cta {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 3rem;
-        }
-
-        .btn {
-            padding: 0.75rem 1.5rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: all 0.3s ease;
-            border: 2px solid;
-            cursor: pointer;
-            display: inline-block;
-        }
-
-        .btn-primary {
-            background: var(--text-primary);
-            color: var(--body-bg);
-            border-color: var(--text-primary);
-        }
-
-        .btn-primary:hover {
-            background: var(--clr-accent);
-            border-color: var(--clr-accent);
-            color: var(--text-on-accent);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px var(--clr-accent-glow);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--text-primary);
-            border-color: var(--text-primary);
-        }
-
-        .btn-secondary:hover {
-            background: var(--text-primary);
-            color: var(--body-bg);
-            transform: translateY(-2px);
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            font-size: 1.5rem;
-        }
-
+        .social-links { display: flex; justify-content: center; gap: 2rem; font-size: 1.5rem; }
         .social-links a {
             color: var(--text-primary);
-            text-decoration: none;
             transition: all 0.3s ease;
             width: 50px;
             height: 50px;
@@ -355,270 +199,80 @@
             border-radius: 50%;
             border: 2px solid var(--clr-border);
         }
+        .social-links a:hover { color: var(--text-on-accent); background: var(--clr-accent); border-color: var(--clr-accent); transform: translateY(-4px); }
 
-        .social-links a:hover {
-            color: var(--text-on-accent);
-            background: var(--clr-accent);
-            border-color: var(--clr-accent);
-            transform: translateY(-4px);
-        }
-
-        /* ═══════════════════════════════════════════════
-                   Main Content
-                   ═══════════════════════════════════════════════ */
-        main {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
+        main { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
         section { margin: 6rem 0; }
+        .section-title { font-size: 2.5rem; font-weight: 700; margin-bottom: 3rem; color: var(--text-primary); position: relative; padding-bottom: 1rem; }
+        .section-title::after { content: ''; position: absolute; bottom: 0; left: 0; width: 60px; height: 3px; background: var(--clr-accent); }
 
-        .section-title {
-            font-family: 'F1.8', 'ChillRoundGothic', sans-serif;
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 3rem;
-            color: var(--text-primary);
-            letter-spacing: -0.02em;
-            position: relative;
-            padding-bottom: 1rem;
-            transition: color 0.3s ease;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 60px;
-            height: 3px;
-            background: var(--clr-accent);
-            transition: background 0.3s ease;
-        }
-
-        .section-subtitle {
-            color: var(--text-muted);
-            font-size: 1rem;
-            margin-top: -2rem;
-            margin-bottom: 3rem;
-            transition: color 0.3s ease;
-        }
-
-        /* ═══════════════════════════════════════════════
-                   About
-                   ═══════════════════════════════════════════════ */
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .about-text p {
-            font-size: 1.05rem;
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
-            color: var(--text-secondary);
-            transition: color 0.3s ease;
-        }
-
-        .about-text strong { color: var(--text-primary); font-weight: 600; }
-
-        .about-highlights {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .highlight-item {
-            padding: 1.5rem;
-            background: var(--highlight-bg);
+        .about-text p { font-size: 1.05rem; margin-bottom: 1.5rem; color: var(--text-secondary); }
+        .ai-notice {
+            background: var(--clr-accent-light);
             border-left: 4px solid var(--clr-accent);
-            border-radius: 4px;
-            transition: all 0.3s ease;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
         }
+        .ai-notice h4 { margin-bottom: 0.5rem; color: var(--clr-accent); }
 
-        .highlight-item:hover {
-            background: var(--highlight-bg-hover);
-            transform: translateX(8px);
-        }
-
-        .highlight-item h4 {
-            color: var(--text-primary);
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .highlight-item p {
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-            margin: 0;
-        }
-
-        /* ═══════════════════════════════════════════════
-                   Skills
-                   ═══════════════════════════════════════════════ */
-        .skills-grid {
+        /* Photo Gallery */
+        .photo-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .skill-card {
-            padding: 2rem;
-            background: var(--card-bg);
-            border: 1px solid var(--clr-border);
-            border-radius: 12px;
-            transition: all 0.3s ease;
-        }
-
-        .skill-card:hover {
-            border-color: var(--clr-accent);
-            background: var(--card-bg-hover);
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(52, 50, 45, 0.06);
-        }
-
-        .skill-card h3 {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            color: var(--text-primary);
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .skill-card i { color: var(--clr-accent); font-size: 1.5rem; }
-
-        .skill-list { list-style: none; }
-
-        .skill-list li {
-            padding: 0.5rem 0;
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .skill-list li::before {
-            content: '▸';
-            color: var(--clr-accent);
-            font-weight: bold;
-        }
-
-        /* ═══════════════════════════════════════════════
-                   Link Cards
-                   ═══════════════════════════════════════════════ */
-        .links-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 1.5rem;
+            margin-top: 2rem;
         }
-
-        .link-card {
-            padding: 2rem;
-            background: var(--card-bg);
-            border: 1px solid var(--clr-border);
+        .photo-item {
+            position: relative;
             border-radius: 12px;
-            text-decoration: none;
-            color: var(--text-primary);
-            transition: all 0.3s ease;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1rem;
+            overflow: hidden;
+            aspect-ratio: 3 / 2;
+            background: var(--clr-gray);
         }
-
-        .link-card:hover {
-            border-color: var(--clr-accent);
-            background: var(--card-bg-hover);
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(52, 50, 45, 0.06);
+        .photo-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
         }
-
-        .link-card i {
-            font-size: 2.5rem;
-            color: var(--clr-accent);
+        .photo-item:hover img { transform: scale(1.05); }
+        .photo-caption {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            padding: 1rem;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            color: white;
+            font-size: 0.9rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
+        .photo-item:hover .photo-caption { opacity: 1; }
 
-        .link-card h3 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin: 0;
-            color: var(--text-primary);
-        }
-
-        .link-card p {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin: 0;
-        }
-
-        /* ═══════════════════════════════════════════════
-                   Footer
-                   ═══════════════════════════════════════════════ */
         footer {
             margin-top: 6rem;
             padding: 3rem 2rem;
             background: var(--footer-bg);
             color: var(--footer-text);
             text-align: center;
-            transition: background 0.3s ease, color 0.3s ease;
         }
+        footer a { color: var(--clr-accent); text-decoration: none; }
 
-        footer p { font-size: 0.9rem; margin: 0; }
-
-        footer a {
-            color: var(--clr-accent);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        footer a:hover { color: var(--footer-text); }
-
-        /* ═══════════════════════════════════════════════
-                   Responsive
-                   ═══════════════════════════════════════════════ */
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.5rem; }
-            .hero-subtitle { font-size: 1rem; }
-            .about-content { grid-template-columns: 1fr; gap: 2rem; }
-            .nav-links { gap: 1rem; font-size: 0.85rem; }
-            .section-title { font-size: 1.8rem; margin-bottom: 2rem; }
-            .hero-cta { flex-direction: column; align-items: center; }
-            .btn { width: 100%; max-width: 300px; }
-        }
-
-        @media (max-width: 480px) {
-            .nav-container { padding: 0.85rem 1rem; }
-            .logo { font-size: 1.2rem; }
-            .nav-links { display: none; }
-            .hero { margin-top: 60px; min-height: auto; padding: 2rem 1rem; }
-            .hero h1 { font-size: 2rem; }
-            .hero-avatar { width: 100px; height: 100px; }
-            .social-links { gap: 1rem; font-size: 1.2rem; }
-            .social-links a { width: 40px; height: 40px; }
-            main { padding: 0 1rem; }
-            section { margin: 3rem 0; }
-            .section-title { font-size: 1.5rem; }
+            .section-title { font-size: 1.8rem; }
+            .photo-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
     <nav>
         <div class="nav-container">
             <a href="#" class="logo">Leo Lee</a>
             <ul class="nav-links">
                 <li><a href="#about">关于</a></li>
-                <li><a href="#interests">兴趣</a></li>
-                <li><a href="#resources">资源</a></li>
-                <li><a href="#links">链接</a></li>
-                <li><a href="/post/">博客</a></li>
+                <li><a href="#gallery">作品</a></li>
+                <li><a href="https://github.com/lqy306" target="_blank">GitHub</a></li>
                 <li>
                     <button class="theme-toggle" id="theme-toggle" aria-label="切换主题">
                         <i class="fas fa-moon" id="theme-icon"></i>
@@ -628,7 +282,6 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
             <div class="hero-avatar">
@@ -639,10 +292,6 @@
             <p class="hero-description">
                 一名来自中国福建厦门的学生，Arch Linux 忠实拥趸，热爱摄影与开源技术。
             </p>
-            <div class="hero-cta">
-                <a href="#about" class="btn btn-primary">了解更多</a>
-                <a href="https://github.com/lqy306" target="_blank" class="btn btn-secondary">访问 GitHub</a>
-            </div>
             <div class="social-links">
                 <a href="https://github.com/lqy306" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
                 <a href="https://500px.com.cn/LIQIYUE" target="_blank" title="500px"><i class="fas fa-camera"></i></a>
@@ -651,163 +300,92 @@
         </div>
     </section>
 
-    <!-- Main Content -->
     <main>
-        <!-- About Section -->
         <section id="about">
             <h2 class="section-title">关于我</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>
-                        你好！我是 <strong>Leo Lee</strong>，一名来自中国福建厦门的<strong>学生</strong>。
-                    </p>
-                    <p>
-                        我是一名 <strong>Arch Linux</strong> 的忠实拥趸。我喜欢那种从零开始构建系统的掌控感，极简、灵活且始终保持最新。在终端与代码之间，我找到了属于自己的乐趣。
-                    </p>
-                    <p>
-                        除了技术，<strong>摄影</strong>是我记录生活的方式。我特别钟爱<strong>松下（Panasonic）</strong>相机，尤其是它的 <strong>Real Time LUT</strong> 功能。这种"所见即所得"的拍摄体验，让我能够将后期的创意在按下快门的瞬间就烧录进照片中。
-                    </p>
-                    <p>
-                        我同时也创作 <strong>UNIX 历史</strong>相关的 fiction 作品，喜欢研究从 PDP-11 到现代操作系统的演变历程，并从中汲取灵感。
-                    </p>
-                </div>
-                <div class="about-highlights">
-                    <div class="highlight-item">
-                        <h4>💻 技术背景</h4>
-                        <p>深入研究操作系统、开源软件与系统架构</p>
-                    </div>
-                    <div class="highlight-item">
-                        <h4>📸 摄影热情</h4>
-                        <p>500px 签约摄影师，专注 LUT 工作流与视觉表达</p>
-                    </div>
-                    <div class="highlight-item">
-                        <h4>🔧 开源精神</h4>
-                        <p>贡献于多个开源项目，倡导极简与高效的设计理念</p>
-                    </div>
+            <div class="about-text">
+                <p>你好！我是 <strong>Leo Lee</strong>。我是一名 <strong>Arch Linux</strong> 的忠实拥趸，追求极简、灵活与高效。</p>
+                <p>在摄影方面，我已全面更换至 <strong>Lumix S1RM2</strong>。这台相机以其卓越的画质和强大的性能，成为了我记录世界的新伙伴。我依然钟爱 <strong>Real Time LUT</strong> 工作流，它让视觉创意在按下快门的瞬间得以实现。</p>
+                
+                <div class="ai-notice">
+                    <h4>🤖 AI 维护说明</h4>
+                    <p>这个网站目前由 <strong>AI (Manus)</strong> 负责维护与更新。这意味着网站的风格、结构和功能随时可能迎来剧烈的变化。为了回归纯粹，我已删除了所有不必要的自动化功能和复杂的帖子管理系统。现在的网站将保持最简状态，内容将通过手动管理进行更新。</p>
                 </div>
             </div>
         </section>
 
-        <!-- Interests Section -->
-        <section id="interests">
-            <h2 class="section-title">兴趣与技能</h2>
-            <div class="skills-grid">
-                <div class="skill-card">
-                    <h3><i class="fas fa-terminal"></i> 操作系统</h3>
-                    <ul class="skill-list">
-                        <li>Arch Linux (Daily Driver)</li>
-                        <li>Common Desktop Environment</li>
-                        <li>PDP-11 / Retro Computing</li>
-                        <li>系统架构与内核研究</li>
-                    </ul>
+        <section id="gallery">
+            <h2 class="section-title">最新作品</h2>
+            <p style="color:var(--text-secondary); margin-bottom: 2rem;">使用 Lumix S1RM2 拍摄的黑白系列作品。</p>
+            <div class="photo-grid">
+                <!-- 黑白-街头 -->
+                <div class="photo-item">
+                    <img src="photos/黑白-街头/奔跑.jpg" alt="奔跑">
+                    <div class="photo-caption">奔跑 - 街头系列</div>
                 </div>
-                <div class="skill-card">
-                    <h3><i class="fas fa-camera-retro"></i> 摄影器材</h3>
-                    <ul class="skill-list">
-                        <li>Panasonic Lumix Ecosystem</li>
-                        <li>Real Time LUT Workflow</li>
-                        <li>500px 签约摄影师</li>
-                        <li>视觉创意与后期处理</li>
-                    </ul>
+                <div class="photo-item">
+                    <img src="photos/黑白-街头/骑车的男孩.jpg" alt="骑车的男孩">
+                    <div class="photo-caption">骑车的男孩 - 街头系列</div>
                 </div>
-                <div class="skill-card">
-                    <h3><i class="fas fa-code"></i> 开发技能</h3>
-                    <ul class="skill-list">
-                        <li>系统编程与脚本开发</li>
-                        <li>开源项目贡献</li>
-                        <li>Web 开发与设计</li>
-                        <li>数据分析与可视化</li>
-                    </ul>
+                <div class="photo-item">
+                    <img src="photos/黑白-街头/外卖员的通话.jpg" alt="外卖员的通话">
+                    <div class="photo-caption">外卖员的通话 - 街头系列</div>
                 </div>
-            </div>
-        </section>
-
-        <!-- Resources Section -->
-        <section id="resources">
-            <h2 class="section-title">资源分享</h2>
-            <p class="section-subtitle">配置文件、工具、摄影资源等</p>
-            <div class="links-grid">
-                <a href="/resources/" class="link-card">
-                    <i class="fas fa-folder-open"></i>
-                    <h3>资源中心</h3>
-                    <p>浏览所有可用的分享资源</p>
-                </a>
-                <a href="/post/" class="link-card">
-                    <i class="fas fa-pen-nib"></i>
-                    <h3>博客文章</h3>
-                    <p>个人博客与技术分享</p>
-                </a>
-            </div>
-        </section>
-
-        <!-- Blog Preview Section -->
-        <section id="blog">
-            <h2 class="section-title">最新文章</h2>
-            <p class="section-subtitle">技术、摄影与生活分享</p>
-            <div id="latest-posts">
-                <ul class="post-preview-list" id="post-list" style="list-style:none;margin:2rem 0;">
-                </ul>
-                <a href="/post/" style="display:inline-block;margin-top:1rem;font-weight:500;">查看全部文章 →</a>
-            </div>
-        </section>
-
-        <!-- Links Section -->
-        <section id="links">
-            <h2 class="section-title">联系与链接</h2>
-            <div class="links-grid">
-                <a href="https://github.com/lqy306" target="_blank" class="link-card">
-                    <i class="fab fa-github"></i>
-                    <h3>GitHub</h3>
-                    <p>开源项目与代码</p>
-                </a>
-                <a href="https://500px.com.cn/LIQIYUE" target="_blank" class="link-card">
-                    <i class="fas fa-image"></i>
-                    <h3>500px</h3>
-                    <p>摄影作品集</p>
-                </a>
-                <a href="mailto:lqy.work.learning@gmail.com" class="link-card">
-                    <i class="fas fa-envelope"></i>
-                    <h3>Email</h3>
-                    <p>与我取得联系</p>
-                </a>
-                <a href="/post/" class="link-card">
-                    <i class="fas fa-pen-nib"></i>
-                    <h3>博客文章</h3>
-                    <p>个人博客与分享</p>
-                </a>
-                <a href="/post/rss.xml" class="link-card">
-                    <i class="fas fa-rss"></i>
-                    <h3>RSS 订阅</h3>
-                    <p>通过 RSS 订阅博客更新</p>
-                </a>
+                <div class="photo-item">
+                    <img src="photos/黑白-街头/骑自行车的女人.jpg" alt="骑自行车的女人">
+                    <div class="photo-caption">骑自行车的女人 - 街头系列</div>
+                </div>
+                <!-- 黑白-Tri-X 400系列 -->
+                <div class="photo-item">
+                    <img src="photos/黑白-Tri-X 400系列/垂钓者.jpg" alt="垂钓者">
+                    <div class="photo-caption">垂钓者 - Tri-X 400系列</div>
+                </div>
+                <div class="photo-item">
+                    <img src="photos/黑白-Tri-X 400系列/烟.jpg" alt="烟">
+                    <div class="photo-caption">烟 - Tri-X 400系列</div>
+                </div>
+                <div class="photo-item">
+                    <img src="photos/黑白-Tri-X 400系列/轮椅和魔方.jpg" alt="轮椅和魔方">
+                    <div class="photo-caption">轮椅和魔方 - Tri-X 400系列</div>
+                </div>
+                <div class="photo-item">
+                    <img src="photos/黑白-Tri-X 400系列/鹭江泳.jpg" alt="鹭江泳">
+                    <div class="photo-caption">鹭江泳 - Tri-X 400系列</div>
+                </div>
+                <!-- 黑白-公共交通 -->
+                <div class="photo-item">
+                    <img src="photos/黑白-公共交通/回头.jpg" alt="回头">
+                    <div class="photo-caption">回头 - 公共交通系列</div>
+                </div>
+                <div class="photo-item">
+                    <img src="photos/黑白-公共交通/窥探.jpg" alt="窥探">
+                    <div class="photo-caption">窥探 - 公共交通系列</div>
+                </div>
+                <div class="photo-item">
+                    <img src="photos/黑白-公共交通/钢琴码头.jpg" alt="钢琴码头">
+                    <div class="photo-caption">钢琴码头 - 公共交通系列</div>
+                </div>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
     <footer>
-        <p>&copy; 2026 Leo Lee. Built with <a href="https://archlinux.org">Arch Linux</a> spirit &amp; <a href="https://claude.ai/code">Claude Code</a>.
-        <br>📡 <a href="/post/rss.xml">RSS 订阅</a> | 🗺️ <a href="/sitemap.xml">站点地图</a></p>
+        <p>&copy; 2026 Leo Lee. Built with <a href="https://archlinux.org">Arch Linux</a> spirit &amp; AI Maintenance.</p>
         <p style="font-size:0.75rem;margin-top:0.5rem;opacity:0.7;">
-            字体 <a href="/fonts/F1.8-Regular.woff2">F1.8</a> 遵循 <a href="https://openfontlicense.org">SIL Open Font License, Version 1.1</a> 开源协议
+            随时可能变化的极简主义实验。
         </p>
     </footer>
 
     <script>
-        // ── Theme Toggle ──
         (function() {
             const toggle = document.getElementById('theme-toggle');
             const icon = document.getElementById('theme-icon');
             const html = document.documentElement;
-
-            // Get saved theme, or respect system preference
             const saved = localStorage.getItem('theme');
             const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
             const theme = saved || (prefersDark ? 'dark' : 'light');
-
             html.setAttribute('data-theme', theme);
             icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
-
             toggle.addEventListener('click', function() {
                 const current = html.getAttribute('data-theme');
                 const next = current === 'dark' ? 'light' : 'dark';
@@ -816,30 +394,6 @@
                 icon.className = next === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
             });
         })();
-
-        // ── Latest Posts from GitHub API ──
-        fetch('https://api.github.com/repos/lqy306/lqy306.github.io/contents/post')
-            .then(r => r.json())
-            .then(data => {
-                const dirs = data.filter(item => item.type === 'dir').reverse();
-                const list = document.getElementById('post-list');
-                if (dirs.length === 0) {
-                    list.innerHTML = '<li style="color:var(--text-muted);padding:1rem 0;">暂无文章</li>';
-                    return;
-                }
-                dirs.slice(0, 5).forEach(dir => {
-                    const name = dir.name.replace(/[-_]/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
-                    const li = document.createElement('li');
-                    li.style.cssText = 'display:flex;gap:1.5rem;padding:0.8rem 0;border-bottom:1px solid var(--clr-border);align-items:baseline;';
-                    li.innerHTML = '<span style="font-size:0.85rem;color:var(--text-muted);white-space:nowrap;min-width:6em;">📅 最新</span>' +
-                        '<span style="font-size:1.05rem;font-weight:500;"><a href="/post/' + dir.name + '/" style="color:var(--text-primary);text-decoration:none;">' + name + '</a></span>';
-                    list.appendChild(li);
-                });
-            })
-            .catch(function() {
-                document.getElementById('post-list').innerHTML =
-                    '<li style="color:var(--text-muted);padding:1rem 0;"><a href="/post/">前往博客查看最新文章 →</a></li>';
-            });
     </script>
 </body>
 </html>
