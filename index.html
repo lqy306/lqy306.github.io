@@ -1,203 +1,314 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-theme="dark">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Leo Lee — 摄影 · 街头的记忆</title>
-  <meta name="description" content="Leo Lee 的个人主页。黑白街头摄影，记录城市的光与影。">
-  <meta name="keywords" content="Leo Lee, 黑白摄影, 街头摄影, 森山大道, Lumix S1RM2, Arch Linux">
-  <meta name="author" content="Leo Lee">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEO LEE | DAIDO STYLE</title>
+    <meta name="description" content="Leo Lee's Personal Space - AI Maintained, Minimalist, Provocative.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ── Daido Moriyama Inspired Aesthetic ── */
+        @font-face {
+            font-family: 'F1.8';
+            src: url('/fonts/F1.8-Regular.woff2') format('woff2');
+            font-display: swap;
+        }
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="Leo Lee — 摄影 · 街头的记忆">
-  <meta property="og:description" content="黑白街头摄影，记录城市的光与影。">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://lqy306.github.io">
-  <meta property="og:image" content="https://avatars.githubusercontent.com/u/140314935?v=4">
+        @font-face {
+            font-family: 'ChillRoundGothic';
+            src: url('/fonts/ChillRoundGothic_Bold.woff2') format('woff2');
+            font-display: swap;
+        }
 
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Leo Lee — 摄影 · 街头的记忆">
-  <meta name="twitter:description" content="黑白街头摄影，记录城市的光与影。">
+        :root {
+            --bg-color: #000000;
+            --text-color: #ffffff;
+            --accent-color: #ffffff;
+            --grain-opacity: 0.05;
+        }
 
-  <!-- Noto Serif from Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700;900&family=Noto+Serif:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
+        * { margin: 0; padding: 0; box-sizing: border-box; cursor: crosshair; }
 
-  <link rel="stylesheet" href="style.css">
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'F1.8', 'ChillRoundGothic', sans-serif;
+            line-height: 1.2;
+            overflow-x: hidden;
+            letter-spacing: -0.05em;
+        }
+
+        /* Grain Effect Overlay */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3%3Ffilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: var(--grain-opacity);
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            z-index: 1000;
+            mix-blend-mode: difference;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: #fff;
+            line-height: 0.8;
+        }
+
+        .nav-links { list-style: none; text-align: right; }
+        .nav-links a {
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: #fff;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: opacity 0.3s;
+        }
+        .nav-links a:hover { opacity: 0.5; }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 2rem;
+            border-bottom: 10px solid #fff;
+        }
+
+        .hero h1 {
+            font-size: clamp(4rem, 15vw, 12rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            line-height: 0.8;
+            margin-bottom: 2rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            font-weight: 400;
+            max-width: 600px;
+            text-transform: uppercase;
+        }
+
+        /* Main Content */
+        main { padding: 0; }
+
+        section { padding: 4rem 2rem; border-bottom: 1px solid #333; }
+
+        .section-header {
+            font-size: 5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 4rem;
+            line-height: 0.8;
+        }
+
+        /* About Section */
+        .about-text {
+            font-size: 2rem;
+            font-weight: 700;
+            max-width: 1000px;
+            margin-bottom: 4rem;
+        }
+
+        .ai-notice {
+            background: #fff;
+            color: #000;
+            padding: 3rem;
+            font-size: 1.5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin: 4rem 0;
+        }
+
+        /* Gallery - Daido Style Grid */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0;
+        }
+
+        .photo-item {
+            position: relative;
+            overflow: hidden;
+            background: #111;
+            border: 1px solid #000;
+        }
+
+        .photo-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            filter: grayscale(100%) contrast(150%) brightness(90%);
+            transition: filter 0.5s ease, transform 0.5s ease;
+        }
+
+        .photo-item:hover img {
+            filter: grayscale(100%) contrast(200%) brightness(110%);
+            transform: scale(1.02);
+        }
+
+        .photo-info {
+            position: absolute;
+            bottom: 2rem; left: 2rem;
+            font-size: 1rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            background: #fff;
+            color: #000;
+            padding: 0.5rem 1rem;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .photo-item:hover .photo-info { opacity: 1; }
+
+        /* Full width items for impact */
+        .photo-item.wide { grid-column: span 2; }
+
+        /* Footer */
+        footer {
+            padding: 4rem 2rem;
+            text-align: left;
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        footer a { color: #fff; text-decoration: underline; }
+
+        .social-links { margin-top: 2rem; }
+        .social-links a {
+            font-size: 2rem;
+            color: #fff;
+            margin-right: 2rem;
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 5rem; }
+            .section-header { font-size: 3rem; }
+            .gallery-grid { grid-template-columns: 1fr; }
+            .photo-item.wide { grid-column: span 1; }
+            .about-text { font-size: 1.2rem; }
+            .ai-notice { padding: 1.5rem; font-size: 1rem; }
+        }
+    </style>
 </head>
 <body>
-
-  <!-- Navigation -->
-  <header class="header">
-    <div class="header-inner">
-      <a href="#" class="logo">LEO LEE</a>
-      <nav class="nav">
-        <ul class="nav-list">
-          <li><a href="#works" class="nav-link">作品</a></li>
-          <li><a href="#about" class="nav-link">关于</a></li>
-          <li><a href="https://github.com/lqy306" target="_blank" class="nav-link">GitHub</a></li>
+    <nav>
+        <a href="#" class="logo">LEO<br>LEE</a>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="https://github.com/lqy306" target="_blank">Github</a></li>
+            <li><a href="https://500px.com/lqy_learning" target="_blank">500PX</a></li>
         </ul>
-      </nav>
-      <button class="menu-toggle" aria-label="菜单">
-        <span></span>
-        <span></span>
-      </button>
-    </div>
-  </header>
+    </nav>
 
-  <main>
-    <!-- Hero -->
     <section class="hero">
-      <div class="hero-text">
-        <h1 class="hero-title">
-          <span class="hero-line">街头的</span>
-          <span class="hero-line hero-line--push">记忆</span>
-        </h1>
-        <p class="hero-desc">
-          城市是巨大的感光板。<br>
-          光与影在上面刻下时间的痕迹。
+        <h1>DAIDO<br>INSPIRED</h1>
+        <p class="hero-subtitle">
+            Leo Lee. Arch Linux User. Photographer. 
+            Using Lumix S1RM2. High Contrast. Grainy. Provocative.
         </p>
-        <div class="hero-scroll">
-          <span class="scroll-indicator">↓</span>
-          <span class="scroll-label">浏览作品</span>
-        </div>
-      </div>
-      <div class="hero-visual">
-        <div class="hero-photo">
-          <img src="photos/黑白-街头/奔跑.jpg" alt="奔跑">
-        </div>
-      </div>
     </section>
 
-    <!-- Works / Gallery -->
-    <section id="works" class="works">
-      <div class="section-head">
-        <h2 class="section-title">WORKS</h2>
-        <p class="section-desc">精选黑白摄影作品</p>
-      </div>
+    <main>
+        <section id="about">
+            <h2 class="section-header">Statement</h2>
+            <div class="about-text">
+                <p>I AM A STUDENT FROM XIAMEN, CHINA. AN ARCH LINUX ENTHUSIAST. I CAPTURE THE WORLD THROUGH LUMIX S1RM2 AND REAL TIME LUT WORKFLOW.</p>
+                <p>MY VISION IS RAW. MY VISION IS BLACK AND WHITE. I SEEK THE TRUTH IN THE SHADOWS OF THE STREET.</p>
+            </div>
+            
+            <div class="ai-notice">
+                NOTICE: THIS SPACE IS MAINTAINED BY AI (MANUS). 
+                IT IS VOLATILE. THE STYLE WILL SHIFT WITHOUT WARNING. 
+                ALL AUTOMATIONS REMOVED. BACK TO BASICS.
+            </div>
+        </section>
 
-      <!-- Series 1: 街头 -->
-      <div class="series">
-        <div class="series-header">
-          <span class="series-num">01</span>
-          <h3 class="series-title">街头</h3>
-          <span class="series-location">厦门 · 2024</span>
-        </div>
-        <div class="gallery">
-          <div class="gallery-item gallery-item--wide">
-            <img src="photos/黑白-街头/奔跑.jpg" alt="奔跑" loading="lazy">
-            <span class="gallery-cap">奔跑</span>
-          </div>
-          <div class="gallery-item">
-            <img src="photos/黑白-街头/骑车的男孩.jpg" alt="骑车的男孩" loading="lazy">
-            <span class="gallery-cap">骑车的男孩</span>
-          </div>
-          <div class="gallery-item">
-            <img src="photos/黑白-街头/外卖员的通话.jpg" alt="外卖员的通话" loading="lazy">
-            <span class="gallery-cap">外卖员的通话</span>
-          </div>
-          <div class="gallery-item gallery-item--tall">
-            <img src="photos/黑白-街头/骑自行车的女人.jpg" alt="骑自行车的女人" loading="lazy">
-            <span class="gallery-cap">骑自行车的女人</span>
-          </div>
-        </div>
-      </div>
+        <section id="gallery">
+            <h2 class="section-header">Fragments</h2>
+            <div class="gallery-grid">
+                <!-- 黑白-街头 -->
+                <div class="photo-item wide">
+                    <img src="photos/黑白-街头/奔跑.jpg" alt="RUNNING">
+                    <div class="photo-info">RUNNING / STREET</div>
+                </div>
+                <div class="photo-item">
+                    <img src="photos/黑白-街头/骑车的男孩.jpg" alt="BOY ON BIKE">
+                    <div class="photo-info">BOY ON BIKE / STREET</div>
+                </div>
+                <div class="photo-item">
+                    <img src="photos/黑白-街头/外卖员的通话.jpg" alt="DELIVERY CALL">
+                    <div class="photo-info">DELIVERY CALL / STREET</div>
+                </div>
+                <div class="photo-item">
+                    <img src="photos/黑白-街头/骑自行车的女人.jpg" alt="WOMAN ON BIKE">
+                    <div class="photo-info">WOMAN ON BIKE / STREET</div>
+                </div>
+                <!-- 黑白-Tri-X 400系列 -->
+                <div class="photo-item">
+                    <img src="photos/黑白-Tri-X 400系列/垂钓者.jpg" alt="ANGLER">
+                    <div class="photo-info">ANGLER / TRI-X 400</div>
+                </div>
+                <div class="photo-item wide">
+                    <img src="photos/黑白-Tri-X 400系列/烟.jpg" alt="SMOKE">
+                    <div class="photo-info">SMOKE / TRI-X 400</div>
+                </div>
+                <div class="photo-item">
+                    <img src="photos/黑白-Tri-X 400系列/轮椅和魔方.jpg" alt="WHEELCHAIR">
+                    <div class="photo-info">WHEELCHAIR / TRI-X 400</div>
+                </div>
+                <div class="photo-item">
+                    <img src="photos/黑白-Tri-X 400系列/鹭江泳.jpg" alt="SWIMMING">
+                    <div class="photo-info">SWIMMING / TRI-X 400</div>
+                </div>
+                <!-- 黑白-公共交通 -->
+                <div class="photo-item">
+                    <img src="photos/黑白-公共交通/回头.jpg" alt="LOOK BACK">
+                    <div class="photo-info">LOOK BACK / TRANSIT</div>
+                </div>
+                <div class="photo-item">
+                    <img src="photos/黑白-公共交通/窥探.jpg" alt="PEEPING">
+                    <div class="photo-info">PEEPING / TRANSIT</div>
+                </div>
+                <div class="photo-item wide">
+                    <img src="photos/黑白-公共交通/钢琴码头.jpg" alt="PIANO WHARF">
+                    <div class="photo-info">PIANO WHARF / TRANSIT</div>
+                </div>
+            </div>
+        </section>
+    </main>
 
-      <!-- Series 2: Tri-X 400 -->
-      <div class="series">
-        <div class="series-header">
-          <span class="series-num">02</span>
-          <h3 class="series-title">Tri-X 400</h3>
-          <span class="series-location">厦门 · 2024</span>
+    <footer>
+        <p>&copy; 2026 LEO LEE. MAINTAINED BY MANUS AI.</p>
+        <p>BUILT WITH ARCH LINUX SPIRIT. VOLATILE MINIMALISM.</p>
+        <div class="social-links">
+            <a href="https://github.com/lqy306" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://500px.com/lqy_learning" target="_blank"><i class="fas fa-camera"></i></a>
+            <a href="mailto:lqy.work.learning@gmail.com"><i class="fas fa-envelope"></i></a>
         </div>
-        <div class="gallery">
-          <div class="gallery-item">
-            <img src="photos/黑白-Tri-X 400系列/垂钓者.jpg" alt="垂钓者" loading="lazy">
-            <span class="gallery-cap">垂钓者</span>
-          </div>
-          <div class="gallery-item gallery-item--wide">
-            <img src="photos/黑白-Tri-X 400系列/烟.jpg" alt="烟" loading="lazy">
-            <span class="gallery-cap">烟</span>
-          </div>
-          <div class="gallery-item">
-            <img src="photos/黑白-Tri-X 400系列/轮椅和魔方.jpg" alt="轮椅和魔方" loading="lazy">
-            <span class="gallery-cap">轮椅和魔方</span>
-          </div>
-          <div class="gallery-item">
-            <img src="photos/黑白-Tri-X 400系列/鹭江泳.jpg" alt="鹭江泳" loading="lazy">
-            <span class="gallery-cap">鹭江泳</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Series 3: 公共交通 -->
-      <div class="series">
-        <div class="series-header">
-          <span class="series-num">03</span>
-          <h3 class="series-title">公共交通</h3>
-          <span class="series-location">厦门 · 2024</span>
-        </div>
-        <div class="gallery">
-          <div class="gallery-item">
-            <img src="photos/黑白-公共交通/回头.jpg" alt="回头" loading="lazy">
-            <span class="gallery-cap">回头</span>
-          </div>
-          <div class="gallery-item gallery-item--tall">
-            <img src="photos/黑白-公共交通/窥探.jpg" alt="窥探" loading="lazy">
-            <span class="gallery-cap">窥探</span>
-          </div>
-          <div class="gallery-item gallery-item--wide">
-            <img src="photos/黑白-公共交通/钢琴码头.jpg" alt="钢琴码头" loading="lazy">
-            <span class="gallery-cap">钢琴码头</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- About -->
-    <section id="about" class="about">
-      <div class="about-grid">
-        <div class="about-avatar">
-          <img src="https://avatars.githubusercontent.com/u/140314935?v=4" alt="Leo Lee">
-          <div class="avatar-meta">
-            <span class="meta-name">LEO LEE</span>
-            <span class="meta-loc">厦门，福建</span>
-          </div>
-        </div>
-        <div class="about-text">
-          <h2 class="section-title">ABOUT</h2>
-          <p>
-            你好，我是 Leo Lee。一名 <strong>Arch Linux</strong> 的忠实拥趸——追求极简、灵活、高效。
-          </p>
-          <p>
-            使用 <strong>Lumix S1RM2</strong> 拍摄。钟爱 <strong>Real Time LUT</strong> 工作流，
-            让视觉创意在按下快门的瞬间得以实现。
-          </p>
-          <p>
-            摄影对我而言，不是记录真实，而是捕捉感知。<br>
-            在黑白之间，找到世界的灰度与温度。
-          </p>
-          <div class="about-links">
-            <a href="https://github.com/lqy306" target="_blank" class="about-link">GitHub →</a>
-            <a href="https://500px.com/lqy_learning" target="_blank" class="about-link">500px →</a>
-            <a href="mailto:lqy.work.learning@gmail.com" class="about-link">Email →</a>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="footer-inner">
-      <p class="footer-copy">© 2026 Leo Lee</p>
-      <p class="footer-quote">写真は光と影の記憶である</p>
-      <p class="footer-sub">摄影是光与影的记忆</p>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
+    </footer>
 </body>
 </html>
