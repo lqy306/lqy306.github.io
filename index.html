@@ -62,6 +62,8 @@
             line-height: 1;
         }
 
+        .nav-right { display: flex; gap: 3rem; align-items: flex-start; }
+
         .nav-links { list-style: none; text-align: right; }
         .nav-links a {
             font-size: 1.1rem;
@@ -74,6 +76,19 @@
             transition: opacity 0.3s;
         }
         .nav-links a:hover { opacity: 0.5; }
+
+        .lang-toggle {
+            font-size: 1.1rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            cursor: pointer;
+            text-decoration: none;
+            color: #fff;
+            transition: opacity 0.3s;
+        }
+        .lang-toggle:hover { opacity: 0.5; }
+        .lang-toggle.active { opacity: 1; }
+        .lang-toggle.inactive { opacity: 0.3; }
 
         /* Hero Section */
         .hero {
@@ -198,7 +213,8 @@
         }
 
         @media (max-width: 768px) {
-            nav { padding: 1.5rem; }
+            nav { padding: 1.5rem; flex-direction: column; gap: 1.5rem; }
+            .nav-right { flex-direction: column; gap: 1.5rem; }
             .hero h1 { font-size: 4rem; }
             .section-header { font-size: 2.5rem; }
             .gallery-grid { grid-template-columns: 1fr; }
@@ -211,17 +227,24 @@
 <body>
     <nav>
         <a href="#" class="logo">LEO<br>LEE</a>
-        <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#gallery">Gallery</a></li>
-            <li><a href="https://github.com/lqy306" target="_blank">Github</a></li>
-            <li><a href="https://500px.com/lqy_learning" target="_blank">500PX</a></li>
-        </ul>
+        <div class="nav-right">
+            <ul class="nav-links">
+                <li><a href="#about" data-i18n="nav_about">About</a></li>
+                <li><a href="#gallery" data-i18n="nav_gallery">Gallery</a></li>
+                <li><a href="https://github.com/lqy306" target="_blank">Github</a></li>
+                <li><a href="https://500px.com/lqy_learning" target="_blank">500PX</a></li>
+            </ul>
+            <div>
+                <a class="lang-toggle active" id="lang-zh" onclick="setLanguage('zh')">中文</a>
+                <span style="opacity: 0.3;">|</span>
+                <a class="lang-toggle inactive" id="lang-en" onclick="setLanguage('en')">EN</a>
+            </div>
+        </div>
     </nav>
 
     <section class="hero">
-        <h1>STILL<br>VOLATILE</h1>
-        <p class="hero-subtitle">
+        <h1 data-i18n="hero_title">STILL<br>VOLATILE</h1>
+        <p class="hero-subtitle" data-i18n="hero_subtitle">
             Leo Lee. Arch Linux User. Photographer. 
             Lumix S1RM2. High Contrast. Grainy. Minimalist.
         </p>
@@ -229,13 +252,13 @@
 
     <main>
         <section id="about">
-            <h2 class="section-header">Statement</h2>
+            <h2 class="section-header" data-i18n="section_statement">Statement</h2>
             <div class="about-text">
-                <p>I AM A STUDENT FROM XIAMEN, CHINA. AN ARCH LINUX ENTHUSIAST. I CAPTURE THE WORLD THROUGH LUMIX S1RM2 AND REAL TIME LUT WORKFLOW.</p>
-                <p>MY VISION IS BLACK AND WHITE. I SEEK THE TRUTH IN THE SHADOWS OF THE STREET.</p>
+                <p data-i18n="about_p1">I AM A STUDENT FROM XIAMEN, CHINA. AN ARCH LINUX ENTHUSIAST. I CAPTURE THE WORLD THROUGH LUMIX S1RM2 AND REAL TIME LUT WORKFLOW.</p>
+                <p data-i18n="about_p2">MY VISION IS BLACK AND WHITE. I SEEK THE TRUTH IN THE SHADOWS OF THE STREET.</p>
             </div>
             
-            <div class="ai-notice">
+            <div class="ai-notice" data-i18n="ai_notice">
                 NOTICE: THIS SPACE IS MAINTAINED BY AI (MANUS). 
                 IT IS VOLATILE. THE STYLE WILL SHIFT WITHOUT WARNING. 
                 ALL AUTOMATIONS REMOVED. BACK TO BASICS.
@@ -243,99 +266,93 @@
         </section>
 
         <section id="gallery">
-            <h2 class="section-header">Fragments</h2>
-            <div class="gallery-grid">
-                <!-- 黑白-街头 -->
-                <div class="photo-item wide">
-                    <img src="photos/黑白-街头/朝夕相伴.jpg" alt="COMPANIONS">
-                    <div class="photo-info">COMPANIONS / STREET</div>
-                </div>
-                <div class="photo-item wide">
-                    <img src="photos/黑白-街头/奔跑.jpg" alt="RUNNING">
-                    <div class="photo-info">RUNNING / STREET</div>
-                </div>
-                <div class="photo-item">
-                    <img src="photos/黑白-街头/骑车的男孩.jpg" alt="BOY ON BIKE">
-                    <div class="photo-info">BOY ON BIKE / STREET</div>
-                </div>
-                <div class="photo-item">
-                    <img src="photos/黑白-街头/外卖员的通话.jpg" alt="DELIVERY CALL">
-                    <div class="photo-info">DELIVERY CALL / STREET</div>
-                </div>
-                <div class="photo-item">
-                    <img src="photos/黑白-街头/骑自行车的女人.jpg" alt="WOMAN ON BIKE">
-                    <div class="photo-info">WOMAN ON BIKE / STREET</div>
-                </div>
-                <div class="photo-item">
-                    <img src="photos/黑白-街头/思行者.jpg" alt="WANDERER">
-                    <div class="photo-info">WANDERER / STREET</div>
-                </div>
-                <div class="photo-item">
-                    <img src="photos/黑白-街头/指点.jpg" alt="POINTING">
-                    <div class="photo-info">POINTING / STREET</div>
-                </div>
-                <div class="photo-item">
-                    <img src="photos/黑白-街头/交易.jpg" alt="TRANSACTION">
-                    <div class="photo-info">TRANSACTION / STREET</div>
-                </div>
-                <div class="photo-item">
-                    <img src="photos/黑白-街头/八市街头.jpg" alt="BA SHI">
-                    <div class="photo-info">BA SHI / STREET</div>
-                </div>
-                <div class="photo-item">
-                    <img src="photos/黑白-街头/摊前的对视.jpg" alt="STALL GAZE">
-                    <div class="photo-info">STALL GAZE / STREET</div>
-                </div>
-                <div class="photo-item">
-                    <img src="photos/黑白-街头/问价.jpg" alt="BARGAIN">
-                    <div class="photo-info">BARGAIN / STREET</div>
-                </div>
-                <div class="photo-item wide">
-                    <img src="photos/黑白-街头/一排.jpg" alt="A ROW">
-                    <div class="photo-info">A ROW / STREET</div>
-                </div>
-                <!-- 黑白-Tri-X 400系列 -->
-                <div class="photo-item">
-                    <img src="photos/黑白-Tri-X 400系列/垂钓者.jpg" alt="ANGLER">
-                    <div class="photo-info">ANGLER / TRI-X 400</div>
-                </div>
-                <div class="photo-item wide">
-                    <img src="photos/黑白-Tri-X 400系列/烟.jpg" alt="SMOKE">
-                    <div class="photo-info">SMOKE / TRI-X 400</div>
-                </div>
-                <div class="photo-item">
-                    <img src="photos/黑白-Tri-X 400系列/轮椅和魔方.jpg" alt="WHEELCHAIR">
-                    <div class="photo-info">WHEELCHAIR / TRI-X 400</div>
-                </div>
-                <div class="photo-item">
-                    <img src="photos/黑白-Tri-X 400系列/鹭江泳.jpg" alt="SWIMMING">
-                    <div class="photo-info">SWIMMING / TRI-X 400</div>
-                </div>
-                <!-- 黑白-公共交通 -->
-                <div class="photo-item">
-                    <img src="photos/黑白-公共交通/回头.jpg" alt="LOOK BACK">
-                    <div class="photo-info">LOOK BACK / TRANSIT</div>
-                </div>
-                <div class="photo-item">
-                    <img src="photos/黑白-公共交通/窥探.jpg" alt="PEEPING">
-                    <div class="photo-info">PEEPING / TRANSIT</div>
-                </div>
-                <div class="photo-item wide">
-                    <img src="photos/黑白-公共交通/钢琴码头.jpg" alt="PIANO WHARF">
-                    <div class="photo-info">PIANO WHARF / TRANSIT</div>
-                </div>
+            <h2 class="section-header" data-i18n="section_fragments">Fragments</h2>
+            <div class="gallery-grid" id="gallery-grid">
+                <!-- 动态生成 -->
             </div>
         </section>
     </main>
 
     <footer>
         <p>&copy; 2026 LEO LEE. MAINTAINED BY MANUS AI.</p>
-        <p>BUILT WITH ARCH LINUX SPIRIT. VOLATILE MINIMALISM.</p>
+        <p data-i18n="footer_built">BUILT WITH ARCH LINUX SPIRIT. VOLATILE MINIMALISM.</p>
         <div class="social-links">
             <a href="https://github.com/lqy306" target="_blank"><i class="fab fa-github"></i></a>
             <a href="https://500px.com/lqy_learning" target="_blank"><i class="fas fa-camera"></i></a>
             <a href="mailto:lqy.work.learning@gmail.com"><i class="fas fa-envelope"></i></a>
         </div>
     </footer>
+
+    <script>
+        let currentLanguage = localStorage.getItem('language') || 'zh';
+        let translations = {};
+
+        // 加载翻译文件
+        fetch('translations.json')
+            .then(r => r.json())
+            .then(data => {
+                translations = data;
+                setLanguage(currentLanguage);
+                renderGallery();
+            });
+
+        function setLanguage(lang) {
+            currentLanguage = lang;
+            localStorage.setItem('language', lang);
+            
+            // 更新语言切换按钮
+            document.getElementById('lang-zh').classList.toggle('active', lang === 'zh');
+            document.getElementById('lang-zh').classList.toggle('inactive', lang !== 'zh');
+            document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+            document.getElementById('lang-en').classList.toggle('inactive', lang !== 'en');
+            
+            // 更新所有 i18n 标记
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                const keys = key.split('.');
+                let value = translations;
+                for (let k of keys) {
+                    value = value[k];
+                }
+                if (value && typeof value === 'object' && value[lang]) {
+                    el.textContent = value[lang];
+                }
+            });
+            
+            // 重新渲染画廊
+            renderGallery();
+        }
+
+        function renderGallery() {
+            const gallery = document.getElementById('gallery-grid');
+            gallery.innerHTML = '';
+            
+            const photoData = translations.photos;
+            const categories = ['黑白-街头', '黑白-Tri-X 400系列', '黑白-公共交通'];
+            
+            categories.forEach(category => {
+                const items = photoData[category].items;
+                const itemNames = Object.keys(items);
+                
+                itemNames.forEach((itemName, index) => {
+                    const item = items[itemName];
+                    const displayName = currentLanguage === 'zh' ? item.zh : item.en;
+                    const categoryDisplay = currentLanguage === 'zh' ? category : photoData[category].name.en;
+                    
+                    // 特定照片为宽幅
+                    const widePhotos = ['朝夕相伴', '奔跑', '烟', '一排'];
+                    const isWide = widePhotos.includes(itemName);
+                    
+                    const photoEl = document.createElement('div');
+                    photoEl.className = `photo-item ${isWide ? 'wide' : ''}`;
+                    photoEl.innerHTML = `
+                        <img src="photos/${category}/${itemName}.jpg" alt="${displayName}">
+                        <div class="photo-info">${displayName} / ${categoryDisplay}</div>
+                    `;
+                    gallery.appendChild(photoEl);
+                });
+            });
+        }
+    </script>
 </body>
 </html>

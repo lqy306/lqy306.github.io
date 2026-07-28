@@ -1,0 +1,50 @@
+{
+  "ui": {
+    "nav_about": { "zh": "关于", "en": "About" },
+    "nav_gallery": { "zh": "画册", "en": "Gallery" },
+    "hero_title": { "zh": "变动中", "en": "STILL VOLATILE" },
+    "hero_subtitle": { "zh": "Leo Lee. Arch Linux 用户. 摄影师. Lumix S1RM2. 高对比度. 颗粒感. 极简主义.", "en": "Leo Lee. Arch Linux User. Photographer. Lumix S1RM2. High Contrast. Grainy. Minimalist." },
+    "section_statement": { "zh": "陈述", "en": "Statement" },
+    "about_p1": { "zh": "我是一名来自中国厦门的学子，Arch Linux 的忠实拥趸。我通过 Lumix S1RM2 和实时 LUT 工作流捕捉世界。", "en": "I AM A STUDENT FROM XIAMEN, CHINA. AN ARCH LINUX ENTHUSIAST. I CAPTURE THE WORLD THROUGH LUMIX S1RM2 AND REAL TIME LUT WORKFLOW." },
+    "about_p2": { "zh": "我的视野是黑白的。我在街头的阴影中探寻真相。", "en": "MY VISION IS BLACK AND WHITE. I SEEK THE TRUTH IN THE SHADOWS OF THE STREET." },
+    "ai_notice": { "zh": "注：此空间由 AI (Manus) 维护。它是变动的，风格将不经预告而切换。删除所有自动化，回归本质。", "en": "NOTICE: THIS SPACE IS MAINTAINED BY AI (MANUS). IT IS VOLATILE. THE STYLE WILL SHIFT WITHOUT WARNING. ALL AUTOMATIONS REMOVED. BACK TO BASICS." },
+    "section_fragments": { "zh": "碎片", "en": "Fragments" },
+    "footer_built": { "zh": "基于 Arch Linux 精神构建。变动的极简主义。", "en": "BUILT WITH ARCH LINUX SPIRIT. VOLATILE MINIMALISM." }
+  },
+  "photos": {
+    "黑白-Tri-X 400系列": {
+      "name": { "zh": "黑白-Tri-X 400系列", "en": "B&W TRI-X 400 SERIES" },
+      "items": {
+        "垂钓者": { "zh": "垂钓者", "en": "The Angler" },
+        "烟": { "zh": "烟", "en": "Smoke" },
+        "轮椅和魔方": { "zh": "轮椅和魔方", "en": "Wheelchair and Cube" },
+        "鹭江泳": { "zh": "鹭江泳", "en": "Lujiang Swimming" }
+      }
+    },
+    "黑白-公共交通": {
+      "name": { "zh": "黑白-公共交通", "en": "B&W TRANSIT" },
+      "items": {
+        "回头": { "zh": "回头", "en": "Glance Back" },
+        "窥探": { "zh": "窥探", "en": "Peeping" },
+        "钢琴码头": { "zh": "钢琴码头", "en": "Piano Wharf" }
+      }
+    },
+    "黑白-街头": {
+      "name": { "zh": "黑白-街头", "en": "B&W STREET" },
+      "items": {
+        "交易": { "zh": "交易", "en": "The Deal" },
+        "八市街头": { "zh": "八市街头", "en": "Bashi Market Street" },
+        "外卖员的通话": { "zh": "外卖员的通话", "en": "Delivery Call" },
+        "奔跑": { "zh": "奔跑", "en": "Running" },
+        "思行者": { "zh": "思行者", "en": "The Contemplative Walker" },
+        "指点": { "zh": "指点", "en": "Pointing" },
+        "摊前的对视": { "zh": "摊前的对视", "en": "Gaze at the Stall" },
+        "朝夕相伴": { "zh": "朝夕相伴", "en": "Day and Night Companions" },
+        "问价": { "zh": "问价", "en": "Bargaining" },
+        "骑自行车的女人": { "zh": "骑自行车的女人", "en": "Woman on Bicycle" },
+        "骑车的男孩": { "zh": "骑车的男孩", "en": "Boy on Bike" },
+        "一排": { "zh": "一排", "en": "In a Row" }
+      }
+    }
+  }
+}
