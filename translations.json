@@ -1,50 +1,88 @@
 {
   "ui": {
     "nav_about": { "zh": "关于", "en": "About" },
-    "nav_gallery": { "zh": "画册", "en": "Gallery" },
-    "hero_title": { "zh": "变动中", "en": "STILL VOLATILE" },
-    "hero_subtitle": { "zh": "Leo Lee. Arch Linux 用户. 摄影师. Lumix S1RM2. 高对比度. 颗粒感. 极简主义.", "en": "Leo Lee. Arch Linux User. Photographer. Lumix S1RM2. High Contrast. Grainy. Minimalist." },
+    "nav_projects": { "zh": "项目", "en": "Projects" },
+    "hero_title": { "zh": "变动中", "en": "STILL<br>VOLATILE" },
+    "hero_subtitle": { "zh": "Leo Lee。Arch Linux 用户。摄影师。Lumix S1RM2。高对比度。颗粒感。极简主义。", "en": "Leo Lee. Arch Linux user. Photographer. Lumix S1RM2. High contrast. Grainy. Minimalist." },
     "section_statement": { "zh": "陈述", "en": "Statement" },
-    "about_p1": { "zh": "我是一名来自中国厦门的学子，Arch Linux 的忠实拥趸。我通过 Lumix S1RM2 和实时 LUT 工作流捕捉世界。", "en": "I AM A STUDENT FROM XIAMEN, CHINA. AN ARCH LINUX ENTHUSIAST. I CAPTURE THE WORLD THROUGH LUMIX S1RM2 AND REAL TIME LUT WORKFLOW." },
-    "about_p2": { "zh": "我的视野是黑白的。我在街头的阴影中探寻真相。", "en": "MY VISION IS BLACK AND WHITE. I SEEK THE TRUTH IN THE SHADOWS OF THE STREET." },
-    "ai_notice": { "zh": "注：此空间由 AI (Manus) 维护。它是变动的，风格将不经预告而切换。删除所有自动化，回归本质。", "en": "NOTICE: THIS SPACE IS MAINTAINED BY AI (MANUS). IT IS VOLATILE. THE STYLE WILL SHIFT WITHOUT WARNING. ALL AUTOMATIONS REMOVED. BACK TO BASICS." },
-    "section_fragments": { "zh": "碎片", "en": "Fragments" },
-    "footer_built": { "zh": "基于 Arch Linux 精神构建。变动的极简主义。", "en": "BUILT WITH ARCH LINUX SPIRIT. VOLATILE MINIMALISM." }
+    "about_p1": { "zh": "我是一名来自中国厦门的学生，Arch Linux 的忠实拥趸。我通过 Lumix S1RM2 和实时 LUT 工作流捕捉世界。", "en": "I am a student from Xiamen, China, an Arch Linux enthusiast. I capture the world through the Lumix S1RM2 and a Real Time LUT workflow." },
+    "about_p2": { "zh": "我的视野是黑白的。我在街头的阴影中探寻真相。", "en": "My vision is black and white. I look for truth in the shadows of the street." },
+    "ai_notice": { "zh": "注：此空间由 AI（Manus）维护。它是变动的，风格将不经预告而切换。删除所有自动化，回归本质。", "en": "Notice: this space is maintained by AI (Manus). It is volatile; the style may shift without warning. Unnecessary automation has been removed. Back to basics." },
+    "section_projects": { "zh": "摄影项目", "en": "Photography Projects" },
+    "footer_built": { "zh": "基于 Arch Linux 精神构建。变动的极简主义。", "en": "Built with Arch Linux spirit. Volatile minimalism." },
+    "project_label": { "zh": "项目", "en": "Project" }
   },
-  "photos": {
-    "黑白-Tri-X 400系列": {
-      "name": { "zh": "黑白-Tri-X 400系列", "en": "B&W TRI-X 400 SERIES" },
-      "items": {
-        "垂钓者": { "zh": "垂钓者", "en": "The Angler" },
-        "烟": { "zh": "烟", "en": "Smoke" },
-        "轮椅和魔方": { "zh": "轮椅和魔方", "en": "Wheelchair and Cube" },
-        "鹭江泳": { "zh": "鹭江泳", "en": "Lujiang Swimming" }
-      }
+  "projects": [
+    {
+      "id": "recent-works",
+      "title": { "zh": "最新作品", "en": "Recent Works" },
+      "description": { "zh": "一组关于城市街头、郊野、动物与日常片段的最新作品。", "en": "A recent set of photographs about city streets, open country, animals, and fragments of everyday life." },
+      "photos": [
+        { "file": "recent_works/_LQY0525.webp", "title": { "zh": "过马路的人", "en": "Crossing the Street" }, "wide": true },
+        { "file": "recent_works/_LQY0543.webp", "title": { "zh": "低头族", "en": "Heads Down" }, "wide": true },
+        { "file": "recent_works/_LQY0357.webp", "title": { "zh": "路边的苹果", "en": "Apples by the Road" }, "wide": true },
+        { "file": "recent_works/_LQY0366.webp", "title": { "zh": "桥下的三轮车", "en": "Tricycle Under the Bridge" } },
+        { "file": "recent_works/_LQY0437.webp", "title": { "zh": "古城街头", "en": "Old City Street" } },
+        { "file": "recent_works/_LQY0027.webp", "title": { "zh": "铁网之后", "en": "Behind the Fence" } },
+        { "file": "recent_works/_LQY0051.webp", "title": { "zh": "羊群", "en": "The Flock" } },
+        { "file": "recent_works/_LQY0130.webp", "title": { "zh": "两头猪", "en": "Two Pigs" } },
+        { "file": "recent_works/_LQY0281.webp", "title": { "zh": "野地里的花", "en": "Wild Flowers" } },
+        { "file": "recent_works/_LQY0313.webp", "title": { "zh": "山谷里的羊", "en": "Sheep in the Valley" } },
+        { "file": "recent_works/_LQY0275.webp", "title": { "zh": "黄土崖壁", "en": "Loess Cliffs" } }
+      ]
     },
-    "黑白-公共交通": {
-      "name": { "zh": "黑白-公共交通", "en": "B&W TRANSIT" },
-      "items": {
-        "回头": { "zh": "回头", "en": "Glance Back" },
-        "窥探": { "zh": "窥探", "en": "Peeping" },
-        "钢琴码头": { "zh": "钢琴码头", "en": "Piano Wharf" }
-      }
+    {
+      "id": "amoy-old-town",
+      "title": { "zh": "厦门老城区", "en": "Amoy Old Town" },
+      "description": { "zh": "厦门老城区摄影纪实项目，以仿黑白胶卷的方式记录日常街景。", "en": "A documentary project on the old districts of Xiamen, recording everyday street scenes with a black-and-white film sensibility." },
+      "photos": [
+        { "file": "amoy_old_town/朝夕相伴.jpg", "title": { "zh": "朝夕相伴", "en": "Day and Night Companions" }, "wide": true },
+        { "file": "amoy_old_town/奔跑.jpg", "title": { "zh": "奔跑", "en": "Running" }, "wide": true },
+        { "file": "amoy_old_town/思行者.jpg", "title": { "zh": "思行者", "en": "The Contemplative Walker" } },
+        { "file": "amoy_old_town/擦肩而过.jpg", "title": { "zh": "擦肩而过", "en": "Passing By" } },
+        { "file": "amoy_old_town/交易.jpg", "title": { "zh": "交易", "en": "The Deal" } },
+        { "file": "amoy_old_town/摊前的对视.jpg", "title": { "zh": "摊前的对视", "en": "Gaze at the Stall" } },
+        { "file": "amoy_old_town/问价.jpg", "title": { "zh": "问价", "en": "Asking the Price" } },
+        { "file": "amoy_old_town/一排.jpg", "title": { "zh": "一排", "en": "In a Row" }, "wide": true },
+        { "file": "amoy_old_town/冰.jpg", "title": { "zh": "冰", "en": "Ice" } },
+        { "file": "amoy_old_town/水花.jpg", "title": { "zh": "水花", "en": "Splashes" } },
+        { "file": "amoy_old_town/汤包.jpg", "title": { "zh": "汤包", "en": "Soup Dumplings" } },
+        { "file": "amoy_old_town/狗？.jpg", "title": { "zh": "狗？", "en": "Dog?" } },
+        { "file": "amoy_old_town/雕像.jpg", "title": { "zh": "雕像", "en": "Statue" } },
+        { "file": "amoy_old_town/顾客和店主.jpg", "title": { "zh": "顾客和店主", "en": "Customer and Owner" } },
+        { "file": "amoy_old_town/骑自行车的女人.jpg", "title": { "zh": "骑自行车的女人", "en": "Woman on a Bicycle" } },
+        { "file": "amoy_old_town/指点.jpg", "title": { "zh": "指点", "en": "Pointing" } }
+      ]
     },
-    "黑白-街头": {
-      "name": { "zh": "黑白-街头", "en": "B&W STREET" },
-      "items": {
-        "交易": { "zh": "交易", "en": "The Deal" },
-        "八市街头": { "zh": "八市街头", "en": "Bashi Market Street" },
-        "外卖员的通话": { "zh": "外卖员的通话", "en": "Delivery Call" },
-        "奔跑": { "zh": "奔跑", "en": "Running" },
-        "思行者": { "zh": "思行者", "en": "The Contemplative Walker" },
-        "指点": { "zh": "指点", "en": "Pointing" },
-        "摊前的对视": { "zh": "摊前的对视", "en": "Gaze at the Stall" },
-        "朝夕相伴": { "zh": "朝夕相伴", "en": "Day and Night Companions" },
-        "问价": { "zh": "问价", "en": "Bargaining" },
-        "骑自行车的女人": { "zh": "骑自行车的女人", "en": "Woman on Bicycle" },
-        "骑车的男孩": { "zh": "骑车的男孩", "en": "Boy on Bike" },
-        "一排": { "zh": "一排", "en": "In a Row" }
-      }
+    {
+      "id": "gulangsu",
+      "title": { "zh": "鼓浪屿", "en": "Gulangsu" },
+      "description": { "zh": "一个长期纪实摄影项目，试图以本地人的视角记录鼓浪屿。", "en": "A long-term documentary project attempting to record Gulangsu from a local's perspective." },
+      "photos": [
+        { "file": "gulangsu/烟.jpg", "title": { "zh": "烟", "en": "Smoke" }, "wide": true },
+        { "file": "gulangsu/垂钓者.jpg", "title": { "zh": "垂钓者", "en": "The Angler" } },
+        { "file": "gulangsu/轮椅和魔方.jpg", "title": { "zh": "轮椅和魔方", "en": "Wheelchair and Cube" } },
+        { "file": "gulangsu/鹭江泳.jpg", "title": { "zh": "鹭江泳", "en": "Swimming in the Lujiang" } },
+        { "file": "gulangsu/观望.jpg", "title": { "zh": "观望", "en": "Watching" } },
+        { "file": "gulangsu/骑车的男孩.jpg", "title": { "zh": "骑车的男孩", "en": "Boy on a Bicycle" } }
+      ]
+    },
+    {
+      "id": "transportation",
+      "title": { "zh": "公共交通", "en": "Transportation" },
+      "description": { "zh": "记录城市脉动中的公共交通瞬间。", "en": "Moments of public transportation within the city's pulse." },
+      "photos": [
+        { "file": "transportation/窥探.jpg", "title": { "zh": "窥探", "en": "Peeping" }, "wide": true }
+      ]
+    },
+    {
+      "id": "color-experiment",
+      "title": { "zh": "色彩实验", "en": "Color Experiment" },
+      "description": { "zh": "一个实验性质的项目，引入彩色摄影作品，用于测试色彩。", "en": "An experimental project introducing color photographs as a way to test color." },
+      "photos": [
+        { "file": "color_experiment/HNCS_Like 1.jpg", "title": { "zh": "HNCS 实验 1", "en": "HNCS Experiment 1" } },
+        { "file": "color_experiment/HNCS_Like 2.jpg", "title": { "zh": "HNCS 实验 2", "en": "HNCS Experiment 2" } }
+      ]
     }
-  }
+  ]
 }

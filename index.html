@@ -3,356 +3,206 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LEO LEE | PERSONAL SPACE</title>
-    <meta name="description" content="Leo Lee's Personal Space - AI Maintained, Minimalist.">
-    
-    <!-- Fonts & Icons -->
+    <title>LEO LEE | PROJECTS</title>
+    <meta name="description" content="Leo Lee's personal space — project-based documentary photography.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Noto+Serif:ital,wght@0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
     <style>
-        :root {
-            --bg-color: #000000;
-            --text-color: #ffffff;
-            --accent-color: #ffffff;
-            --grain-opacity: 0.05;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; cursor: crosshair; }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: 'Noto Serif', 'Noto Serif SC', serif;
-            line-height: 1.4;
-            overflow-x: hidden;
-        }
-
-        /* Grain Effect Overlay */
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3%3Ffilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-            opacity: var(--grain-opacity);
-            pointer-events: none;
-            z-index: 9999;
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0; width: 100%;
-            padding: 2.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            z-index: 1000;
-            mix-blend-mode: difference;
-        }
-
-        .logo {
-            font-size: 2rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            text-decoration: none;
-            color: #fff;
-            line-height: 1;
-        }
-
-        .nav-right { display: flex; gap: 3rem; align-items: flex-start; }
-
-        .nav-links { list-style: none; text-align: right; }
-        .nav-links a {
-            font-size: 1.1rem;
-            font-weight: 400;
-            text-transform: uppercase;
-            text-decoration: none;
-            color: #fff;
-            display: block;
-            margin-bottom: 0.5rem;
-            transition: opacity 0.3s;
-        }
-        .nav-links a:hover { opacity: 0.5; }
-
-        .lang-toggle {
-            font-size: 1.1rem;
-            font-weight: 400;
-            text-transform: uppercase;
-            cursor: pointer;
-            text-decoration: none;
-            color: #fff;
-            transition: opacity 0.3s;
-        }
-        .lang-toggle:hover { opacity: 0.5; }
-        .lang-toggle.active { opacity: 1; }
-        .lang-toggle.inactive { opacity: 0.3; }
-
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 2.5rem;
-            border-bottom: 2px solid #fff;
-        }
-
-        .hero h1 {
-            font-size: clamp(3rem, 12vw, 10rem);
-            font-weight: 900;
-            text-transform: uppercase;
-            line-height: 0.9;
-            margin-bottom: 3rem;
-        }
-
-        .hero-subtitle {
-            font-size: 1.2rem;
-            font-weight: 400;
-            max-width: 700px;
-            font-style: italic;
-        }
-
-        /* Main Content */
-        main { padding: 0; }
-
-        section { padding: 6rem 2.5rem; border-bottom: 1px solid #222; }
-
-        .section-header {
-            font-size: 4rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            margin-bottom: 5rem;
-            line-height: 1;
-        }
-
-        /* About Section */
-        .about-text {
-            font-size: 1.8rem;
-            font-weight: 400;
-            max-width: 1100px;
-            margin-bottom: 5rem;
-        }
-
-        .about-text p { margin-bottom: 2rem; }
-
-        .ai-notice {
-            background: #fff;
-            color: #000;
-            padding: 4rem;
-            font-size: 1.4rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            margin: 5rem 0;
-            line-height: 1.2;
-        }
-
-        /* Gallery Grid */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1px;
-            background: #222;
-        }
-
-        .photo-item {
-            position: relative;
-            overflow: hidden;
-            background: #000;
-        }
-
-        .photo-item img {
-            width: 100%;
-            height: auto;
-            display: block;
-            filter: grayscale(100%) contrast(120%);
-            transition: filter 0.6s ease, transform 0.6s ease;
-        }
-
-        .photo-item:hover img {
-            filter: grayscale(100%) contrast(150%);
-            transform: scale(1.03);
-        }
-
-        .photo-info {
-            position: absolute;
-            bottom: 2rem; left: 2rem;
-            font-size: 0.9rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            background: #fff;
-            color: #000;
-            padding: 0.6rem 1.2rem;
-            opacity: 0;
-            transition: opacity 0.4s;
-        }
-
-        .photo-item:hover .photo-info { opacity: 1; }
-
-        .photo-item.wide { grid-column: span 2; }
-
-        /* Footer */
-        footer {
-            padding: 6rem 2.5rem;
-            text-align: left;
-            font-size: 0.9rem;
-            font-weight: 400;
-            text-transform: uppercase;
-            border-top: 1px solid #222;
-        }
-
-        footer a { color: #fff; text-decoration: underline; margin-bottom: 1rem; display: inline-block; }
-
-        .social-links { margin-top: 3rem; display: flex; gap: 2.5rem; }
-        .social-links a {
-            font-size: 1.8rem;
-            color: #fff;
-            text-decoration: none;
-        }
-
-        @media (max-width: 768px) {
-            nav { padding: 1.5rem; flex-direction: column; gap: 1.5rem; }
-            .nav-right { flex-direction: column; gap: 1.5rem; }
-            .hero h1 { font-size: 4rem; }
-            .section-header { font-size: 2.5rem; }
-            .gallery-grid { grid-template-columns: 1fr; }
-            .photo-item.wide { grid-column: span 1; }
-            .about-text { font-size: 1.2rem; }
-            .ai-notice { padding: 2rem; font-size: 1rem; }
+        :root { --bg:#000; --fg:#fff; --muted:#999; --line:#262626; --grain:.045; }
+        * { box-sizing:border-box; margin:0; padding:0; cursor:crosshair; }
+        html { scroll-behavior:smooth; }
+        body { background:var(--bg); color:var(--fg); font-family:'Noto Serif','Noto Serif SC',serif; line-height:1.6; overflow-x:hidden; }
+        body::before { content:""; position:fixed; inset:0; z-index:9999; pointer-events:none; opacity:var(--grain); background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+        a, button { color:inherit; }
+        nav { position:fixed; top:0; left:0; right:0; z-index:1000; padding:2.5rem; display:flex; justify-content:space-between; align-items:flex-start; mix-blend-mode:difference; }
+        .logo { color:#fff; font-size:2rem; font-weight:900; line-height:.95; text-decoration:none; letter-spacing:-.04em; }
+        .nav-right { display:flex; gap:3rem; align-items:flex-start; }
+        .nav-links { list-style:none; text-align:right; }
+        .nav-links a { display:block; margin-bottom:.45rem; font-size:1.05rem; text-transform:uppercase; text-decoration:none; transition:opacity .25s; }
+        .nav-links a:hover, .social-links a:hover { opacity:.5; }
+        .lang-controls { display:flex; gap:.55rem; align-items:center; white-space:nowrap; }
+        .lang-button { border:0; background:none; color:#fff; font:inherit; font-size:1.05rem; cursor:pointer; padding:0; }
+        .lang-button.active { font-weight:700; text-decoration:underline; text-underline-offset:.25em; }
+        .lang-button.inactive { opacity:.35; }
+        .hero { min-height:100vh; padding:2.5rem; display:flex; flex-direction:column; justify-content:center; border-bottom:2px solid var(--fg); }
+        .hero h1 { max-width:100%; font-size:clamp(4rem,13vw,11rem); font-weight:900; line-height:.88; letter-spacing:-.07em; white-space:pre-line; text-transform:uppercase; margin-bottom:3rem; }
+        .hero-subtitle { max-width:700px; font-size:1.2rem; font-style:italic; }
+        section { padding:6rem 2.5rem; border-bottom:1px solid var(--line); }
+        .section-header { margin-bottom:4rem; font-size:clamp(2.8rem,6vw,5rem); font-weight:900; line-height:1; text-transform:uppercase; letter-spacing:-.04em; }
+        .about-text { max-width:1100px; margin-bottom:4rem; font-size:1.65rem; }
+        .about-text p { margin-bottom:1.6rem; }
+        .ai-notice { max-width:1100px; margin-top:4rem; padding:3rem; background:#fff; color:#000; font-size:1.25rem; font-weight:700; line-height:1.35; }
+        .project-block { margin-bottom:10rem; }
+        .project-block:last-child { margin-bottom:0; }
+        .project-info { max-width:900px; margin-bottom:3rem; }
+        .project-kicker { margin-bottom:1rem; color:var(--muted); font-size:.8rem; letter-spacing:.16em; text-transform:uppercase; }
+        .project-title { margin-bottom:1.2rem; border-left:8px solid var(--fg); padding-left:1.5rem; font-size:clamp(2rem,4vw,3.2rem); font-weight:900; line-height:1.05; text-transform:uppercase; }
+        .project-desc { max-width:800px; color:#aaa; font-size:1.1rem; }
+        .gallery-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1px; background:var(--line); }
+        .photo-item { position:relative; min-width:0; overflow:hidden; background:#080808; }
+        .photo-item.wide { grid-column:span 2; }
+        .photo-item img { display:block; width:100%; height:auto; filter:grayscale(100%) contrast(120%); transition:filter .5s, transform .5s; }
+        .project-color-experiment .photo-item img { filter:none; }
+        .photo-item:hover img { filter:grayscale(100%) contrast(155%); transform:scale(1.025); }
+        .project-color-experiment .photo-item:hover img { filter:contrast(110%); }
+        .photo-info { position:absolute; left:1.5rem; bottom:1.5rem; padding:.45rem .8rem; background:#fff; color:#000; font-size:.82rem; font-weight:700; opacity:0; transition:opacity .25s; }
+        .photo-item:hover .photo-info { opacity:1; }
+        footer { padding:5rem 2.5rem; border-top:1px solid var(--line); font-size:.9rem; text-transform:uppercase; }
+        footer p + p { margin-top:.5rem; color:#aaa; }
+        .social-links { display:flex; gap:2rem; margin-top:2.5rem; }
+        .social-links a { font-size:1.6rem; text-decoration:none; transition:opacity .25s; }
+        .error-message { padding:2rem; border:1px solid #555; color:#aaa; }
+        @media (max-width:768px) {
+            nav { padding:1.25rem; flex-direction:column; gap:1.2rem; }
+            .nav-right { width:100%; flex-direction:row; justify-content:space-between; gap:1rem; }
+            .hero, section, footer { padding-left:1.25rem; padding-right:1.25rem; }
+            .hero h1 { font-size:clamp(3.3rem,17vw,6rem); }
+            .hero-subtitle { font-size:1rem; }
+            .about-text { font-size:1.2rem; }
+            .ai-notice { padding:1.5rem; font-size:1rem; }
+            .gallery-grid { grid-template-columns:1fr; }
+            .photo-item.wide { grid-column:span 1; }
+            .project-title { border-left-width:5px; padding-left:1rem; }
         }
     </style>
 </head>
 <body>
-    <nav>
-        <a href="#" class="logo">LEO<br>LEE</a>
+    <nav aria-label="Primary navigation">
+        <a class="logo" href="#">LEO<br>LEE</a>
         <div class="nav-right">
             <ul class="nav-links">
                 <li><a href="#about" data-i18n="nav_about">About</a></li>
-                <li><a href="#gallery" data-i18n="nav_gallery">Gallery</a></li>
-                <li><a href="https://github.com/lqy306" target="_blank">Github</a></li>
-                <li><a href="https://500px.com/lqy_learning" target="_blank">500PX</a></li>
+                <li><a href="#projects" data-i18n="nav_projects">Projects</a></li>
+                <li><a href="https://github.com/lqy306" target="_blank" rel="noreferrer">GitHub</a></li>
+                <li><a href="https://500px.com/lqy_learning" target="_blank" rel="noreferrer">500px</a></li>
             </ul>
-            <div>
-                <a class="lang-toggle active" id="lang-zh" onclick="setLanguage('zh')">中文</a>
-                <span style="opacity: 0.3;">|</span>
-                <a class="lang-toggle inactive" id="lang-en" onclick="setLanguage('en')">EN</a>
+            <div class="lang-controls" aria-label="Language switcher">
+                <button type="button" class="lang-button" id="lang-zh" data-lang="zh">中文</button>
+                <span aria-hidden="true">/</span>
+                <button type="button" class="lang-button" id="lang-en" data-lang="en">EN</button>
             </div>
         </div>
     </nav>
 
-    <section class="hero">
-        <h1 data-i18n="hero_title">STILL<br>VOLATILE</h1>
-        <p class="hero-subtitle" data-i18n="hero_subtitle">
-            Leo Lee. Arch Linux User. Photographer. 
-            Lumix S1RM2. High Contrast. Grainy. Minimalist.
-        </p>
-    </section>
+    <header class="hero">
+        <h1 data-i18n="hero_title">STILL\nVOLATILE</h1>
+        <p class="hero-subtitle" data-i18n="hero_subtitle">Leo Lee. Arch Linux user. Photographer. Lumix S1RM2. High contrast. Grainy. Minimalist.</p>
+    </header>
 
     <main>
         <section id="about">
             <h2 class="section-header" data-i18n="section_statement">Statement</h2>
             <div class="about-text">
-                <p data-i18n="about_p1">I AM A STUDENT FROM XIAMEN, CHINA. AN ARCH LINUX ENTHUSIAST. I CAPTURE THE WORLD THROUGH LUMIX S1RM2 AND REAL TIME LUT WORKFLOW.</p>
-                <p data-i18n="about_p2">MY VISION IS BLACK AND WHITE. I SEEK THE TRUTH IN THE SHADOWS OF THE STREET.</p>
+                <p data-i18n="about_p1">I am a student from Xiamen, China, an Arch Linux enthusiast. I capture the world through the Lumix S1RM2 and a Real Time LUT workflow.</p>
+                <p data-i18n="about_p2">My vision is black and white. I look for truth in the shadows of the street.</p>
             </div>
-            
-            <div class="ai-notice" data-i18n="ai_notice">
-                NOTICE: THIS SPACE IS MAINTAINED BY AI (MANUS). 
-                IT IS VOLATILE. THE STYLE WILL SHIFT WITHOUT WARNING. 
-                ALL AUTOMATIONS REMOVED. BACK TO BASICS.
-            </div>
+            <div class="ai-notice" data-i18n="ai_notice">Notice: this space is maintained by AI (Manus). It is volatile; the style may shift without warning. Unnecessary automation has been removed. Back to basics.</div>
         </section>
-
-        <section id="gallery">
-            <h2 class="section-header" data-i18n="section_fragments">Fragments</h2>
-            <div class="gallery-grid" id="gallery-grid">
-                <!-- 动态生成 -->
-            </div>
+        <section id="projects">
+            <h2 class="section-header" data-i18n="section_projects">Photography Projects</h2>
+            <div id="project-container" aria-live="polite"></div>
         </section>
     </main>
 
     <footer>
         <p>&copy; 2026 LEO LEE. MAINTAINED BY MANUS AI.</p>
-        <p data-i18n="footer_built">BUILT WITH ARCH LINUX SPIRIT. VOLATILE MINIMALISM.</p>
+        <p data-i18n="footer_built">Built with Arch Linux spirit. Volatile minimalism.</p>
         <div class="social-links">
-            <a href="https://github.com/lqy306" target="_blank"><i class="fab fa-github"></i></a>
-            <a href="https://500px.com/lqy_learning" target="_blank"><i class="fas fa-camera"></i></a>
-            <a href="mailto:lqy.work.learning@gmail.com"><i class="fas fa-envelope"></i></a>
+            <a href="https://github.com/lqy306" target="_blank" rel="noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://500px.com/lqy_learning" target="_blank" rel="noreferrer" aria-label="500px"><i class="fas fa-camera"></i></a>
+            <a href="mailto:lqy.work.learning@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
         </div>
     </footer>
 
     <script>
-        let currentLanguage = localStorage.getItem('language') || 'zh';
-        let translations = {};
+        (() => {
+            const state = { lang: localStorage.getItem('language') === 'en' ? 'en' : 'zh', data: null };
+            const container = document.getElementById('project-container');
+            const labels = ['lang-zh', 'lang-en'];
 
-        // 加载翻译文件
-        fetch('translations.json')
-            .then(r => r.json())
-            .then(data => {
-                translations = data;
-                setLanguage(currentLanguage);
-                renderGallery();
-            });
+            function localized(value) {
+                return value && typeof value === 'object' ? (value[state.lang] || value.zh || '') : (value || '');
+            }
 
-        function setLanguage(lang) {
-            currentLanguage = lang;
-            localStorage.setItem('language', lang);
-            
-            // 更新语言切换按钮
-            document.getElementById('lang-zh').classList.toggle('active', lang === 'zh');
-            document.getElementById('lang-zh').classList.toggle('inactive', lang !== 'zh');
-            document.getElementById('lang-en').classList.toggle('active', lang === 'en');
-            document.getElementById('lang-en').classList.toggle('inactive', lang !== 'en');
-            
-            // 更新所有 i18n 标记
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                const keys = key.split('.');
-                let value = translations;
-                for (let k of keys) {
-                    value = value[k];
-                }
-                if (value && typeof value === 'object' && value[lang]) {
-                    el.textContent = value[lang];
-                }
-            });
-            
-            // 重新渲染画廊
-            renderGallery();
-        }
-
-        function renderGallery() {
-            const gallery = document.getElementById('gallery-grid');
-            gallery.innerHTML = '';
-            
-            const photoData = translations.photos;
-            const categories = ['黑白-街头', '黑白-Tri-X 400系列', '黑白-公共交通'];
-            
-            categories.forEach(category => {
-                const items = photoData[category].items;
-                const itemNames = Object.keys(items);
-                
-                itemNames.forEach((itemName, index) => {
-                    const item = items[itemName];
-                    const displayName = currentLanguage === 'zh' ? item.zh : item.en;
-                    const categoryDisplay = currentLanguage === 'zh' ? category : photoData[category].name.en;
-                    
-                    // 特定照片为宽幅
-                    const widePhotos = ['朝夕相伴', '奔跑', '烟', '一排'];
-                    const isWide = widePhotos.includes(itemName);
-                    
-                    const photoEl = document.createElement('div');
-                    photoEl.className = `photo-item ${isWide ? 'wide' : ''}`;
-                    photoEl.innerHTML = `
-                        <img src="photos/${category}/${itemName}.jpg" alt="${displayName}">
-                        <div class="photo-info">${displayName} / ${categoryDisplay}</div>
-                    `;
-                    gallery.appendChild(photoEl);
+            function setText(key, value) {
+                document.querySelectorAll(`[data-i18n="${key}"]`).forEach((element) => {
+                    element.textContent = localized(value);
                 });
-            });
-        }
+            }
+
+            function updateStaticText() {
+                const ui = state.data.ui;
+                Object.keys(ui).forEach((key) => setText(key, ui[key]));
+                document.documentElement.lang = state.lang === 'zh' ? 'zh-CN' : 'en';
+                document.title = state.lang === 'zh' ? 'LEO LEE | 摄影项目' : 'LEO LEE | PROJECTS';
+                labels.forEach((id) => {
+                    const button = document.getElementById(id);
+                    const active = id === `lang-${state.lang}`;
+                    button.classList.toggle('active', active);
+                    button.classList.toggle('inactive', !active);
+                    button.setAttribute('aria-pressed', String(active));
+                });
+            }
+
+            function createElement(tag, className, text) {
+                const element = document.createElement(tag);
+                if (className) element.className = className;
+                if (text !== undefined) element.textContent = text;
+                return element;
+            }
+
+            function renderProjects() {
+                container.replaceChildren();
+                state.data.projects.forEach((project, projectIndex) => {
+                    const block = createElement('article', `project-block project-${project.id}`);
+                    const info = createElement('div', 'project-info');
+                    info.appendChild(createElement('p', 'project-kicker', `${localized(state.data.ui.project_label)} ${String(projectIndex + 1).padStart(2, '0')}`));
+                    info.appendChild(createElement('h3', 'project-title', localized(project.title)));
+                    info.appendChild(createElement('p', 'project-desc', localized(project.description)));
+                    const grid = createElement('div', 'gallery-grid');
+                    project.photos.forEach((photo) => {
+                        const item = createElement('figure', `photo-item${photo.wide ? ' wide' : ''}`);
+                        const image = document.createElement('img');
+                        image.src = `photos/${photo.file}`;
+                        image.alt = localized(photo.title);
+                        image.loading = 'lazy';
+                        image.decoding = 'async';
+                        const caption = createElement('figcaption', 'photo-info', localized(photo.title));
+                        item.append(image, caption);
+                        grid.appendChild(item);
+                    });
+                    block.append(info, grid);
+                    container.appendChild(block);
+                });
+            }
+
+            function changeLanguage(lang) {
+                if (!state.data || !['zh', 'en'].includes(lang)) return;
+                state.lang = lang;
+                localStorage.setItem('language', lang);
+                updateStaticText();
+                renderProjects();
+            }
+
+            labels.forEach((id) => document.getElementById(id).addEventListener('click', () => changeLanguage(id.slice(5))));
+
+            fetch('translations.json', { cache: 'no-store' })
+                .then((response) => {
+                    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                    return response.json();
+                })
+                .then((data) => {
+                    state.data = data;
+                    updateStaticText();
+                    renderProjects();
+                })
+                .catch((error) => {
+                    console.error(error);
+                    container.appendChild(createElement('p', 'error-message', 'Unable to load the project catalogue.'));
+                });
+        })();
     </script>
 </body>
 </html>
