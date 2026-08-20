@@ -1,16 +1,19 @@
 {
   "ui": {
     "nav_about": { "zh": "关于", "en": "About" },
-    "nav_projects": { "zh": "项目", "en": "Projects" },
+    "nav_projects": { "zh": "画廊", "en": "Gallery" },
+    "nav_tools": { "zh": "工具", "en": "Tools" },
     "hero_title": { "zh": "变动中", "en": "STILL<br>VOLATILE" },
     "hero_subtitle": { "zh": "Leo Lee。Arch Linux 用户。摄影师。Lumix S1RM2。高对比度。颗粒感。极简主义。", "en": "Leo Lee. Arch Linux user. Photographer. Lumix S1RM2. High contrast. Grainy. Minimalist." },
     "section_statement": { "zh": "陈述", "en": "Statement" },
     "about_p1": { "zh": "我是一名来自中国厦门的学生，Arch Linux 的忠实拥趸。我通过 Lumix S1RM2 和实时 LUT 工作流捕捉世界。", "en": "I am a student from Xiamen, China, an Arch Linux enthusiast. I capture the world through the Lumix S1RM2 and a Real Time LUT workflow." },
     "about_p2": { "zh": "我的视野是黑白的。我在街头的阴影中探寻真相。", "en": "My vision is black and white. I look for truth in the shadows of the street." },
     "ai_notice": { "zh": "注：此空间由 AI（Manus）维护。它是变动的，风格将不经预告而切换。删除所有自动化，回归本质。", "en": "Notice: this space is maintained by AI (Manus). It is volatile; the style may shift without warning. Unnecessary automation has been removed. Back to basics." },
-    "section_projects": { "zh": "摄影项目", "en": "Photography Projects" },
+    "section_projects": { "zh": "摄影画廊", "en": "Photography Gallery" },
+    "section_tools": { "zh": "我的工具", "en": "My Tools" },
     "footer_built": { "zh": "基于 Arch Linux 精神构建。变动的极简主义。", "en": "Built with Arch Linux spirit. Volatile minimalism." },
-    "project_label": { "zh": "项目", "en": "Project" }
+    "project_label": { "zh": "项目", "en": "Project" },
+    "tool_view_github": { "zh": "查看 GitHub", "en": "View on GitHub" }
   },
   "projects": [
     {
@@ -83,6 +86,18 @@
         { "file": "color_experiment/HNCS_Like 1.jpg", "title": { "zh": "HNCS 实验 1", "en": "HNCS Experiment 1" } },
         { "file": "color_experiment/HNCS_Like 2.jpg", "title": { "zh": "HNCS 实验 2", "en": "HNCS Experiment 2" } }
       ]
+    }
+  ],
+  "tools": [
+    {
+      "id": "lutcalch",
+      "title": { "zh": "LUTCalCh", "en": "LUTCalCh" },
+      "description": { 
+        "zh": "一个用于生成视频摄像机 1D 和 3D 查找表 (LUT) 的 Web 应用程序，支持多种 Log 伽马信号，界面经过视觉增强和多语言本地化。", 
+        "en": "A web application for generating 1D and 3D lookup tables (LUTs) for video cameras capturing Log gamma signals, featuring an enhanced UI and localization." 
+      },
+      "url": "https://github.com/lqy306/LUTCalCh",
+      "tags": ["Photography", "Color Grading", "Web App"]
     }
   ]
 }
