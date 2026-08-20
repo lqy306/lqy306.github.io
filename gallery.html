@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LEO LEE | HOME</title>
-    <meta name="description" content="Leo Lee's personal space — AI maintained, minimalist design, documentary photography and tools.">
+    <title>LEO LEE | GALLERY</title>
+    <meta name="description" content="Leo Lee's Photography Gallery - Project-based documentary photography.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Noto+Serif:ital,wght@0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
@@ -12,40 +12,39 @@
     <style>
         :root { --bg:#000; --fg:#fff; --muted:#999; --line:#262626; --grain:.045; }
         * { box-sizing:border-box; margin:0; padding:0; cursor:crosshair; }
-        html { scroll-behavior:smooth; }
         body { background:var(--bg); color:var(--fg); font-family:'Noto Serif','Noto Serif SC',serif; line-height:1.6; overflow-x:hidden; }
         body::before { content:""; position:fixed; inset:0; z-index:9999; pointer-events:none; opacity:var(--grain); background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
         a, button { color:inherit; }
-        nav { position:fixed; top:0; left:0; right:0; z-index:1000; padding:2.5rem; display:flex; justify-content:space-between; align-items:flex-start; mix-blend-mode:difference; }
+        nav { position:fixed; top:0; left:0; right:0; z-index:1000; padding:2.5rem; display:flex; justify-content:space-between; align-items:flex-start; mix-blend-mode:difference; background:rgba(0,0,0,0.5); backdrop-filter:blur(5px); }
         .logo { color:#fff; font-size:2rem; font-weight:900; line-height:.95; text-decoration:none; letter-spacing:-.04em; }
         .nav-right { display:flex; gap:3rem; align-items:flex-start; }
         .nav-links { list-style:none; text-align:right; }
         .nav-links a { display:block; margin-bottom:.45rem; font-size:1.05rem; text-transform:uppercase; text-decoration:none; transition:opacity .25s; }
-        .nav-links a:hover, .social-links a:hover { opacity:.5; }
+        .nav-links a:hover { opacity:.5; }
         .lang-controls { display:flex; gap:.55rem; align-items:center; white-space:nowrap; }
         .lang-button { border:0; background:none; color:#fff; font:inherit; font-size:1.05rem; cursor:pointer; padding:0; }
         .lang-button.active { font-weight:700; text-decoration:underline; text-underline-offset:.25em; }
         .lang-button.inactive { opacity:.35; }
-        .hero { min-height:100vh; padding:2.5rem; display:flex; flex-direction:column; justify-content:center; border-bottom:2px solid var(--fg); }
-        .hero h1 { max-width:100%; font-size:clamp(4rem,13vw,11rem); font-weight:900; line-height:.88; letter-spacing:-.07em; white-space:pre-line; text-transform:uppercase; margin-bottom:3rem; }
-        .hero-subtitle { max-width:700px; font-size:1.2rem; font-style:italic; }
-        section { padding:6rem 2.5rem; border-bottom:1px solid var(--line); }
-        .section-header { margin-bottom:4rem; font-size:clamp(2.8rem,6vw,5rem); font-weight:900; line-height:1; text-transform:uppercase; letter-spacing:-.04em; }
-        .about-text { max-width:1100px; margin-bottom:4rem; font-size:1.65rem; }
-        .about-text p { margin-bottom:1.6rem; }
-        .ai-notice { max-width:1100px; margin-top:4rem; padding:3rem; background:#fff; color:#000; font-size:1.25rem; font-weight:700; line-height:1.35; }
         
-        /* Tools Layout */
-        .tools-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(400px, 1fr)); gap:2rem; }
-        .tool-card { padding:3rem; border:1px solid var(--line); transition:border-color .3s; display:flex; flex-direction:column; justify-content:space-between; }
-        .tool-card:hover { border-color:var(--fg); }
-        .tool-name { font-size:2rem; font-weight:900; text-transform:uppercase; margin-bottom:1rem; }
-        .tool-tags { display:flex; gap:0.8rem; margin-bottom:1.5rem; }
-        .tool-tag { font-size:0.7rem; text-transform:uppercase; border:1px solid #444; padding:0.2rem 0.6rem; color:#888; }
-        .tool-desc { color:#aaa; font-size:1.05rem; margin-bottom:2.5rem; flex-grow:1; }
-        .tool-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
-        .tool-link { align-self:flex-start; font-weight:700; text-transform:uppercase; text-decoration:none; border-bottom:2px solid var(--fg); padding-bottom:0.2rem; transition:opacity .2s; }
-        .tool-link:hover { opacity:0.6; }
+        main { padding-top: 10rem; }
+        section { padding:4rem 2.5rem; border-bottom:1px solid var(--line); }
+        .section-header { margin-bottom:4rem; font-size:clamp(2.8rem,6vw,5rem); font-weight:900; line-height:1; text-transform:uppercase; letter-spacing:-.04em; }
+        
+        .project-block { margin-bottom:10rem; }
+        .project-block:last-child { margin-bottom:0; }
+        .project-info { max-width:900px; margin-bottom:3rem; }
+        .project-kicker { margin-bottom:1rem; color:var(--muted); font-size:.8rem; letter-spacing:.16em; text-transform:uppercase; }
+        .project-title { margin-bottom:1.2rem; border-left:8px solid var(--fg); padding-left:1.5rem; font-size:clamp(2rem,4vw,3.2rem); font-weight:900; line-height:1.05; text-transform:uppercase; }
+        .project-desc { max-width:800px; color:#aaa; font-size:1.1rem; }
+        .gallery-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1px; background:var(--line); }
+        .photo-item { position:relative; min-width:0; overflow:hidden; background:#080808; }
+        .photo-item.wide { grid-column:span 2; }
+        .photo-item img { display:block; width:100%; height:auto; filter:grayscale(100%) contrast(120%); transition:filter .5s, transform .5s; }
+        .project-color-experiment .photo-item img { filter:none; }
+        .photo-item:hover img { filter:grayscale(100%) contrast(155%); transform:scale(1.025); }
+        .project-color-experiment .photo-item:hover img { filter:contrast(110%); }
+        .photo-info { position:absolute; left:1.5rem; bottom:1.5rem; padding:.45rem .8rem; background:#fff; color:#000; font-size:.82rem; font-weight:700; opacity:0; transition:opacity .25s; }
+        .photo-item:hover .photo-info { opacity:1; }
 
         footer { padding:5rem 2.5rem; border-top:1px solid var(--line); font-size:.9rem; text-transform:uppercase; }
         footer p + p { margin-top:.5rem; color:#aaa; }
@@ -55,21 +54,21 @@
         @media (max-width:768px) {
             nav { padding:1.25rem; flex-direction:column; gap:1.2rem; }
             .nav-right { width:100%; flex-direction:row; justify-content:space-between; gap:1rem; }
-            .hero, section, footer { padding-left:1.25rem; padding-right:1.25rem; }
-            .hero h1 { font-size:clamp(3.3rem,17vw,6rem); }
-            .tools-grid { grid-template-columns:1fr; }
-            .tool-card { padding:2rem; }
+            section, footer { padding-left:1.25rem; padding-right:1.25rem; }
+            .gallery-grid { grid-template-columns:1fr; }
+            .photo-item.wide { grid-column:span 1; }
+            .project-title { border-left-width:5px; padding-left:1rem; }
         }
     </style>
 </head>
 <body>
     <nav aria-label="Primary navigation">
-        <a class="logo" href="#">LEO<br>LEE</a>
+        <a class="logo" href="index.html">LEO<br>LEE</a>
         <div class="nav-right">
             <ul class="nav-links">
-                <li><a href="#about" data-i18n="nav_about">About</a></li>
-                <li><a href="gallery.html" data-i18n="nav_projects">Gallery</a></li>
-                <li><a href="#tools" data-i18n="nav_tools">Tools</a></li>
+                <li><a href="index.html" data-i18n="nav_home">Home</a></li>
+                <li><a href="gallery.html" data-i18n="nav_projects" style="font-weight:700; text-decoration:underline;">Gallery</a></li>
+                <li><a href="index.html#tools" data-i18n="nav_tools">Tools</a></li>
                 <li><a href="https://github.com/lqy306" target="_blank" rel="noreferrer">GitHub</a></li>
             </ul>
             <div class="lang-controls" aria-label="Language switcher">
@@ -80,24 +79,10 @@
         </div>
     </nav>
 
-    <header class="hero">
-        <h1 data-i18n="hero_title">STILL\nVOLATILE</h1>
-        <p class="hero-subtitle" data-i18n="hero_subtitle">Leo Lee. Arch Linux user. Photographer. Lumix S1RM2. High contrast. Grainy. Minimalist.</p>
-    </header>
-
     <main>
-        <section id="about">
-            <h2 class="section-header" data-i18n="section_statement">Statement</h2>
-            <div class="about-text">
-                <p data-i18n="about_p1">I am a student from Xiamen, China, an Arch Linux enthusiast. I capture the world through the Lumix S1RM2 and a Real Time LUT workflow.</p>
-                <p data-i18n="about_p2">My vision is black and white. I look for truth in the shadows of the street.</p>
-            </div>
-            <div class="ai-notice" data-i18n="ai_notice">Notice: this space is maintained by AI (Manus). It is volatile; the style may shift without warning. Unnecessary automation has been removed. Back to basics.</div>
-        </section>
-
-        <section id="tools">
-            <h2 class="section-header" data-i18n="section_tools">My Tools</h2>
-            <div id="tools-container" class="tools-grid" aria-live="polite"></div>
+        <section id="projects">
+            <h2 class="section-header" data-i18n="section_projects">Photography Gallery</h2>
+            <div id="project-container" aria-live="polite"></div>
         </section>
     </main>
 
@@ -114,7 +99,7 @@
     <script>
         (() => {
             const state = { lang: localStorage.getItem('language') === 'en' ? 'en' : 'zh', data: null };
-            const toolsContainer = document.getElementById('tools-container');
+            const container = document.getElementById('project-container');
             const labels = ['lang-zh', 'lang-en'];
 
             function localized(value) {
@@ -131,7 +116,7 @@
                 const ui = state.data.ui;
                 Object.keys(ui).forEach((key) => setText(key, ui[key]));
                 document.documentElement.lang = state.lang === 'zh' ? 'zh-CN' : 'en';
-                document.title = state.lang === 'zh' ? 'LEO LEE | 首页' : 'LEO LEE | HOME';
+                document.title = state.lang === 'zh' ? 'LEO LEE | 摄影画廊' : 'LEO LEE | GALLERY';
                 labels.forEach((id) => {
                     const button = document.getElementById(id);
                     const active = id === `lang-${state.lang}`;
@@ -148,33 +133,27 @@
                 return element;
             }
 
-            function renderTools() {
-                toolsContainer.replaceChildren();
-                state.data.tools.forEach((tool) => {
-                    const card = createElement('div', 'tool-card');
-                    const top = createElement('div');
-                    top.appendChild(createElement('h3', 'tool-name', localized(tool.title)));
-                    const tags = createElement('div', 'tool-tags');
-                    tool.tags.forEach(t => tags.appendChild(createElement('span', 'tool-tag', t)));
-                    top.appendChild(tags);
-                    top.appendChild(createElement('p', 'tool-desc', localized(tool.description)));
-                    
-                    const links = createElement('div', 'tool-links');
-                    
-                    const demoLink = createElement('a', 'tool-link', localized(state.data.ui.tool_view_demo));
-                    demoLink.href = tool.url;
-                    demoLink.target = "_blank";
-                    demoLink.rel = "noreferrer";
-                    links.appendChild(demoLink);
-
-                    const ghLink = createElement('a', 'tool-link', localized(state.data.ui.tool_view_github));
-                    ghLink.href = tool.github_url;
-                    ghLink.target = "_blank";
-                    ghLink.rel = "noreferrer";
-                    links.appendChild(ghLink);
-
-                    card.append(top, links);
-                    toolsContainer.appendChild(card);
+            function renderProjects() {
+                container.replaceChildren();
+                state.data.projects.forEach((project, idx) => {
+                    const block = createElement('article', `project-block project-${project.id}`);
+                    const info = createElement('div', 'project-info');
+                    info.appendChild(createElement('p', 'project-kicker', `${localized(state.data.ui.project_label)} ${String(idx + 1).padStart(2, '0')}`));
+                    info.appendChild(createElement('h3', 'project-title', localized(project.title)));
+                    info.appendChild(createElement('p', 'project-desc', localized(project.description)));
+                    const grid = createElement('div', 'gallery-grid');
+                    project.photos.forEach((photo) => {
+                        const item = createElement('figure', `photo-item${photo.wide ? ' wide' : ''}`);
+                        const img = document.createElement('img');
+                        img.src = `photos/${photo.file}`;
+                        img.alt = localized(photo.title);
+                        img.loading = 'lazy';
+                        const cap = createElement('figcaption', 'photo-info', localized(photo.title));
+                        item.append(img, cap);
+                        grid.appendChild(item);
+                    });
+                    block.append(info, grid);
+                    container.appendChild(block);
                 });
             }
 
@@ -183,7 +162,7 @@
                 state.lang = lang;
                 localStorage.setItem('language', lang);
                 updateStaticText();
-                renderTools();
+                renderProjects();
             }
 
             labels.forEach((id) => document.getElementById(id).addEventListener('click', () => changeLanguage(id.slice(5))));
@@ -193,11 +172,11 @@
                 .then(data => {
                     state.data = data;
                     updateStaticText();
-                    renderTools();
+                    renderProjects();
                 })
                 .catch(e => {
                     console.error(e);
-                    toolsContainer.appendChild(createElement('p', 'error-message', 'Unable to load tools.'));
+                    container.appendChild(createElement('p', 'error-message', 'Unable to load gallery.'));
                 });
         })();
     </script>

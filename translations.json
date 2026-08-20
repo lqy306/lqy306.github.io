@@ -1,5 +1,6 @@
 {
   "ui": {
+    "nav_home": { "zh": "首页", "en": "Home" },
     "nav_about": { "zh": "关于", "en": "About" },
     "nav_projects": { "zh": "画廊", "en": "Gallery" },
     "nav_tools": { "zh": "工具", "en": "Tools" },
@@ -13,7 +14,8 @@
     "section_tools": { "zh": "我的工具", "en": "My Tools" },
     "footer_built": { "zh": "基于 Arch Linux 精神构建。变动的极简主义。", "en": "Built with Arch Linux spirit. Volatile minimalism." },
     "project_label": { "zh": "项目", "en": "Project" },
-    "tool_view_github": { "zh": "查看 GitHub", "en": "View on GitHub" }
+    "tool_view_github": { "zh": "查看 GitHub", "en": "View on GitHub" },
+    "tool_view_demo": { "zh": "在线体验 (GitHub Pages)", "en": "Live Demo (GitHub Pages)" }
   },
   "projects": [
     {
@@ -96,7 +98,8 @@
         "zh": "一个用于生成视频摄像机 1D 和 3D 查找表 (LUT) 的 Web 应用程序，支持多种 Log 伽马信号，界面经过视觉增强和多语言本地化。", 
         "en": "A web application for generating 1D and 3D lookup tables (LUTs) for video cameras capturing Log gamma signals, featuring an enhanced UI and localization." 
       },
-      "url": "https://github.com/lqy306/LUTCalCh",
+      "url": "https://lqy306.github.io/LUTCalCh/",
+      "github_url": "https://github.com/lqy306/LUTCalCh",
       "tags": ["Photography", "Color Grading", "Web App"]
     }
   ]
