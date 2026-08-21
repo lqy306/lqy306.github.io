@@ -1,6 +1,9 @@
 name: Sync LUTCalCh to GitHub Pages
 
 on:
+  push:
+    branches:
+      - main
   schedule:
     - cron: "*/15 * * * *"
   workflow_dispatch:
@@ -17,6 +20,7 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout personal Pages site
         uses: actions/checkout@v4
@@ -51,10 +55,20 @@ jobs:
       - name: Assemble Pages artifact
         run: |
           mkdir -p _pages-dist
-          find . -mindepth 1 -maxdepth 1 ! -name .git ! -name _lutcalch-source ! -name _pages-dist -exec cp -a {} _pages-dist/ \;
+
+          find . \
+            -mindepth 1 \
+            -maxdepth 1 \
+            ! -name .git \
+            ! -name _lutcalch-source \
+            ! -name _pages-dist \
+            -exec cp -a {} _pages-dist/ \;
+
           rm -rf _pages-dist/LUTCalCh
           mkdir -p _pages-dist/LUTCalCh
+
           cp -a _lutcalch-source/dist/public/. _pages-dist/LUTCalCh/
+
           touch _pages-dist/.nojekyll
 
       - name: Upload Pages artifact
@@ -68,6 +82,7 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     needs: build
+
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
