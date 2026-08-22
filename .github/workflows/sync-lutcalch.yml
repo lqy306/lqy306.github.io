@@ -69,6 +69,23 @@ jobs:
 
           cp -a _lutcalch-source/dist/public/. _pages-dist/LUTCalCh/
 
+          # 兼容 GitHub Pages CDN 中仍缓存的旧版 index.html。
+          # 旧版 index.html 引用以下旧哈希文件名，
+          # 将它们复制为当前最新构建内容，避免继续加载旧界面。
+          latest_js=$(find _pages-dist/LUTCalCh/assets -maxdepth 1 -type f -name 'index-*.js' ! -name 'index-HKWaWs1h.js' | head -n 1)
+          latest_css=$(find _pages-dist/LUTCalCh/assets -maxdepth 1 -type f -name 'index-*.css' ! -name 'index-CVTuQH-2.css' | head -n 1)
+
+          if [ -n "$latest_js" ]; then
+            cp -f "$latest_js" \
+              _pages-dist/LUTCalCh/assets/index-HKWaWs1h.js
+          fi
+
+          if [ -n "$latest_css" ]; then
+            cp -f "$latest_css" \
+              _pages-dist/LUTCalCh/assets/index-CVTuQH-2.css
+          fi
+
+          # 确保 GitHub Pages 不使用 Jekyll 处理静态文件。
           touch _pages-dist/.nojekyll
 
       - name: Upload Pages artifact
