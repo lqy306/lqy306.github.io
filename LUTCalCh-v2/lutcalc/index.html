@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8" />
+	<link rel="shortcut icon" href="favicon.ico">
+	<link rel="manifest" href="manifest.json">
+	<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="192x192" href="favicon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+	<meta name="apple-mobile-web-app-title" content="LUTCalc 中文计算器">
+	<meta name="application-name" content="LUTCalc 中文计算器">
+		<link rel="stylesheet" type="text/css" href="style.css" />
+			<link rel="stylesheet" type="text/css" href="lutcalc-overrides.css" />
+		<link rel="stylesheet" type="text/css" href="apple-control-system.css" />
+			<script>
+				/* 原版代码仅作为同源计算与调整项模块使用；默认禁止渲染完整旧工作区。 */
+				document.documentElement.classList.add("embed-adjustments");
+			</script>
+		<title>LUTCalc · 中文 LUT 计算器</title>
+</head>
+<body id="body">
+	<h1 id="titlebar">LUTCalc · 1D 与 3D 立方体 LUT 计算器 <span id="version"></span></h1>
+	<section id="main">
+		<div id="javascriptwarning"><p>请允许此页面运行 JavaScript</p></div>
+		<form method="post" action="" id="lutcalcform">
+		</form>
+	</section>
+	<footer id="footer">Ben Turley</footer>
+    <div id="printable"></div>
+	<div id="shed"></div>
+	<script type="text/javascript" src="blob/Blob.js"></script>
+	<script type="text/javascript" src="filesaver/FileSaver.js"></script>
+	<script type="text/javascript" src="js/lutcalccombined.js"></script>
+		<script type="text/javascript" src="lutcalc-zh.js"></script>
+</body>
+</html>
